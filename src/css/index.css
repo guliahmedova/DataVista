@@ -94,6 +94,7 @@ svg {
 .login-layout .login-form .form-input {
   background-color: #F4F5F9;
   width: 100%;
+  padding: 1rem;
 }
 .login-layout .login-form .form-input:focus, .login-layout .login-form .form-input :hover {
   border: #6e39cb 1px solid;

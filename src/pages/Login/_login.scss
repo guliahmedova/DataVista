@@ -29,6 +29,7 @@
         .form-input {
             background-color: $main_bg_color;
             width: 100%;
+            padding: 1rem;
             &:focus,
             & :hover {
                 border: $main_color 1px solid;

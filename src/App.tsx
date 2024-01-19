@@ -3,6 +3,7 @@ import Login from './pages/Login/Login';
 import { routes } from './routes';
 import PrivateRoutes from './pages/PrivateRoutes';
 import { CustomLayout, UnAuthorized } from './pages';
+import NotFound from './pages/NotFound/NotFound';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         </Route>
         <Route path="unauthorized" element={<UnAuthorized />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/not-found' element={<NotFound />} />
       </Routes>
     </Router>
   )
