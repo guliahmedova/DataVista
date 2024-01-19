@@ -1,11 +1,10 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 
 const CustomLayout = () => {
   return (
     <div>
-      Sidebar
-      TopNav
+      <Link to="/login">LOGIN</Link>
       <Outlet />
     </div>
   )
