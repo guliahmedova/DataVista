@@ -63,42 +63,44 @@ svg {
 }
 .login-layout {
   height: 100%;
-  padding: 1.2rem;
   background: #673ab7;
   background: -webkit-linear-gradient(to right, #512da8, #673ab7);
   background: linear-gradient(to right, #512da8, #673ab7);
-}
-.login-layout .login-content {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: white;
-  width: 50%;
-  border-radius: 0.75rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
 }
-.login-layout .login-content .login-title {
+.login-layout .login-title {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 2rem;
 }
-.login-layout .login-content .login-form {
+.login-layout .login-form {
+  width: 60%;
+  display: flex;
+  height: 80%;
+  padding: 0 10%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+.login-layout .login-form .form-label {
   width: 100%;
-  height: auto;
-  padding: 0 20%;
 }
-.login-layout .login-content .login-form .form-input {
+.login-layout .login-form .form-input {
   background-color: #F4F5F9;
-  padding: 1rem;
+  width: 100%;
 }
-.login-layout .login-content .login-form .form-input:focus, .login-layout .login-content .login-form .form-input :hover {
+.login-layout .login-form .form-input:focus, .login-layout .login-form .form-input :hover {
   border: #6e39cb 1px solid;
   outline: none;
   box-shadow: none;
 }
-.login-layout .login-content .login-form .login-btn {
+.login-layout .login-form .login-btn {
   width: 100%;
   background-color: #6e39cb;
   color: white;
@@ -112,16 +114,18 @@ svg {
 }
 
 @media screen and (max-width: 1487px) {
-  .login-layout .login-content {
-    width: 90%;
+  .login-layout .col {
+    height: 80%;
   }
-  .login-layout .login-content .login-form {
+  .login-layout .login-form {
     padding: 0 10%;
+    width: 90%;
+    height: 75%;
   }
-  .login-layout .login-content .login-form .form-input {
+  .login-layout .login-form .form-input {
     padding: 0.5rem;
   }
-  .login-layout .login-content .login-title {
+  .login-layout .login-title {
     font-size: 1.5rem;
   }
 }
