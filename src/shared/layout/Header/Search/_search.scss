@@ -1,0 +1,27 @@
+.search-form {
+    width: 30%;
+    display: flex;
+    position: relative;
+    .search-item {
+        width: 100%;
+        height: 100%;
+        border-radius: $rounded-xl;
+        .search-input {
+            background-color: $main_bg_color;
+        }
+    }
+    .search-btn {
+        position: absolute;
+        right: 0;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        &:hover {
+            .search-icon {
+                color: $main_color;
+                transition: all ease-in-out .5s;
+            }
+        }
+    }
+}

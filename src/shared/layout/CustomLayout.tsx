@@ -1,13 +1,11 @@
-import { Link, Outlet } from "react-router-dom";
-
+import { Layout } from 'antd';
+import CustomHeader from './Header/CustomHeader';
 
 const CustomLayout = () => {
   return (
-    <div>
-      <Link to="/login">LOGIN</Link>
-      <Link to="/not-found">NOTFOUND</Link>
-      <Outlet />
-    </div>
+    <Layout className='container'>
+      <CustomHeader/>
+    </Layout>
   )
 }
 
