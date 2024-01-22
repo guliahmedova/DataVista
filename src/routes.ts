@@ -1,6 +1,4 @@
-import { Home, Projects, Reports, Teams, Users } from './pages/index';
-import ChangePassword from './pages/ChangePassword/ChangePassword';
-import ResetPassword from './pages/ResetPassword/ResetPassword';
+import { ChangePassword, Home, Projects, Reports, ResetPassword, Teams, Users } from './pages/index';
 
 enum Roles {
     SUPER_ADMIN = 1,

@@ -2,8 +2,11 @@
 @import "./variables";
 @import './utils';
 
-@import '../shared/layout/layout';
-@import '../pages/Login/login';
+@import '../shared/modules/Cover/layout';
 @import '../shared/layout/Header/header';
 @import '../shared/layout/Header/Search/search';
-@import '../shared/layout/Header/HeaderElements/headerElements'
+@import '../shared/layout/Header/HeaderElements/headerElements';
+@import '../shared/layout/SideMenu/siderMenu';
+
+@import '../pages/Home/home';
+@import '../pages/Login/login';

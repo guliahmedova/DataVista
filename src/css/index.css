@@ -77,6 +77,116 @@ svg {
   height: 100vh;
 }
 
+.main-content {
+  padding: 2%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .logo-icon {
+  display: flex;
+  align-items: center;
+}
+.header .logo-icon .logo-text {
+  font-weight: 700;
+  color: #8833FF;
+  font-size: 1.563rem;
+}
+
+.search-form {
+  width: 30%;
+  display: flex;
+  position: relative;
+}
+.search-form .search-item {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+}
+.search-form .search-item .search-input {
+  background-color: #f4f4f4;
+}
+.search-form .search-btn {
+  position: absolute;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  color: black;
+}
+.search-form .search-btn:hover .search-icon {
+  color: #8833FF;
+  transition: all ease-in-out 0.5s;
+}
+
+.header-list .profile .avatar {
+  width: 2.5rem;
+  border-radius: 100%;
+  height: 2.5rem;
+}
+.header-list .profile .avatar-text {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+.header-list .profile .dropdown-profile-btn {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+.header-list .profile .dropdown-profile-btn:hover {
+  color: black;
+}
+.header-list .list-item {
+  border: none;
+  box-shadow: none;
+  outline: none;
+  display: inline;
+}
+.header-list .key {
+  padding: 1rem;
+}
+.header-list .key .key-icon {
+  border: 1px solid #ffcb33;
+  color: #ffcb33;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+
+.profile-menu-item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.dropdown-btn {
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+.dropdown-btn .dropdown-btn-icon {
+  color: black;
+}
+
+.sidebar-menu .sidebar-menu-link {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.sidebar-active-link {
+  background-color: #8833FF;
+  color: white;
+}
+
 .login-layout {
   height: 100%;
   background: #673ab7;
@@ -141,93 +251,4 @@ svg {
   .login-layout .login-title {
     font-size: 1.5rem;
   }
-}
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.header .logo {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  width: min-content;
-}
-.header .logo .logo-img {
-  width: 3rem;
-  height: 3rem;
-}
-.header .logo .logo-text {
-  font-weight: 700;
-  color: #8833FF;
-  font-size: 1.563rem;
-}
-
-.search-form {
-  width: 30%;
-  display: flex;
-  position: relative;
-}
-.search-form .search-item {
-  width: 100%;
-  height: 100%;
-  border-radius: 0.75rem;
-}
-.search-form .search-item .search-input {
-  background-color: #f4f4f4;
-}
-.search-form .search-btn {
-  position: absolute;
-  right: 0;
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
-  outline: none;
-}
-.search-form .search-btn:hover .search-icon {
-  color: #8833FF;
-  transition: all ease-in-out 0.5s;
-}
-
-.header-list .profile .avatar {
-  width: 2.5rem;
-  border-radius: 100%;
-  height: 2.5rem;
-}
-.header-list .profile .avatar-text {
-  font-weight: 600;
-  font-size: 0.875rem;
-}
-.header-list .profile .dropdown-profile-btn {
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
-  outline: none;
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-}
-.header-list .profile .dropdown-profile-btn:hover {
-  color: black;
-}
-.header-list .list-item {
-  border: none;
-  box-shadow: none;
-  outline: none;
-  display: inline;
-}
-.header-list .key {
-  padding: 1rem;
-}
-.header-list .key .key-icon {
-  border: 1px solid #FFCB33;
-  color: #FFCB33;
-  border-radius: 0.375rem;
-  padding: 0.5rem;
-}
-
-.profile-menu-item {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
 }

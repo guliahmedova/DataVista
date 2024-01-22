@@ -1,35 +1,35 @@
 import { KeyOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Dropdown, Flex, MenuProps, Switch, Tooltip } from "antd";
-import { Link } from "react-router-dom";
+import { Button, Dropdown, Flex, MenuProps, Switch, Tooltip, Typography, Image } from "antd";
 import avatar from '../../../media/imgs/avatar.svg';
+const { Text, Link } = Typography;
 
 const HeaderElements = () => {
     const items: MenuProps['items'] = [
         {
             key: '1',
             label: (
-                <div className="profile-menu-item">
+                <Link href="/edit-profile" className="profile-menu-item">
                     <UserOutlined />
-                    <span>Edit Profile</span>
-                </div>
+                    <Text>Edit Profile</Text>
+                </Link>
             ),
         },
         {
             key: '2',
             label: (
-                <div className="profile-menu-item">
-                    <LogoutOutlined />
-                    <span>Logout</span>
-                </div>
+                <Button className="profile-menu-item dropdown-btn">
+                    <LogoutOutlined className="dropdown-btn-icon" />
+                    <Text>Logout</Text>
+                </Button>
             ),
         },
         {
             key: '3',
             label: (
-                <div className="profile-menu-item">
+                <Button className="profile-menu-item dropdown-btn">
                     <Switch defaultChecked size="small" />
-                    <span>Dark Mode</span>
-                </div>
+                    <Text>Dark Mode</Text>
+                </Button>
             ),
         },
     ];
@@ -38,7 +38,7 @@ const HeaderElements = () => {
         <Flex className="header-list" align="center">
             <div className="list-item key" >
                 <Tooltip placement="bottom" title='Reset User Password'>
-                    <Link to="/reset-password">
+                    <Link href="/reset-password">
                         <KeyOutlined className="key-icon" />
                     </Link>
                 </Tooltip>
@@ -46,10 +46,10 @@ const HeaderElements = () => {
             <div className="list-item profile">
                 <Dropdown menu={{ items }} placement="bottom" className="profile-dropdown" arrow={{ pointAtCenter: true }}>
                     <Button className="dropdown-profile-btn">
-                        <img src={avatar} alt="" className="avatar" />
-                        <span className="avatar-text">
+                        <Image src={avatar} alt="" className="avatar" preview={false} />
+                        <Text className="avatar-text">
                             Guli Ahmedova
-                        </span>
+                        </Text>
                     </Button>
                 </Dropdown>
             </div>

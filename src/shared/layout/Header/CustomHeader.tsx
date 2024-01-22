@@ -1,17 +1,23 @@
+import { Image, Typography } from 'antd';
 import { Header } from "antd/es/layout/layout";
 import logo from '../../../shared/media/imgs/logoIcon.svg';
-import { Link } from "react-router-dom";
-import Search from "./Search/Search";
 import HeaderElements from "./HeaderElements/HeaderElements";
+import Search from "./Search/Search";
+const { Text, Link } = Typography;
 
 const CustomHeader = () => {
   return (
     <Header style={{
       backgroundColor: 'white'
-    }} className="header">
-      <Link to="/" className="logo">
-        <img src={logo} alt="" className="logo-img" />
-        <span className="logo-text">DataVista</span>
+    }}
+      className="header">
+      <Link href='/' className='logo-icon'>
+        <Image
+          width='3rem'
+          preview={false}
+          src={logo}
+        />
+        <Text className="logo-text">DataVista</Text>
       </Link>
       <Search />
       <HeaderElements />

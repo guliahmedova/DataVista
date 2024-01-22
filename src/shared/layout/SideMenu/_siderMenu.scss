@@ -1,0 +1,11 @@
+.sidebar-menu {
+    .sidebar-menu-link {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+   
+}
+.sidebar-active-link{
+    background-color: $main_color;
+    color: white;
+}

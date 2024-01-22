@@ -1,26 +1,47 @@
-import { Menu } from "antd";
-import { Link } from "react-router-dom";
-import { HomeOutlined, ProjectOutlined, TeamOutlined, UsergroupAddOutlined } from '@ant-design/icons';
+import {
+    CreditCardOutlined,
+    HomeOutlined,
+    ProjectOutlined,
+    TeamOutlined,
+    UsergroupAddOutlined
+} from '@ant-design/icons';
+import { Menu, Typography } from "antd";
+const { Link } = Typography;
 
 const SideMenu = () => {
     return (
-        <Menu>
-            <Menu.Item key='home' icon={<HomeOutlined />}>
-                <Link to='/'>Home </Link>
-            </Menu.Item>
-            <Menu.Item key="teams" icon={<TeamOutlined />}>
-                <Link to='/teams'>Teams </Link>
-            </Menu.Item>
-            <Menu.Item key="projects" icon={<ProjectOutlined />}>
-                <Link to='/projects'>Projects </Link>
-            </Menu.Item>
-            <Menu.Item key="reports">
-                <Link to='/reports'>Reports </Link>
-            </Menu.Item>
-            <Menu.Item key="users" icon={<UsergroupAddOutlined />}>
-                <Link to='/users'>Users </Link>
-            </Menu.Item>
-        </Menu>
+        <Menu
+            className='sidebar-menu'
+            items={[
+                {
+                    label: <Link className='sidebar-menu-link' href="/">Home</Link>,
+                    key: '1',
+                    icon: <HomeOutlined 
+                    className='sidebar-menu-icon' />,
+                    className: 'sidebar-active-link'
+                },
+                {
+                    label: <Link className='sidebar-menu-link' href="/teams">Teams</Link>,
+                    key: '2',
+                    icon: <TeamOutlined />
+                },
+                {
+                    label: <Link className='sidebar-menu-link' href="/projects">Projects</Link>,
+                    key: '3',
+                    icon: <ProjectOutlined />
+                },
+                {
+                    label: <Link className='sidebar-menu-link' href="/reports">Reports</Link>,
+                    key: '4',
+                    icon: <CreditCardOutlined />
+                },
+                {
+                    label: <Link className='sidebar-menu-link' href="/users">Users</Link>,
+                    key: '5',
+                    icon: <UsergroupAddOutlined />
+                }
+            ]}
+        />
     )
 }
 

@@ -30,11 +30,11 @@
     }
     .key {
         padding: 1rem;
-        .key-icon{
-            border: 1px solid #FFCB33;
-            color: #FFCB33;
+        .key-icon {
+            border: 1px solid #ffcb33;
+            color: #ffcb33;
             border-radius: $rounded-md;
-            padding: .5rem;
+            padding: 0.5rem;
         }
     }
 }
@@ -42,4 +42,14 @@
     display: flex;
     gap: 1rem;
     align-items: center;
+}
+.dropdown-btn {
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    .dropdown-btn-icon {
+        color: black;
+    }
 }
