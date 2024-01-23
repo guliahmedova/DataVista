@@ -25,4 +25,4 @@ const CustomHeader = () => {
   )
 }
 
-export default CustomHeader
+export default CustomHeader;

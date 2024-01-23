@@ -10,8 +10,8 @@
   font: inherit;
 }
 
-ul[role=list],
-ol[role=list] {
+ul[role="list"],
+ol[role="list"] {
   list-style: none;
 }
 
@@ -34,6 +34,7 @@ body {
 body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 a:not([class]) {
@@ -62,13 +63,13 @@ svg {
   }
 }
 :where(.css-dev-only-do-not-override-zl9ks2).ant-input-outlined:hover {
-  border-color: #8833FF;
+  border-color: #8833ff;
   box-shadow: none;
 }
 
 :where(.css-dev-only-do-not-override-zl9ks2).ant-input-outlined:focus {
   box-shadow: none;
-  border-color: #8833FF;
+  border-color: #8833ff;
 }
 
 .container {
@@ -92,7 +93,7 @@ svg {
 }
 .header .logo-icon .logo-text {
   font-weight: 700;
-  color: #8833FF;
+  color: #8833ff;
   font-size: 1.563rem;
 }
 
@@ -119,7 +120,7 @@ svg {
   color: black;
 }
 .search-form .search-btn:hover .search-icon {
-  color: #8833FF;
+  color: #8833ff;
   transition: all ease-in-out 0.5s;
 }
 
@@ -162,8 +163,8 @@ svg {
 
 .profile-menu-item {
   display: flex;
-  gap: 1rem;
   align-items: center;
+  gap: 1rem;
 }
 
 .dropdown-btn {
@@ -183,7 +184,7 @@ svg {
 }
 
 .sidebar-active-link {
-  background-color: #8833FF;
+  background-color: #8833ff;
   color: white;
 }
 
@@ -211,7 +212,9 @@ svg {
   justify-content: center;
   background-color: white;
   border-radius: 0.75rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
 }
 .login-layout .login-form .form-label {
@@ -222,14 +225,15 @@ svg {
   width: 100%;
   padding: 1rem;
 }
-.login-layout .login-form .form-input:focus, .login-layout .login-form .form-input :hover {
-  border: #8833FF 1px solid;
+.login-layout .login-form .form-input:focus,
+.login-layout .login-form .form-input :hover {
+  border: #8833ff 1px solid;
   outline: none;
   box-shadow: none;
 }
 .login-layout .login-form .login-btn {
   width: 100%;
-  background-color: #8833FF;
+  background-color: #8833ff;
   color: white;
   outline: none;
   box-shadow: none;
@@ -251,4 +255,39 @@ svg {
   .login-layout .login-title {
     font-size: 1.5rem;
   }
+}
+.weather-forecast-card {
+  background: rgba(197, 12, 243, 0.26);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+.weather-forecast-card .img-box {
+  display: flex;
+  justify-content: center;
+}
+.weather-forecast-card .title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 2rem;
+  margin: 0;
+}
+.weather-forecast-card .degree {
+  font-weight: 700;
+  font-size: 2rem;
+  color: black;
+  text-align: center;
+  margin: 0;
+}
+.weather-forecast-card .desc {
+  color: gray;
+  font-size: 1rem;
+  text-align: center;
+  display: block;
+  margin: 0;
 }

@@ -1,14 +1,17 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include displayHorizontally(flex, space-between, center);
     .logo-icon {
         display: flex;
         align-items: center;
+        @include itemscenter(flex, center);
         .logo-text {
             font-weight: 700;
             color: $main_color;
             font-size: 1.563rem;
         }
     }
+}
+
+@media screen and (max-width: 800px) {
+    
 }

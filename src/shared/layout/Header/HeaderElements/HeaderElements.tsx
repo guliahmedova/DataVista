@@ -1,5 +1,5 @@
-import { KeyOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Dropdown, Flex, MenuProps, Switch, Tooltip, Typography, Image } from "antd";
+import { LockOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Dropdown, Flex, Image, MenuProps, Switch, Tooltip, Typography } from "antd";
 import avatar from '../../../media/imgs/avatar.svg';
 const { Text, Link } = Typography;
 
@@ -36,14 +36,14 @@ const HeaderElements = () => {
 
     return (
         <Flex className="header-list" align="center">
-            <div className="list-item key" >
+            <Typography className="list-item key" >
                 <Tooltip placement="bottom" title='Reset User Password'>
                     <Link href="/reset-password">
-                        <KeyOutlined className="key-icon" />
+                        <LockOutlined className="key-icon" />
                     </Link>
                 </Tooltip>
-            </div>
-            <div className="list-item profile">
+            </Typography>
+            <Typography className="list-item profile">
                 <Dropdown menu={{ items }} placement="bottom" className="profile-dropdown" arrow={{ pointAtCenter: true }}>
                     <Button className="dropdown-profile-btn">
                         <Image src={avatar} alt="" className="avatar" preview={false} />
@@ -52,7 +52,7 @@ const HeaderElements = () => {
                         </Text>
                     </Button>
                 </Dropdown>
-            </div>
+            </Typography>
         </Flex>
     )
 }

@@ -14,8 +14,7 @@
             border: none;
             box-shadow: none;
             outline: none;
-            display: flex;
-            align-items: center;
+            @include itemscenter(flex, center);
             gap: 0.625rem;
             &:hover {
                 color: black;
@@ -39,9 +38,8 @@
     }
 }
 .profile-menu-item {
-    display: flex;
+    @include itemscenter(flex, center);
     gap: 1rem;
-    align-items: center;
 }
 .dropdown-btn {
     box-shadow: none;

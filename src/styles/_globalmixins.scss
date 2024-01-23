@@ -1,0 +1,17 @@
+@mixin displayHorizontally($property) {
+    display: $property;
+    justify-content: $property;
+    align-items: $property;
+}
+
+@mixin displayVertically($property) {
+    display: $property;
+    flex-direction: $property;
+    justify-content: $property;
+    align-items: $property;
+}
+
+@mixin itemscenter($property) {
+    display: $property;
+    align-items: $property;
+}

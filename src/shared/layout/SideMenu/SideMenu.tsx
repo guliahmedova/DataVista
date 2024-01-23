@@ -15,29 +15,28 @@ const SideMenu = () => {
             items={[
                 {
                     label: <Link className='sidebar-menu-link' href="/">Home</Link>,
-                    key: '1',
-                    icon: <HomeOutlined 
-                    className='sidebar-menu-icon' />,
+                    key: '83981',
+                    icon: <HomeOutlined className='sidebar-menu-icon' />,
                     className: 'sidebar-active-link'
                 },
                 {
                     label: <Link className='sidebar-menu-link' href="/teams">Teams</Link>,
-                    key: '2',
+                    key: '74872',
                     icon: <TeamOutlined />
                 },
                 {
                     label: <Link className='sidebar-menu-link' href="/projects">Projects</Link>,
-                    key: '3',
+                    key: '3227',
                     icon: <ProjectOutlined />
                 },
                 {
                     label: <Link className='sidebar-menu-link' href="/reports">Reports</Link>,
-                    key: '4',
+                    key: '4873',
                     icon: <CreditCardOutlined />
                 },
                 {
                     label: <Link className='sidebar-menu-link' href="/users">Users</Link>,
-                    key: '5',
+                    key: '58287',
                     icon: <UsergroupAddOutlined />
                 }
             ]}

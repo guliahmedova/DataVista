@@ -1,6 +1,8 @@
-@import './reset';
 @import "./variables";
+@import './reset';
 @import './utils';
+@import './globalmixins';
+@import './fonts';
 
 @import '../shared/modules/Cover/layout';
 @import '../shared/layout/Header/header';
@@ -10,3 +12,5 @@
 
 @import '../pages/Home/home';
 @import '../pages/Login/login';
+@import '../pages/Users/users';
+@import '../pages/Home/WeatherForecast/weatherForecast';
