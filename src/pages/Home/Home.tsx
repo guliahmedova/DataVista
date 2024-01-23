@@ -1,8 +1,7 @@
 import { FundProjectionScreenOutlined, SnippetsOutlined, TeamOutlined, UserOutlined } from "@ant-design/icons";
-import { Card, Col, Divider, Layout, Row, Statistic, Typography } from "antd";
+import { Breadcrumb, Card, Col, Divider, Layout, Row, Statistic, Typography } from "antd";
 import CountUp from 'react-countup';
-import HomeTabs from "./HomeTabs/HomeTabs";
-import WeatherForecast from "./WeatherForecast/WeatherForecast";
+import { HomeTabs, WeatherForecast } from "../index";
 
 const formatter = (value: number | string) => <CountUp end={typeof value === 'number' ? value : parseFloat(value)} separator="," />;
 
@@ -10,9 +9,13 @@ const Home = () => {
 
   return (
     <Layout>
-      <Typography.Title level={3}>
-        Home
-      </Typography.Title>
+      <Breadcrumb
+        items={[
+          {
+            title: 'Home',
+          }
+        ]}
+      />
       <Divider />
       <Row gutter={16}>
         <Col span={6}>
@@ -49,8 +52,11 @@ const Home = () => {
             <HomeTabs />
           </Card>
         </Col>
-        <Col span={12}>
-            <WeatherForecast />
+        <Col span={6}>
+          <WeatherForecast />
+        </Col>
+        <Col span={6}>
+          <WeatherForecast />
         </Col>
       </Row>
 

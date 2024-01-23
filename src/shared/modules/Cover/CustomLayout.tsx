@@ -3,8 +3,7 @@ import Sider from 'antd/es/layout/Sider';
 import { Content } from 'antd/es/layout/layout';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import CustomHeader from '../../layout/Header/CustomHeader';
-import SideMenu from '../../layout/SideMenu/SideMenu';
+import { CustomHeader, SideMenu } from 'shared/index';
 
 const CustomLayout = () => {
   const [collapsed, setCollapsed] = useState(false);

@@ -1,7 +1,5 @@
 import { Tabs } from 'antd';
-import RecentReports from './RecentReports';
-import RecentTeams from './RecentTeams';
-import RecentProjects from './RecentProjects';
+import { RecentReports, RecentTeams, RecentProjects } from 'pages/index';
 
 const HomeTabs = () => {
   return (
@@ -12,17 +10,17 @@ const HomeTabs = () => {
         {
           key: '195848',
           label: 'Repots',
-          children: <RecentReports/>
+          children: <RecentReports />
         },
         {
           key: '20183',
           label: 'Teams',
-          children: <RecentTeams/>
+          children: <RecentTeams />
         },
         {
           key: '93938483',
           label: 'Projects',
-          children: <RecentProjects/>
+          children: <RecentProjects />
         },
       ]}
     />

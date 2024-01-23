@@ -2,7 +2,8 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Login from './pages/Login/Login';
 import { routes } from './routes';
 import PrivateRoutes from './pages/PrivateRoutes';
-import { CustomLayout, UnAuthorized } from './pages';
+import { UnAuthorized } from './pages';
+import { CustomLayout } from 'shared/index';
 import NotFound from './pages/NotFound/NotFound';
 
 const App = () => {

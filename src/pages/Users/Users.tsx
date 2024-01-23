@@ -1,20 +1,11 @@
 import { UserOutlined } from '@ant-design/icons';
 import type { TableProps } from 'antd';
-import { Avatar, Divider, Table, Tag, Typography } from "antd";
+import { Avatar, Breadcrumb, Divider, Flex, Table, Tag, Typography } from "antd";
 import Layout from "antd/es/layout/layout";
+import { UserDeleteButton, UserEditButton } from 'shared/components/index';
+import { UserType } from 'shared/types/UserType';
 
-interface DataType {
-  key: string;
-  username: string;
-  firstname: string;
-  lastname: string;
-  email: string;
-  teamname: string;
-  rolename: string;
-  status: string;
-};
-
-const columns: TableProps<DataType>['columns'] = [
+const columns: TableProps<UserType>['columns'] = [
   {
     title: 'Avatar',
     dataIndex: 'atavar',
@@ -71,9 +62,20 @@ const columns: TableProps<DataType>['columns'] = [
       );
     }
   },
+  {
+    title: 'Actions',
+    dataIndex: 'actions',
+    key: 'actions',
+    render: () => (
+      <Flex gap='small' wrap='wrap'>
+        <UserDeleteButton/>
+        <UserEditButton/>
+      </Flex>
+    )
+  },
 ];
 
-const data: DataType[] = [
+const data: UserType[] = [
   {
     key: '1',
     username: 'jonh123',
@@ -99,9 +101,13 @@ const data: DataType[] = [
 const Users = () => {
   return (
     <Layout>
-      <Typography.Title level={3}>
-        Users
-      </Typography.Title>
+      <Breadcrumb
+        items={[
+          {
+            title: 'Users',
+          }
+        ]}
+      />
       <Divider />
       <Table columns={columns} dataSource={data} />;
     </Layout>

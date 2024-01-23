@@ -1,8 +1,7 @@
 import { Image, Typography } from 'antd';
 import { Header } from "antd/es/layout/layout";
-import logo from '../../../shared/media/imgs/logoIcon.svg';
-import HeaderElements from "./HeaderElements/HeaderElements";
-import Search from "./Search/Search";
+import { HeaderElements, Search } from "shared/index";
+import logo from 'shared/media/imgs/logoIcon.svg';
 const { Text, Link } = Typography;
 
 const CustomHeader = () => {
