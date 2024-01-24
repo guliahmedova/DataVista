@@ -4,21 +4,22 @@ import { RecentReports, RecentTeams, RecentProjects } from 'pages/index';
 const HomeTabs = () => {
   return (
     <Tabs
+      key='RecentDataTabs'
       defaultActiveKey="1"
       centered
       items={[
         {
-          key: '195848',
+          key: 'recentReports',
           label: 'Repots',
           children: <RecentReports />
         },
         {
-          key: '20183',
+          key: 'recentTeams',
           label: 'Teams',
           children: <RecentTeams />
         },
         {
-          key: '93938483',
+          key: 'recentProjects',
           label: 'Projects',
           children: <RecentProjects />
         },

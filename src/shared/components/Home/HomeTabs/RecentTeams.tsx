@@ -45,9 +45,10 @@ const RecentTeams = () => {
                 height={ContainerHeight}
                 itemHeight={47}
                 itemKey="teams"
+                key='TeamsVirtualList'
             >
-                {(item: RecentData) => (
-                    <List.Item key={item.id}>
+                {(item: RecentData, index) => (
+                    <List.Item key={index}>
                         <List.Item.Meta
                             title={item.name}
                         />

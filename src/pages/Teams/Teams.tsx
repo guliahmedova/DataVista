@@ -1,14 +1,16 @@
 import type { TableProps } from 'antd';
-import { Avatar, Breadcrumb, Divider, Table, Tooltip } from "antd";
+import { Avatar, Breadcrumb, Divider, Flex, Table, Tooltip } from "antd";
 import Layout from "antd/es/layout/layout";
-import { TeamType } from '../../shared/types/TeamType';
+import { TeamType } from 'shared/types/TeamType';
+import { TeamEditButton } from 'src/shared/components/index';
 
 const columns: TableProps<TeamType>['columns'] = [
   {
     title: 'Team Name',
     dataIndex: 'teamName',
     key: 'teamName',
-  }, {
+  },
+  {
     title: 'Team Members',
     dataIndex: 'users',
     key: 'usersColKey',
@@ -21,7 +23,17 @@ const columns: TableProps<TeamType>['columns'] = [
         ))}
       </Avatar.Group>
     )
-  }
+  },
+  {
+    title: 'Actions',
+    dataIndex: 'actions',
+    key: 'actions',
+    render: () => (
+      <Flex gap='small' wrap='wrap'>
+        <TeamEditButton />
+      </Flex>
+    )
+  },
 ];
 
 const data: TeamType[] = [

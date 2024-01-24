@@ -3,27 +3,27 @@ import VirtualList from 'rc-virtual-list';
 
 const datas = [
     {
-        id: 11,
+        id: 98,
         name: 'Plast'
     },
     {
-        id: 219,
+        id: 97,
         name: 'Furniro'
     },
     {
-        id: 31,
+        id: 96,
         name: 'Dist'
     },
     {
-        id: 41,
+        id: 91,
         name: 'DataVista'
     },
     {
-        id: 51,
+        id: 94,
         name: 'WeatherForecast'
     },
     {
-        id: 61,
+        id: 39,
         name: 'Todo-List'
     }
 ];
@@ -36,7 +36,6 @@ interface RecentData {
 const ContainerHeight = 110;
 
 const RecentProjects = () => {
-
     return (
         <List key='Projects_List'>
             <VirtualList
@@ -44,9 +43,10 @@ const RecentProjects = () => {
                 height={ContainerHeight}
                 itemHeight={47}
                 itemKey="projects"
+                key='VirtualListProjects'
             >
-                {(item: RecentData) => (
-                    <List.Item key={item.id}>
+                {(item: RecentData, index) => (
+                    <List.Item key={index}>
                         <List.Item.Meta
                             title={item.name}
                         />

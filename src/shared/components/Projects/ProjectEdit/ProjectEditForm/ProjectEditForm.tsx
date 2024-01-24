@@ -2,7 +2,7 @@ import { Col, Form, Input, Row, Select } from 'antd';
 import { useState } from 'react';
 type LayoutType = Parameters<typeof Form>[0]['layout'];
 
-const UserEditForm = () => {
+const ProjectEditForm = () => {
     const [form] = Form.useForm();
     const [formLayout, setFormLayout] = useState<LayoutType>('vertical');
 
@@ -87,4 +87,4 @@ const UserEditForm = () => {
     )
 }
 
-export default UserEditForm;
+export default ProjectEditForm;

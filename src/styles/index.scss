@@ -8,10 +8,10 @@
 @import '../shared/layout/Header/header';
 @import '../shared/layout/Header/Search/search';
 @import '../shared/layout/Header/HeaderElements/headerElements';
-@import '../shared/layout/SideMenu/siderMenu';
+@import 'shared/layout/siderMenu';
+@import '../shared/components/Home/Welcome/welcome';
 
 @import '../pages/Home/home';
 @import '../pages/Login/login';
 @import '../pages/Users/users';
 @import '../pages/Home/WeatherForecast/weatherForecast';
-@import '../pages/Home/Welcome/welcome';

@@ -1,7 +1,7 @@
 import { FundProjectionScreenOutlined, SnippetsOutlined, TeamOutlined, UserOutlined } from "@ant-design/icons";
 import { Breadcrumb, Card, Col, Divider, Layout, Row, Statistic, Typography } from "antd";
 import CountUp from 'react-countup';
-import { HomeTabs, WeatherForecast } from "../index";
+import { HomeTabs, WeatherForecast, Welcome } from "../index";
 
 const formatter = (value: number | string) => <CountUp end={typeof value === 'number' ? value : parseFloat(value)} separator="," />;
 
@@ -56,7 +56,7 @@ const Home = () => {
           <WeatherForecast />
         </Col>
         <Col span={6}>
-          <WeatherForecast />
+          <Welcome />
         </Col>
       </Row>
 

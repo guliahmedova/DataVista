@@ -3,27 +3,27 @@ import VirtualList from 'rc-virtual-list';
 
 const datas = [
     {
-        id: 2991,
+        id: 123,
         name: 'Responsive Web Desing'
     },
     {
-        id: 2882,
+        id: 1234,
         name: 'Scroll Feature Added'
     },
     {
-        id: 282823,
+        id: 12345,
         name: 'Send Email Feature Added'
     },
     {
-        id: 294,
+        id: 123456,
         name: 'Navbar Problem Solved'
     },
     {
-        id: 275,
+        id: 1234567,
         name: 'Footer Added'
     },
     {
-        id: 286,
+        id: 12345678,
         name: 'Languages Feature Added'
     }
 ];
@@ -44,9 +44,10 @@ const RecentReports = () => {
                 height={ContainerHeight}
                 itemHeight={47}
                 itemKey="reports"
+                key='VirtualListReports'
             >
-                {(item: RecentData) => (
-                    <List.Item key={item.id}>
+                {(item: RecentData, index) => (
+                    <List.Item key={index}>
                         <List.Item.Meta
                             title={item.name}
                         />

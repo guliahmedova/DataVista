@@ -185,7 +185,7 @@ svg {
 
 .sidebar-active-link {
   background-color: #8833ff;
-  color: white;
+  width: 100%;
 }
 
 .login-layout {
