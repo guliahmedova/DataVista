@@ -6,7 +6,7 @@ import 'styles/_reset.scss';
 import "styles/index.scss";
 import 'styles/variables.scss';
 import App from './App.tsx';
-import Spinner from './shared/Spinner/index.tsx';
+import Spinner from './shared/components/Spinner/index.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Suspense fallback={<Spinner />}>

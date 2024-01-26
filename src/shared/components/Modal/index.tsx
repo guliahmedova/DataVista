@@ -1,13 +1,35 @@
-import { Modal } from 'antd';
-import { FC } from "react";
-import { ActionModalType } from 'src/shared/types/ActionModalType';
+import { Button, Modal, Tooltip } from "antd";
+import { FC, useState } from "react";
+import { ActionModalType } from "src/shared/types/ActionModalType";
+import styles from './modal.module.scss';
 
-const ActionModal: FC<ActionModalType> = ({ okText, isModalOpen, handleOk, handleCancel, title, key }) => {
-    return (
-        <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} okText={okText} cancelText='Discard' onCancel={handleCancel}>
-            <h1>{title}</h1>
-        </Modal>
-    )
-}
+const CustomModal: FC<ActionModalType> = ({ actionKey, classname, icon, title, formFields , okText}) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-export default ActionModal
+  const showModal = () => {
+    setIsModalOpen(true);
+    if (formFields && actionKey) {
+      formFields(actionKey);
+    }
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <>
+      <Tooltip title={title} placement="top">
+        <Button className={styles[classname]} icon={icon} size="large" onClick={showModal} />
+      </Tooltip>
+      <Modal title={title} open={isModalOpen} onOk={handleOk} okText={okText} cancelText='Close' onCancel={handleCancel}>
+        {formFields && actionKey ? formFields(actionKey) : ''}
+      </Modal>
+    </>
+  )
+};
+
+export default CustomModal;

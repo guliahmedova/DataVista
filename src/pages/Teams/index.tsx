@@ -1,53 +1,76 @@
-import { DeleteOutlined, EditOutlined, FileAddOutlined, FundViewOutlined } from '@ant-design/icons';
-import type { TableProps } from 'antd';
-import { Avatar, Breadcrumb, Col, Divider, Flex, Row, Table, Tooltip } from "antd";
+import { DeleteOutlined, EditOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined } from '@ant-design/icons';
+import type { DescriptionsProps, TableProps } from 'antd';
+import { Breadcrumb, Descriptions, Divider, Flex, Table } from "antd";
 import Layout from "antd/es/layout/layout";
-import { ActionButton, TeamFilter } from 'shared/index';
+import { CustomModal, DeleteView, TeamForm } from 'shared/index';
 import { TeamType } from 'src/pages/types/TeamType';
-
-const columns: TableProps<TeamType>['columns'] = [
-  {
-    title: 'Team Name',
-    dataIndex: 'teamName',
-    key: 'teamName',
-  },
-  {
-    title: 'Team Members',
-    dataIndex: 'users',
-    key: 'usersColKey',
-    render: (users) => (
-      <Avatar.Group maxCount={3} maxStyle={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>
-        {users.map((user: any, index: number) => (
-          <Tooltip title={user} placement="top" key={index}>
-            <Avatar style={{ backgroundColor: '#f56a00' }}>K</Avatar>
-          </Tooltip>
-        ))}
-      </Avatar.Group>
-    )
-  },
-  {
-    title: 'Actions',
-    dataIndex: 'actions',
-    key: 'actions',
-    render: () => (
-      <Flex gap='small' wrap='wrap'>
-        <ActionButton actionKey='Update' icon={<EditOutlined />} title='Update' classname='update_btn' />
-        <ActionButton actionKey='Delete' icon={<DeleteOutlined />} title='Delete' classname='delete_btn' />
-        <ActionButton actionKey='View' icon={<FundViewOutlined />} title='View' classname='view_btn' />
-      </Flex>
-    )
-  },
-];
 
 const data: TeamType[] = [
   {
     id: 123456,
     teamName: 'Frontend',
-    users: ['Guli', 'Nezrin', 'Xanim', 'Seshla']
   },
 ];
 
+const items: DescriptionsProps['items'] = [
+  {
+    key: '1',
+    label: 'Team Name',
+    children: 'Frotend',
+  },
+  {
+    key: '2',
+    label: 'Employees',
+    children: 'Joe, Tris'
+  },
+];
+
+
 const Teams = () => {
+
+  const formFields = (actionKey: string) => {
+    switch (actionKey) {
+      case 'TEAM_CREATE':
+        return (
+          <TeamForm />
+        )
+      case 'TEAM_UPDATE':
+        return (
+          <TeamForm />
+        )
+      case 'TEAM_DELETE':
+        return (
+          <DeleteView />
+        )
+      case 'TEAM_VIEW':
+        return (
+          <Descriptions title="Team Info" items={items} layout="vertical" />
+        )
+      default:
+        break;
+    }
+  };
+
+  const columns: TableProps<TeamType>['columns'] = [
+    {
+      title: 'Team Name',
+      dataIndex: 'teamName',
+      key: 'teamName',
+    },
+    {
+      title: 'Actions',
+      dataIndex: 'actions',
+      key: 'actions',
+      render: () => (
+        <Flex gap='small' wrap='wrap'>
+          <CustomModal actionKey='TEAM_UPDATE' formFields={formFields} icon={<EditOutlined />} title='Update Team' classname='update_btn' okText='Update' />
+          <CustomModal actionKey='TEAM_DELETE' formFields={formFields} icon={<DeleteOutlined />} title='' classname='delete_btn' okText='Delete' />
+          <CustomModal actionKey='TEAM_VIEW' formFields={formFields} icon={<FundViewOutlined />} title='' classname='view_btn' okText='VIew' />
+        </Flex>
+      )
+    },
+  ];
+
   return (
     <Layout>
       <Breadcrumb
@@ -58,14 +81,12 @@ const Teams = () => {
         ]}
       />
       <Divider />
-      <Row>
-        <Col span={4}>
-          <TeamFilter />
-        </Col>
-      </Row>
-      <ActionButton actionKey='Create' icon={<FileAddOutlined />} title='Create' classname='create_btn' />
+      <Flex gap={8} justify="end">
+        <CustomModal actionKey='TEAM_CREATE' formFields={formFields} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
+        <CustomModal actionKey='TEAM_FILTER' formFields={formFields} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
+      </Flex>
       <Divider />
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={data} rowKey='id' />
     </Layout>
   )
 }

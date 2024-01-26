@@ -1,8 +1,14 @@
+import { ReactNode } from "react";
+
 export interface ActionModalType {
+    // isModalOpen: boolean,
+    // handleCancel: () => void,
+    // handleOk: () => void,
     okText: string,
-    isModalOpen: boolean,
-    handleCancel: () => void,
-    handleOk: () => void,
-    title: string,
-    key: string
+    children?: ReactNode,
+    classname: string,
+    icon: JSX.Element,
+    actionKey: string,
+    title?: string;
+    formFields?: (actionKey: string) => ReactNode;
 };

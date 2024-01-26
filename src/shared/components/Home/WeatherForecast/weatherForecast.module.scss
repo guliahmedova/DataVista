@@ -1,7 +1,7 @@
 @import "/src/styles/globalmixins.module";
 @import "/src/styles/variables";
 .weather_forecast_card {
-    background: rgba(197, 12, 243, 0.26);
+    background: #226add41;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border-radius: 10px;
