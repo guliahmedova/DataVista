@@ -1,0 +1,76 @@
+@import "/src/styles/globalmixins.module";
+@import "/src/styles/variables.scss";
+.login_layout {
+    height: 100%;
+    background: #673ab7;
+    background: -webkit-linear-gradient(to right, #512da8, #673ab7);
+    background: linear-gradient(to right, #512da8, #673ab7);
+    @include displayHorizontally(flex, center, center);
+    .login_title {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+    }
+    .login_form {
+        width: 60%;
+        height: 80%;
+        padding: 0 10%;
+        background-color: white;
+        @include displayVertically(flex, column, center, center);
+        border-radius: $rounded-xl;
+        box-shadow: $shadow-lg;
+        margin: 0 auto;
+        .form_label {
+            width: 100%;
+        }
+        .form_input {
+            background-color: $main_bg_color;
+            width: 100%;
+            padding: 1rem;
+            &:focus,
+            & :hover {
+                border: $main_color 1px solid;
+                outline: none;
+                box-shadow: none;
+            }
+        }
+        .login_btn {
+            width: 100%;
+            background-color: $main_color;
+            color: white;
+            outline: none;
+            box-shadow: none;
+            border: none;
+        }
+        .link_text {
+            text-align: right;
+            width: 100%;
+            margin-bottom: 1rem;
+            color: black;
+            font-weight: 500;
+            &:hover {
+                color: $main_color;
+                text-decoration: underline $main_color;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1487px) {
+    .login-layout {
+        .col {
+            height: 80%;
+        }
+        .login_form {
+            padding: 0 10%;
+            width: 90%;
+            height: 75%;
+            .form_input {
+                padding: 0.5rem;
+            }
+        }
+        .login_title {
+            font-size: 1.5rem;
+        }
+    }
+}

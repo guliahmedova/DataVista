@@ -8,7 +8,10 @@ export default defineConfig({
     alias: {
       src: "/src",
       shared: "/src/shared",
-      pages: "/src/pages"
+      pages: "/src/pages",
+      components: "/src/shared/components",
+      styles: "/src/styles",
+      layout: '/src/shared/layout'
     },
   },
 })

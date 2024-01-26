@@ -1,0 +1,18 @@
+@import "/src/styles/globalmixins.module";
+@import "/src/styles/variables";
+
+.header {
+    background-color: white;
+    @include displayHorizontally(flex, space-between, center);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    .logo_icon {
+        display: flex;
+        align-items: center;
+        @include itemscenter(flex, center);
+        .logo_text {
+            font-weight: 700;
+            color: $main_color;
+            font-size: 1.563rem;
+        }
+    }
+}

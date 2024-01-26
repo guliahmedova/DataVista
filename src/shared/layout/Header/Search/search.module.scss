@@ -1,0 +1,32 @@
+@import "/src/styles/globalmixins.module";
+@import "/src/styles/variables";
+
+.search_form {
+    width: 30%;
+    display: flex;
+    position: relative;
+    .search_item {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border-radius: $rounded-xl;
+        .search_input {
+            background-color: $main_bg_color;
+        }
+    }
+    .search_btn {
+        position: absolute;
+        right: 0;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        color: black;
+        &:hover {
+            .search_icon {
+                color: $main_color;
+                transition: all ease-in-out .5s;
+            }
+        }
+    }
+}

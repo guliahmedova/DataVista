@@ -1,0 +1,17 @@
+@mixin displayHorizontally($displayProperty, $justifyPropery, $alignPropert) {
+    display: $displayProperty;
+    justify-content: $justifyPropery;
+    align-items: $alignPropert;
+}
+
+@mixin displayVertically($displayProperty, $flexDirectionProperty, $justifyPropery, $alignPropert) {
+    display: $displayProperty;
+    flex-direction: $flexDirectionProperty;
+    justify-content: $justifyPropery;
+    align-items: $alignPropert;
+}
+
+@mixin itemscenter($displayProperty, $alignPropert) {
+    display: $displayProperty;
+    align-items: $alignPropert;
+}

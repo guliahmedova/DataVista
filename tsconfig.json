@@ -19,6 +19,15 @@
       "pages/*": [
         "./src/pages/*"
       ],
+      "components/*": [
+        "./src/shared/components/*"
+      ],
+      "styles/*": [
+        "./src/styles/*"
+      ],
+      "layout/*": [
+        "./src/shared/layout/*"
+      ],
     },
     /* Bundler mode */
     "moduleResolution": "bundler",
