@@ -6,37 +6,56 @@ import {
     UsergroupAddOutlined
 } from '@ant-design/icons';
 import { Menu, MenuProps } from "antd";
-import { NavLink } from 'react-router-dom';
-import styles from './siderMenu.module.scss';
 import Sider from 'antd/es/layout/Sider';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import styles from './siderMenu.module.scss';
 
 const items: MenuProps['items'] = [
     {
-        label: <NavLink className={({ isActive }) => (`${isActive ? `${styles.sidebar_active_link}` : `${styles.sidebar_menu_link}`}`)} to="/">Home</NavLink>,
+        label: (
+            <NavLink className={({ isActive }) => (`${isActive ? `${styles.sidebar_active_link}` : ''} ${styles.sidebar_menu_link}`)} to="/">
+                <HomeOutlined className={styles.sidebar_icon} />
+                Home
+            </NavLink>
+        ),
         key: 'Home',
-        icon: <HomeOutlined className='sidebar-menu-icon' />,
     },
     {
-        label: <NavLink className={({ isActive }) => (`${isActive ? `${styles.sidebar_active_link}` : ''} ${styles.sidebar_menu_link}`)} to="/teams">Teams</NavLink>,
+        label: (
+            <NavLink className={({ isActive }) => (`${isActive ? `${styles.sidebar_active_link}` : ''} ${styles.sidebar_menu_link}`)} to="/teams">
+                <TeamOutlined className={styles.sidebar_icon} />
+                Teams
+            </NavLink>
+        ),
         key: 'Teams',
-        icon: <TeamOutlined />
     },
     {
-        label: <NavLink className={({ isActive }) => (`${isActive ? `${styles.sidebar_active_link}` : ''} ${styles.sidebar_menu_link}`)} to="/projects">Projects</NavLink>,
+        label: (
+            <NavLink className={({ isActive }) => (`${isActive ? `${styles.sidebar_active_link}` : ''} ${styles.sidebar_menu_link}`)} to="/projects">
+                <ProjectOutlined className={styles.sidebar_icon} />
+                Projects
+            </NavLink>
+        ),
         key: 'Projects',
-        icon: <ProjectOutlined />
     },
     {
-        label: <NavLink className={({ isActive }) => (`${isActive ? `${styles.sidebar_active_link}` : ''} ${styles.sidebar_menu_link}`)} to="/reports">Reports</NavLink>,
+        label: (
+            <NavLink className={({ isActive }) => (`${isActive ? `${styles.sidebar_active_link}` : ''} ${styles.sidebar_menu_link}`)} to="/reports">
+                <CreditCardOutlined className={styles.sidebar_icon} />
+                Reports
+            </NavLink>
+        ),
         key: 'Reports',
-        icon: <CreditCardOutlined />
     },
     {
-        label: <NavLink className={({ isActive }) => (`${isActive ? `${styles.sidebar_active_link}` : ''} ${styles.sidebar_menu_link}`)} to="/employees">Employees</NavLink>,
+        label: (
+            <NavLink className={({ isActive }) => (`${isActive ? `${styles.sidebar_active_link}` : ''} ${styles.sidebar_menu_link}`)} to="/employees">
+                <UsergroupAddOutlined className={styles.sidebar_icon} />
+                Employees
+            </NavLink>
+        ),
         key: 'Employees',
-        icon: <UsergroupAddOutlined />,
-        className: styles.menu_item
     }
 ];
 

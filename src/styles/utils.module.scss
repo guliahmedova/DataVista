@@ -1,0 +1,65 @@
+@import "/src/styles/globalmixins.module";
+@import "/src/styles/variables.scss";
+
+:where(.css-dev-only-do-not-override-zl9ks2).ant-input-outlined:hover {
+    border-color: $main_color;
+    box-shadow: none;
+}
+:where(.css-dev-only-do-not-override-zl9ks2).ant-input-outlined:focus {
+    box-shadow: none;
+    border-color: $main_color;
+}
+
+
+/*------------------*/
+.layout_gradient {
+    height: 100%;
+    background: $main_color;
+    background: -webkit-linear-gradient(to right, #512da8, #673ab7);
+    background: linear-gradient(to right, darkblue, $main_color);
+}
+.form_btn {
+    width: 100%;
+    background-color: $main_color;
+    color: white;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    &:hover {
+        color: whitesmoke !important;
+    }
+}
+.password_layout{
+    @include displayHorizontally(flex, center, center);
+}
+.title {
+    font-size: 1rem;
+    color: gray !important;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+.password_form {
+    width: 60%;
+    height: 80%;
+    padding: 0 10%;
+    background-color: white;
+    @include displayVertically(flex, column, center, center);
+    border-radius: $rounded-xl;
+    box-shadow: $shadow-lg;
+    margin: 0 auto;
+}
+.form_input {
+    background-color: $main_bg_color;
+    width: 100%;
+    padding: 1rem;
+    &:focus,
+    & :hover {
+        border: $main_color 1px solid;
+        outline: none;
+        box-shadow: none;
+    }
+}
+.form_label {
+    width: 100%;
+    font-weight: 500;
+}

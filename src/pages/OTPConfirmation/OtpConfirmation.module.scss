@@ -1,0 +1,13 @@
+@import "/src/styles/globalmixins.module";
+@import "/src/styles/variables.scss";
+.otp_btn {
+    width: 55%;
+    background-color: $main_color;
+    color: white;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    &:hover {
+        color: whitesmoke !important;
+    }
+}

@@ -1,7 +1,7 @@
 import { Button, Modal, Tooltip } from "antd";
 import { FC, useState } from "react";
 import { ActionModalType } from "src/shared/types/ActionModalType";
-import styles from './modal.module.scss';
+import styles from './Modal.module.scss';
 
 const CustomModal: FC<ActionModalType> = ({ actionKey, classname, icon, title, formFields , okText}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

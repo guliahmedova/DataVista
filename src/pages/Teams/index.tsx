@@ -25,9 +25,7 @@ const items: DescriptionsProps['items'] = [
   },
 ];
 
-
 const Teams = () => {
-
   const formFields = (actionKey: string) => {
     switch (actionKey) {
       case 'TEAM_CREATE':

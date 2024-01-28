@@ -1,6 +1,6 @@
 import { Card, Image, Typography } from "antd";
 import rainyIcon from 'shared/media/imgs/rainyicon.svg';
-import styles from './weatherForecast.module.scss';
+import styles from './WeatherForecast.module.scss';
 
 const WeatherForecast = () => {
     return (

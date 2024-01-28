@@ -1,6 +1,6 @@
 import { Card, Image, Typography } from "antd";
 import welcomeAvatarfemale from 'shared/media/imgs/welcomeavatar.svg';
-import styles from './welcome.module.scss';
+import styles from './Welcome.module.scss';
 
 const Welcome = () => {
   return (

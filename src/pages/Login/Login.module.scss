@@ -1,58 +1,30 @@
 @import "/src/styles/globalmixins.module";
 @import "/src/styles/variables.scss";
-.login_layout {
-    height: 100%;
-    background: #673ab7;
-    background: -webkit-linear-gradient(to right, #512da8, #673ab7);
-    background: linear-gradient(to right, #512da8, #673ab7);
-    @include displayHorizontally(flex, center, center);
-    .login_title {
-        font-size: 2rem;
-        font-weight: 600;
-        margin-bottom: 2rem;
-    }
-    .login_form {
-        width: 60%;
-        height: 80%;
-        padding: 0 10%;
+
+.login_form_item {
+    position: relative;
+    .eye_icon_box {
+        position: absolute;
+        z-index: 1;
+        top: 17px;
+        right: 10px;
+        cursor: pointer;
         background-color: white;
-        @include displayVertically(flex, column, center, center);
-        border-radius: $rounded-xl;
-        box-shadow: $shadow-lg;
-        margin: 0 auto;
-        .form_label {
-            width: 100%;
+        .eye_icon {
+            font-size: 1.6rem;
         }
-        .form_input {
-            background-color: $main_bg_color;
-            width: 100%;
-            padding: 1rem;
-            &:focus,
-            & :hover {
-                border: $main_color 1px solid;
-                outline: none;
-                box-shadow: none;
-            }
-        }
-        .login_btn {
-            width: 100%;
-            background-color: $main_color;
-            color: white;
-            outline: none;
-            box-shadow: none;
-            border: none;
-        }
-        .link_text {
-            text-align: right;
-            width: 100%;
-            margin-bottom: 1rem;
-            color: black;
-            font-weight: 500;
-            &:hover {
-                color: $main_color;
-                text-decoration: underline $main_color;
-            }
-        }
+    }
+}
+
+.link_text {
+    text-align: right;
+    width: 100%;
+    margin-bottom: 1rem;
+    color: black !important;
+    font-weight: 500;
+    &:hover {
+        color: $main_color !important;
+        text-decoration: underline $main_color !important;
     }
 }
 
