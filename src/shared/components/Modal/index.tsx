@@ -1,9 +1,9 @@
 import { Button, Modal, Tooltip } from "antd";
 import { FC, useState } from "react";
-import { ActionModalType } from "src/shared/types/ActionModalType";
+import { CustomModalType } from "src/shared/types/CustomModalType";
 import styles from './Modal.module.scss';
 
-const CustomModal: FC<ActionModalType> = ({ actionKey, classname, icon, title, formFields , okText}) => {
+const CustomModal: FC<CustomModalType> = ({ actionKey, classname, icon, title, formFields }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -12,7 +12,6 @@ const CustomModal: FC<ActionModalType> = ({ actionKey, classname, icon, title, f
       formFields(actionKey);
     }
   };
-
   const handleOk = () => {
     setIsModalOpen(false);
   };
@@ -25,7 +24,7 @@ const CustomModal: FC<ActionModalType> = ({ actionKey, classname, icon, title, f
       <Tooltip title={title} placement="top">
         <Button className={styles[classname]} icon={icon} size="large" onClick={showModal} />
       </Tooltip>
-      <Modal title={title} open={isModalOpen} onOk={handleOk} okText={okText} cancelText='Close' onCancel={handleCancel}>
+      <Modal open={isModalOpen} onOk={handleOk} okButtonProps={{ style: { display: 'none' } }} cancelButtonProps={{ style: { display: 'none' } }} cancelText='Close' onCancel={handleCancel}>
         {formFields && actionKey ? formFields(actionKey) : ''}
       </Modal>
     </>

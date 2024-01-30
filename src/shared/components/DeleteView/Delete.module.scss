@@ -1,0 +1,17 @@
+@import "/src/styles/globalmixins.module";
+@import "/src/styles/variables.scss";
+
+.delete_view {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    .delete_icon {
+        font-size: 5rem;
+        color: red;
+    }
+    .delete_text {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+}

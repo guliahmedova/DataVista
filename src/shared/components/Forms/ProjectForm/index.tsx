@@ -13,7 +13,7 @@ const options: SelectProps['options'] = [
     }
 ];
 
-const TeamForm: FC<TeamFormType> = ({ okText, okBtnColor }) => {
+const ProjectForm: FC<TeamFormType> = ({ okText, okBtnColor }) => {
     const handleChange = (value: string[]) => {
         console.log(`selected ${value}`);
     };
@@ -24,12 +24,12 @@ const TeamForm: FC<TeamFormType> = ({ okText, okBtnColor }) => {
         >
             <Row gutter={6}>
                 <Col span={24}>
-                    <Form.Item label="Team Name">
+                    <Form.Item label="Project Name">
                         <Input size="large" />
                     </Form.Item>
                 </Col>
                 <Col span={24}>
-                    <Form.Item label='Employees'>
+                    <Form.Item label="Employees">
                         <Select
                             size="large"
                             mode="multiple"
@@ -48,4 +48,4 @@ const TeamForm: FC<TeamFormType> = ({ okText, okBtnColor }) => {
     )
 }
 
-export default TeamForm;
+export default ProjectForm;

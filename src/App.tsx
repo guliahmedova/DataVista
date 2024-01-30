@@ -2,7 +2,7 @@ import Router from './pages';
 
 const App = () => {
   return (
-    <Router/>
+    <Router />
   )
 }
 

@@ -1,6 +1,5 @@
 export interface UserType {
     key: string;
-    username: string;
     firstname: string;
     lastname: string;
     email: string;

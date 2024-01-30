@@ -1,9 +1,17 @@
 import { DeleteOutlined, EditOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined } from '@ant-design/icons';
 import type { DescriptionsProps, TableProps } from 'antd';
-import { Breadcrumb, Descriptions, Divider, Flex, Table } from "antd";
+import { Breadcrumb, Descriptions, Divider, Flex, Table, Typography } from "antd";
 import Layout from "antd/es/layout/layout";
-import { CustomModal, DeleteView, TeamForm } from 'shared/index';
+import { CustomDrawer, CustomModal, DeleteView, TeamFilter, TeamForm } from 'shared/index';
 import { TeamType } from 'src/pages/types/TeamType';
+
+enum ActionKeys {
+  CREATE = 'TEAM_CREATE',
+  UPDATE = 'TEAM_UPDATE',
+  VIEW = "TEAM_VIEW",
+  FILTER = "TEAM_FILTER",
+  DELETE = "TEAM_DELETE",
+};
 
 const data: TeamType[] = [
   {
@@ -16,33 +24,39 @@ const items: DescriptionsProps['items'] = [
   {
     key: '1',
     label: 'Team Name',
-    children: 'Frotend',
+    children: <Typography.Text>Frotend</Typography.Text>,
   },
   {
     key: '2',
     label: 'Employees',
-    children: 'Joe, Tris'
+    children: (
+      <Typography.Text>Joe, Sarah</Typography.Text>
+    )
   },
 ];
 
 const Teams = () => {
   const formFields = (actionKey: string) => {
     switch (actionKey) {
-      case 'TEAM_CREATE':
+      case ActionKeys.CREATE:
         return (
-          <TeamForm />
+          <TeamForm okText='Create' okBtnColor='#87d068' />
         )
-      case 'TEAM_UPDATE':
+      case ActionKeys.UPDATE:
         return (
-          <TeamForm />
+          <TeamForm okText='Update' okBtnColor='orange' />
         )
-      case 'TEAM_DELETE':
+      case ActionKeys.DELETE:
         return (
           <DeleteView />
         )
-      case 'TEAM_VIEW':
+      case ActionKeys.VIEW:
         return (
-          <Descriptions title="Team Info" items={items} layout="vertical" />
+          <Descriptions items={items} layout="vertical" bordered={true} column={2} />
+        )
+      case ActionKeys.FILTER:
+        return (
+          <TeamFilter okText='Filter' okBtnColor='purple' />
         )
       default:
         break;
@@ -61,9 +75,9 @@ const Teams = () => {
       key: 'actions',
       render: () => (
         <Flex gap='small' wrap='wrap'>
-          <CustomModal actionKey='TEAM_UPDATE' formFields={formFields} icon={<EditOutlined />} title='Update Team' classname='update_btn' okText='Update' />
-          <CustomModal actionKey='TEAM_DELETE' formFields={formFields} icon={<DeleteOutlined />} title='' classname='delete_btn' okText='Delete' />
-          <CustomModal actionKey='TEAM_VIEW' formFields={formFields} icon={<FundViewOutlined />} title='' classname='view_btn' okText='VIew' />
+          <CustomModal actionKey={ActionKeys.UPDATE} formFields={formFields} icon={<EditOutlined />} title='Update Team' classname='update_btn' okText='Update' />
+          <CustomModal actionKey={ActionKeys.DELETE} formFields={formFields} icon={<DeleteOutlined />} title='Delete Team' classname='delete_btn' okText='Delete' />
+          <CustomDrawer actionKey={ActionKeys.VIEW} formFields={formFields} icon={<FundViewOutlined />} title='View Team' classname='view_btn' okText='View' />
         </Flex>
       )
     },
@@ -80,11 +94,11 @@ const Teams = () => {
       />
       <Divider />
       <Flex gap={8} justify="end">
-        <CustomModal actionKey='TEAM_CREATE' formFields={formFields} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
-        <CustomModal actionKey='TEAM_FILTER' formFields={formFields} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
+        <CustomModal actionKey={ActionKeys.CREATE} formFields={formFields} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
+        <CustomDrawer actionKey={ActionKeys.FILTER} formFields={formFields} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
       </Flex>
       <Divider />
-      <Table columns={columns} dataSource={data} rowKey='id' />
+      <Table columns={columns} dataSource={data} rowKey='id' bordered size="large" />
     </Layout>
   )
 }

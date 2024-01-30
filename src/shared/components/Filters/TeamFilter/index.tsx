@@ -1,4 +1,4 @@
-import { Button, Col, Form, Input, Row, Select, SelectProps } from "antd";
+import { Button, Col, Form, Row, Select, SelectProps } from "antd";
 import { FC } from "react";
 import { TeamFormType } from "src/shared/types/TeamFormType";
 
@@ -13,7 +13,7 @@ const options: SelectProps['options'] = [
     }
 ];
 
-const TeamForm: FC<TeamFormType> = ({ okText, okBtnColor }) => {
+const TeamFilter: FC<TeamFormType> = ({ okBtnColor, okText }) => {
     const handleChange = (value: string[]) => {
         console.log(`selected ${value}`);
     };
@@ -24,14 +24,19 @@ const TeamForm: FC<TeamFormType> = ({ okText, okBtnColor }) => {
         >
             <Row gutter={6}>
                 <Col span={24}>
-                    <Form.Item label="Team Name">
-                        <Input size="large" />
+                    <Form.Item label='Teams'>
+                        <Select
+                            mode="multiple"
+                            allowClear
+                            placeholder="Please select"
+                            onChange={handleChange}
+                            options={options}
+                        />
                     </Form.Item>
                 </Col>
                 <Col span={24}>
                     <Form.Item label='Employees'>
                         <Select
-                            size="large"
                             mode="multiple"
                             allowClear
                             placeholder="Please select"
@@ -46,6 +51,6 @@ const TeamForm: FC<TeamFormType> = ({ okText, okBtnColor }) => {
             </Row>
         </Form>
     )
-}
+};
 
-export default TeamForm;
+export default TeamFilter;

@@ -16,3 +16,77 @@
         }
     }
 }
+
+.header_list {
+    .profile {
+        .avatar {
+            width: 2.5rem;
+            border-radius: 100%;
+            height: 2.5rem;
+        }
+        .avatar_text {
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        .dropdown_profile_btn {
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+            outline: none;
+            @include itemscenter(flex, center);
+            gap: 0.625rem;
+            &:hover {
+                color: black;
+            }
+        }
+    }
+    .list_item {
+        border: none;
+        box-shadow: none;
+        outline: none;
+        display: inline;
+    }
+    .key {
+        padding: 1rem;
+        .key_icon {
+            border: 1px solid #ffcb33;
+            color: #ffcb33;
+            padding: 0.5rem;
+        }
+    }
+}
+.profile-menu-item {
+    @include itemscenter(flex, center);
+    gap: 1rem;
+}
+.dropdown-btn {
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    .dropdown-btn-icon {
+        color: black;
+    }
+}
+.profile_menu_item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.dropdown_btn {
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    padding: 0;
+    &:hover {
+        .dropdown-btn-icon {
+            color: black;
+        }
+    }
+    &:active {
+        border: none;
+        outline: none;
+        box-shadow: none;
+    }
+}

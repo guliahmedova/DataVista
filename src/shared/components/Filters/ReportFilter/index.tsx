@@ -1,19 +1,21 @@
-import { Button, Col, Form, Input, Row, Select, SelectProps } from "antd";
+import { Button, Col, DatePicker, Form, Row, Select, SelectProps } from "antd";
 import { FC } from "react";
-import { TeamFormType } from "src/shared/types/TeamFormType";
+import { ReportFormType } from "src/shared/types/ReportFormType";
+import styles from './ReportFilter.module.scss';
+const { RangePicker } = DatePicker;
 
 const options: SelectProps['options'] = [
     {
-        label: 'Trs',
-        value: 'Trs'
-    },
-    {
         label: 'Joe',
         value: 'Joe'
+    },
+    {
+        label: 'Sarah',
+        value: 'Sarah'
     }
 ];
 
-const TeamForm: FC<TeamFormType> = ({ okText, okBtnColor }) => {
+const ReportFilter: FC<ReportFormType> = ({ okBtnColor, okText }) => {
     const handleChange = (value: string[]) => {
         console.log(`selected ${value}`);
     };
@@ -24,14 +26,24 @@ const TeamForm: FC<TeamFormType> = ({ okText, okBtnColor }) => {
         >
             <Row gutter={6}>
                 <Col span={24}>
-                    <Form.Item label="Team Name">
-                        <Input size="large" />
+                    <Form.Item label="Employees">
+                        <Select
+                            mode="multiple"
+                            allowClear
+                            placeholder="Please select"
+                            onChange={handleChange}
+                            options={options}
+                        />
                     </Form.Item>
                 </Col>
                 <Col span={24}>
-                    <Form.Item label='Employees'>
+                    <Form.Item label="Date">
+                        <RangePicker className={styles.date_picker} />
+                    </Form.Item>
+                </Col>
+                <Col span={24}>
+                    <Form.Item label="Project Name">
                         <Select
-                            size="large"
                             mode="multiple"
                             allowClear
                             placeholder="Please select"
@@ -48,4 +60,4 @@ const TeamForm: FC<TeamFormType> = ({ okText, okBtnColor }) => {
     )
 }
 
-export default TeamForm;
+export default ReportFilter

@@ -1,4 +1,5 @@
-import { Divider } from "antd";
+import { ConfigProvider, Divider, theme } from "antd";
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { CustomHeader, SideMenu } from "src/shared";
 import Auxilliary from "src/shared/modules/Auxilliary";
@@ -11,19 +12,25 @@ import OTPConfirmation from "./OTPConfirmation";
 import PrivateRouter from "./PrivateRouter";
 
 const Router = () => {
-  const token = false;
+  const { defaultAlgorithm, darkAlgorithm } = theme;
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const token = true;
+
   if (token) {
     return (
-      <Auxilliary>
-        <SideMenu />
+      <ConfigProvider theme={{ algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm }}>
         <Auxilliary>
-          <Cover >
-            <CustomHeader />
-            <Divider />
-            <PrivateRouter />
-          </Cover>
+          <SideMenu />
+          <Auxilliary>
+            <Cover >
+              <CustomHeader setIsDarkMode={setIsDarkMode} />
+              <Divider />
+              <PrivateRouter />
+            </Cover>
+          </Auxilliary>
         </Auxilliary>
-      </Auxilliary>
+      </ConfigProvider>
     )
   } else {
     return (

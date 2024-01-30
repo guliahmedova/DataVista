@@ -1,9 +1,6 @@
 import { ReactNode } from "react";
 
-export interface ActionModalType {
-    // isModalOpen: boolean,
-    // handleCancel: () => void,
-    // handleOk: () => void,
+export interface CustomDrawerType {
     okText: string,
     children?: ReactNode,
     classname: string,
