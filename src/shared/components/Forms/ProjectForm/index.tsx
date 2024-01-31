@@ -1,6 +1,7 @@
 import { Button, Col, Form, Input, Row, Select, SelectProps } from "antd";
 import { FC } from "react";
 import { TeamFormType } from "src/shared/types/TeamFormType";
+import utils from "styles/utils.module.scss";
 
 const options: SelectProps['options'] = [
     {
@@ -40,7 +41,7 @@ const ProjectForm: FC<TeamFormType> = ({ okText, okBtnColor }) => {
                         />
                     </Form.Item>
                 </Col>
-                <Col>
+                <Col span={24} className={utils.btns_placement}>
                     <Button style={{ backgroundColor: `${okBtnColor}`, color: 'white' }}>{okText}</Button>
                 </Col>
             </Row>

@@ -4,6 +4,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import styles from './ReportForm.module.scss';
 import { ReportFormType } from "src/shared/types/ReportFormType";
+import utils from "styles/utils.module.scss";
 
 const options: SelectProps['options'] = [
   {
@@ -41,7 +42,7 @@ const ReportForm: FC<ReportFormType> = ({ okBtnColor, okText }) => {
             />
           </Form.Item>
         </Col>
-        <Col>
+        <Col span={24} className={utils.btns_placement}>
           <Button style={{ backgroundColor: `${okBtnColor}`, color: 'white' }}>{okText}</Button>
         </Col>
       </Row>

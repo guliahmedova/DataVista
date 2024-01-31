@@ -1,5 +1,5 @@
 import { LockOutlined, LogoutOutlined } from "@ant-design/icons";
-import { Button, Dropdown, Flex, Image, MenuProps, Select, Switch, Tooltip, Typography } from 'antd';
+import { Button, ColorPicker, Dropdown, Flex, Image, MenuProps, Select, Switch, Tooltip, Typography } from 'antd';
 import { Header } from "antd/es/layout/layout";
 import { FC } from 'react';
 import { Search } from "shared/index";
@@ -12,7 +12,7 @@ import { HeaderType } from 'src/shared/types/HeaderType';
 import styles from './header.module.scss';
 const { Text, Link } = Typography;
 
-const CustomHeader: FC<HeaderType> = ({ setIsDarkMode }) => {
+const CustomHeader: FC<HeaderType> = ({ setIsDarkMode, setPrimary, primary }) => {
   const handleClick = () => {
     if (setIsDarkMode) {
       setIsDarkMode((previousValue) => !previousValue);
@@ -40,8 +40,10 @@ const CustomHeader: FC<HeaderType> = ({ setIsDarkMode }) => {
     },
   ];
 
+
   return (
     <Header className={styles.header}>
+
       <Link href='/' className={styles.logo_icon}>
         <Image
           width='3rem'
@@ -50,7 +52,9 @@ const CustomHeader: FC<HeaderType> = ({ setIsDarkMode }) => {
         />
         <Text className={styles.logo_text}>DataVista</Text>
       </Link>
+
       <Search />
+
       <Flex className={styles.header_list} align="center">
         <Typography className={`${styles.header_list} ${styles.key}`} >
           <Tooltip placement="bottom" title='Reset User Password'>
@@ -79,6 +83,15 @@ const CustomHeader: FC<HeaderType> = ({ setIsDarkMode }) => {
               </Text>
             </Button>
           </Dropdown>
+        </Typography>
+        <Typography>
+          <Tooltip title="Choose color" placement="top">
+            <ColorPicker showText={() => <span>Choose Color</span>} value={primary} onChangeComplete={(color) => {
+              if (setPrimary) {
+                setPrimary(color.toHexString())
+              }
+            }} />
+          </Tooltip>
         </Typography>
       </Flex>
     </Header>

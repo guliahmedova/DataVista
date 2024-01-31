@@ -1,9 +1,17 @@
 @font-face {
     font-family: "Legendx-Bold";
+    font-weight: 700;
     src: url("../shared/media/fonts/Lexend-Bold.ttf");
-}
+};
 
 @font-face {
-    font-family: "Legendx-Regular";
+    font-family: "Legendx-Bold";
+    font-weight: 500;
+    src: url("../shared/media/fonts/Lexend-Medium.ttf");
+};
+
+@font-face {
+    font-family: "Legendx-Bold";
+    font-weight: 400;
     src: url("../shared/media/fonts/Lexend-Regular.ttf");
-}
+};

@@ -1,6 +1,7 @@
 import { Button, Col, Form, Input, Row, Select, SelectProps } from "antd";
 import { FC } from "react";
 import { TeamFormType } from "src/shared/types/TeamFormType";
+import utils from "styles/utils.module.scss";
 
 const options: SelectProps['options'] = [
     {
@@ -23,27 +24,27 @@ const EmployeeForm: FC<TeamFormType> = ({ okText, okBtnColor, actionKey }) => {
             layout='vertical'
         >
             <Row gutter={6}>
-                <Col span={24}>
+                <Col span={12}>
                     <Form.Item label="First Name">
                         <Input size="large" />
                     </Form.Item>
                 </Col>
-                <Col span={24}>
+                <Col span={12}>
                     <Form.Item label="Last Name">
                         <Input size="large" />
                     </Form.Item>
                 </Col>
-                <Col span={24}>
+                <Col span={12}>
                     <Form.Item label="Email">
                         <Input size="large" />
                     </Form.Item>
                 </Col>
-                <Col span={24}>
+                <Col span={12}>
                     <Form.Item label="Password">
                         <Input size="large" />
                     </Form.Item>
                 </Col>
-                <Col span={24}>
+                <Col span={12}>
                     <Form.Item label="Teams">
                         <Select
                             size="large"
@@ -55,7 +56,7 @@ const EmployeeForm: FC<TeamFormType> = ({ okText, okBtnColor, actionKey }) => {
                         />
                     </Form.Item>
                 </Col>
-                <Col span={24}>
+                <Col span={12}>
                     <Form.Item label="Roles">
                         <Select
                             size="large"
@@ -68,7 +69,7 @@ const EmployeeForm: FC<TeamFormType> = ({ okText, okBtnColor, actionKey }) => {
                     </Form.Item>
                 </Col>
                 {actionKey === 'EMPLOYEE_UPDATE' && (
-                    <Col span={24}>
+                    <Col span={12}>
                         <Form.Item label="Status">
                             <Select
                                 size="large"
@@ -81,7 +82,7 @@ const EmployeeForm: FC<TeamFormType> = ({ okText, okBtnColor, actionKey }) => {
                         </Form.Item>
                     </Col>
                 )}
-                <Col>
+                <Col span={24} className={utils.btns_placement}>
                     <Button style={{ backgroundColor: `${okBtnColor}`, color: 'white' }}>{okText}</Button>
                 </Col>
             </Row>

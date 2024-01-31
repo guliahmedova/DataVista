@@ -180,6 +180,6 @@ const Employees = () => {
       <Table columns={columns} dataSource={data} rowKey='key' bordered size="large" />
     </Layout>
   )
-}
+};
 
 export default Employees;
