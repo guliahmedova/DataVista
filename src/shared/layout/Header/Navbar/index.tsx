@@ -1,7 +1,6 @@
 import { LockOutlined, LogoutOutlined } from "@ant-design/icons";
 import { Button, ColorPicker, Dropdown, Flex, Image, MenuProps, Select, Switch, Tooltip, Typography } from 'antd';
 import { Header } from "antd/es/layout/layout";
-import { FC } from 'react';
 import { Search } from "shared/index";
 import avatar from 'shared/media/imgs/avatar.svg';
 import az from 'shared/media/imgs/az.svg';
@@ -12,11 +11,9 @@ import { HeaderType } from 'src/shared/types/HeaderType';
 import styles from './header.module.scss';
 const { Text, Link } = Typography;
 
-const CustomHeader: FC<HeaderType> = ({ setIsDarkMode, setPrimary, primary }) => {
+const CustomHeader: React.FC<HeaderType> = ({ setIsDarkMode, setPrimary, primary, background }) => {
   const handleClick = () => {
-    if (setIsDarkMode) {
-      setIsDarkMode((previousValue) => !previousValue);
-    }
+    if (setIsDarkMode) setIsDarkMode((previousValue) => !previousValue);
   };
 
   const items: MenuProps['items'] = [
@@ -42,11 +39,11 @@ const CustomHeader: FC<HeaderType> = ({ setIsDarkMode, setPrimary, primary }) =>
 
 
   return (
-    <Header className={styles.header}>
+    <Header className={styles.header} style={{ background: background }}>
 
       <Link href='/' className={styles.logo_icon}>
         <Image
-          width='3rem'
+          className={styles.logo_img}
           preview={false}
           src={logo}
         />
@@ -86,10 +83,8 @@ const CustomHeader: FC<HeaderType> = ({ setIsDarkMode, setPrimary, primary }) =>
         </Typography>
         <Typography>
           <Tooltip title="Choose color" placement="top">
-            <ColorPicker showText={() => <span>Choose Color</span>} value={primary} onChangeComplete={(color) => {
-              if (setPrimary) {
-                setPrimary(color.toHexString())
-              }
+            <ColorPicker className={styles.colorpicker} showText={() => <span className={styles.colorpicker_text}>Choose Color</span>} value={primary} onChangeComplete={(color) => {
+              if (setPrimary) setPrimary(color.toHexString())
             }} />
           </Tooltip>
         </Typography>

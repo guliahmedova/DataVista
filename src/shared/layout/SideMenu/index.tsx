@@ -1,6 +1,5 @@
 import {
     CreditCardOutlined,
-    HomeOutlined,
     ProjectOutlined,
     TeamOutlined,
     UsergroupAddOutlined
@@ -16,35 +15,31 @@ const SideMenu = () => {
 
     const items: MenuProps['items'] = [
         {
-            label: <Link to="/">Home</Link>,
-            key: 'Home',
-            icon: <HomeOutlined className={styles.sidebar_icon} />
-        },
-        {
-            label: <Link to="/teams">Teams</Link>,
+            label: <Link className={styles.menu_link} to="/teams">Teams</Link>,
             key: 'Teams',
-            icon: <TeamOutlined className={styles.sidebar_icon} />
+            icon: <TeamOutlined className={styles.sidebar_icon} />,
         },
         {
-            label: <Link to="/projects">Projects</Link>,
+            label: <Link className={styles.menu_link} to="/projects">Projects</Link>,
             key: 'Projects',
             icon: <ProjectOutlined className={styles.sidebar_icon} />
         },
         {
-            label: <Link to="/reports">Reports</Link>,
+            label: <Link className={styles.menu_link} to="/reports">Reports</Link>,
             key: 'Reports',
             icon: <CreditCardOutlined className={styles.sidebar_icon} />
         },
         {
-            label: <Link to="/employees">Employees</Link>,
+            label: <Link className={styles.menu_link} to="/employees">Employees</Link>,
             key: 'Employees',
-            icon: <UsergroupAddOutlined className={styles.sidebar_icon} />
+            icon: <UsergroupAddOutlined className={styles.sidebar_icon} />,
         }
     ];
 
     return (
-        <Sider theme='light' collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} className={styles.sidebar_menu}>
-            <Menu mode="vertical" key='sidebar' items={items} />
+        <Sider theme='light' collapsible collapsed={collapsed}
+            onCollapse={(value) => setCollapsed(value)} className={styles.sidebar_menu}>
+            <Menu mode="vertical" key='sidebar' items={items} className={styles.sidebar_menu_items} />
         </Sider>
     )
 };

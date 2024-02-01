@@ -1,17 +1,6 @@
-import { Button, Col, Form, Row, Select, SelectProps } from "antd";
+import { Button, Col, Form, Input, Row } from "antd";
 import { FC } from "react";
 import { ProjectFormType } from "src/shared/types/ProjectFormType";
-
-const options: SelectProps['options'] = [
-  {
-    label: 'Joe',
-    value: 'Joe'
-  },
-  {
-    label: 'Sarah',
-    value: 'Sarah'
-  }
-];
 
 const ProjectFilter: FC<ProjectFormType> = ({ okBtnColor, okText }) => {
   return (
@@ -19,12 +8,7 @@ const ProjectFilter: FC<ProjectFormType> = ({ okBtnColor, okText }) => {
       <Row gutter={6}>
         <Col span={24}>
           <Form.Item label='Teams'>
-            <Select
-              mode="multiple"
-              allowClear
-              placeholder="Please select"
-              options={options}
-            />
+            <Input />
           </Form.Item>
         </Col>
         <Col>

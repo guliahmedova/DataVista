@@ -5,6 +5,8 @@ import Layout from "antd/es/layout/layout";
 import { CustomDrawer, CustomModal, DeleteView, EmployeeFilter, EmployeeForm, ResetPasswordForm } from 'shared/index';
 import { UserType } from 'src/pages/types/UserType';
 
+import utils from 'styles/utils.module.scss';
+
 enum ActionKeys {
   CREATE = 'EMPLOYEE_CREATE',
   UPDATE = 'EMPLOYEE_UPDATE',
@@ -48,6 +50,78 @@ const items: DescriptionsProps['items'] = [
 ];
 
 const data: UserType[] = [
+  {
+    key: '1',
+    firstname: 'John',
+    lastname: 'Jake',
+    email: 'jonh@gmail.com',
+    teamname: 'Frontend',
+    rolename: 'User',
+    status: 'Active'
+  },
+  {
+    key: '2',
+    firstname: 'John',
+    lastname: 'Jake',
+    email: 'jonh@gmail.com',
+    teamname: 'Frontend',
+    rolename: 'User',
+    status: 'DeActive'
+  },
+  {
+    key: '1',
+    firstname: 'John',
+    lastname: 'Jake',
+    email: 'jonh@gmail.com',
+    teamname: 'Frontend',
+    rolename: 'User',
+    status: 'Active'
+  },
+  {
+    key: '2',
+    firstname: 'John',
+    lastname: 'Jake',
+    email: 'jonh@gmail.com',
+    teamname: 'Frontend',
+    rolename: 'User',
+    status: 'DeActive'
+  },
+  {
+    key: '1',
+    firstname: 'John',
+    lastname: 'Jake',
+    email: 'jonh@gmail.com',
+    teamname: 'Frontend',
+    rolename: 'User',
+    status: 'Active'
+  },
+  {
+    key: '2',
+    firstname: 'John',
+    lastname: 'Jake',
+    email: 'jonh@gmail.com',
+    teamname: 'Frontend',
+    rolename: 'User',
+    status: 'DeActive'
+  },
+  {
+    key: '1',
+    firstname: 'John',
+    lastname: 'Jake',
+    email: 'jonh@gmail.com',
+    teamname: 'Frontend',
+    rolename: 'User',
+    status: 'Active'
+  },
+  {
+    key: '2',
+    firstname: 'John',
+    lastname: 'Jake',
+    email: 'jonh@gmail.com',
+    teamname: 'Frontend',
+    rolename: 'User',
+    status: 'DeActive'
+  },
   {
     key: '1',
     firstname: 'John',
@@ -131,15 +205,13 @@ const Employees = () => {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
-      render: (text) => {
-        let color = text.length > 5 ? 'geekblue' : 'green';
-        if (text === 'Active') {
-          color = 'green';
-        } else if (text === 'DeActive') {
-          color = 'red';
+      render: (text: string) => {
+        const colorCondition: any = {
+          'Active': 'green',
+          'DeActive': 'red'
         }
         return (
-          <Tag color={color} key={text}>
+          <Tag color={colorCondition[text]} key={text}>
             {text.toUpperCase()}
           </Tag>
         );
@@ -177,7 +249,13 @@ const Employees = () => {
         <CustomDrawer actionKey={ActionKeys.FILTER} formFields={formFields} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
       </Flex>
       <Divider />
-      <Table columns={columns} dataSource={data} rowKey='key' bordered size="large" />
+      <Table
+        columns={columns}
+        dataSource={data}
+        rowKey='key' bordered size="large"
+        scroll={{ y: 300 }}
+        pagination={{ pageSize: 20 }}
+        className={utils.table} />
     </Layout>
   )
 };

@@ -30,3 +30,9 @@
         }
     }
 }
+
+@media screen and (max-width: 77em) {
+    .search_form {
+        display: none;
+    }
+}

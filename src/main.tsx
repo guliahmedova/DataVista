@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import 'styles/_globalmixins.module.scss';
@@ -10,10 +10,8 @@ import Spinner from './shared/components/Spinner/index.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Suspense fallback={<Spinner />}>
-    <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Suspense>
 )

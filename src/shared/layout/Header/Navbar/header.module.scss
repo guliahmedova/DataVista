@@ -2,7 +2,6 @@
 @import "/src/styles/variables";
 
 .header {
-    background-color: white;
     @include displayHorizontally(flex, space-between, center);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     .logo_icon {
@@ -13,6 +12,12 @@
             font-weight: 700;
             color: $main_color;
             font-size: 1.563rem;
+        }
+    }
+
+    .logo_icon {
+        .logo_img {
+            width: 3rem;
         }
     }
 }
@@ -88,5 +93,49 @@
         border: none;
         outline: none;
         box-shadow: none;
+    }
+}
+
+@media screen and (max-width: 77em) {
+    .header {
+        .key {
+            display: none;
+        }
+        .logo_icon {
+            .logo_text {
+                font-size: clamp(1.7rem, 2rem, 1rem);
+            }
+            .logo_img {
+                width: 2rem;
+            }
+        }
+        .header_list {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            .colorpicker_text {
+                display: none;
+            }
+            .colorpicker {
+                padding: 0%;
+                border: none;
+            }
+        }
+        .list_item {
+            padding: 0;
+        }
+        .profile {
+            padding: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 45rem) {
+    .header {
+        .header_list {
+            .colorpicker {
+                display: none;
+            }
+        }
     }
 }

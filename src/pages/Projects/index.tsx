@@ -5,7 +5,7 @@ import Layout from "antd/es/layout/layout";
 import { CustomDrawer, CustomModal, ProjectFilter, ProjectForm } from 'shared/index';
 import { ProjectType } from 'src/pages/types/ProjectType';
 
-enum ActionKeys {
+const enum ActionKeys {
   CREATE = 'PROJECTS_CREATE',
   UPDATE = 'PROJECTS_UPDATE',
   VIEW = "PROJECTS_VIEW",
@@ -29,7 +29,7 @@ const items: DescriptionsProps['items'] = [
   {
     key: '2',
     label: 'Employees',
-    children: 'Joe, Tris'
+    children: 'Joe, Tris',
   },
 ];
 
@@ -72,7 +72,8 @@ const Projects = () => {
           <CustomModal actionKey={ActionKeys.CREATE} formFields={formFields} icon={<EditOutlined />} title='Update Project' classname='update_btn' okText='Update' />
           <CustomDrawer actionKey={ActionKeys.VIEW} formFields={formFields} icon={<FundViewOutlined />} title='View Team' classname='view_btn' okText='View' />
         </Flex>
-      )
+      ),
+      responsive: ['lg']
     },
   ];
 

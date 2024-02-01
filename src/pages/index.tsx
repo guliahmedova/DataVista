@@ -17,6 +17,10 @@ const Router = () => {
   const [primary, setPrimary] = useState('#1554ad');
   const token = true;
 
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
+
   return (
     <RenderIf
       conditions={token}
@@ -54,7 +58,7 @@ const Router = () => {
           <SideMenu />
           <Auxilliary>
             <Cover >
-              <CustomHeader setIsDarkMode={setIsDarkMode} setPrimary={setPrimary} primary={primary} />
+              <CustomHeader setIsDarkMode={setIsDarkMode} setPrimary={setPrimary} primary={primary} background={colorBgContainer} />
               <Divider />
               <PrivateRouter />
             </Cover>
