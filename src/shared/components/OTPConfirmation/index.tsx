@@ -1,8 +1,7 @@
-import { Layout, Typography } from "antd";
-import styles from './OtpConfirmation.module.scss';
-import utils from "styles/utils.module.scss";
-import { Button, Form } from 'antd';
+import { Button, Form, Layout, Typography } from "antd";
 import { InputOTP } from 'antd-input-otp';
+import utils from "styles/utils.module.scss";
+import styles from './OtpConfirmation.module.scss';
 
 const OTPConfirmation = () => {
     const [form] = Form.useForm();
@@ -12,7 +11,7 @@ const OTPConfirmation = () => {
     };
 
     return (
-        <Layout className={`${utils.password_layout} ${utils.layout_gradient}`}>
+        <Layout className={`${utils.password_layout}`}>
             <Form onFinish={handleFinish} form={form} className={utils.password_form}>
                 <Typography.Title level={2} className={utils.title}>
                     OTP Confirmation

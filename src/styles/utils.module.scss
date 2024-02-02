@@ -12,12 +12,6 @@
 
 
 /*------------------*/
-.layout_gradient {
-    height: 100%;
-    background: $main_color;
-    background: -webkit-linear-gradient(to right, #512da8, #673ab7);
-    background: linear-gradient(to right, darkblue, $main_color);
-}
 .form_btn {
     width: 100%;
     background-color: $main_color;
@@ -31,6 +25,8 @@
 }
 .password_layout{
     @include displayHorizontally(flex, center, center);
+    height: 100%;
+    background-color: $main_color;
 }
 .title {
     font-size: 1rem;

@@ -2,19 +2,13 @@ import { LockOutlined, LogoutOutlined } from "@ant-design/icons";
 import { Button, ColorPicker, Dropdown, Flex, Image, MenuProps, Select, Switch, Tooltip, Typography } from 'antd';
 import { Header } from "antd/es/layout/layout";
 import { Search } from "shared/index";
-import avatar from 'shared/media/imgs/avatar.svg';
-import az from 'shared/media/imgs/az.svg';
-import logo from 'shared/media/imgs/logoIcon.svg';
-import tr from 'shared/media/imgs/tr.svg';
-import uk from 'shared/media/imgs/uk.svg';
+import { avatarImg, azLangIcon, logoIcon, trLangIcon, ukLangIcon } from "shared/media/imgs";
 import { HeaderType } from 'src/shared/types/HeaderType';
-import styles from './header.module.scss';
+import styles from './Header.module.scss';
 const { Text, Link } = Typography;
 
 const CustomHeader: React.FC<HeaderType> = ({ setIsDarkMode, setPrimary, primary, background }) => {
-  const handleClick = () => {
-    if (setIsDarkMode) setIsDarkMode((previousValue) => !previousValue);
-  };
+  const handleClick = () => { if (setIsDarkMode) setIsDarkMode((previousValue) => !previousValue) };
 
   const items: MenuProps['items'] = [
     {
@@ -29,23 +23,22 @@ const CustomHeader: React.FC<HeaderType> = ({ setIsDarkMode, setPrimary, primary
     {
       key: '3',
       label: (
-        <Button className={`${styles.profile_menu_item} ${styles.dropdown_btn}`} onClick={handleClick}>
+        <Typography className={`${styles.profile_menu_item} ${styles.dropdown_btn}`} onClick={handleClick}>
           <Switch defaultChecked size="small" />
           <Text>Dark Mode</Text>
-        </Button>
+        </Typography>
       ),
     },
   ];
 
-
   return (
     <Header className={styles.header} style={{ background: background }}>
 
-      <Link href='/' className={styles.logo_icon}>
+      <Link href='/teams' className={styles.logo_icon}>
         <Image
           className={styles.logo_img}
           preview={false}
-          src={logo}
+          src={logoIcon}
         />
         <Text className={styles.logo_text}>DataVista</Text>
       </Link>
@@ -63,22 +56,22 @@ const CustomHeader: React.FC<HeaderType> = ({ setIsDarkMode, setPrimary, primary
         <Typography className={`${styles.list_item} ${styles.key}`} >
           <Select
             defaultValue="uk"
-            style={{ width: 'auto', border: 'none', boxShadow: 'none' }}
+            className={styles.navbar_selec}
             options={[
-              { value: 'az', label: <Image src={az} preview={false} style={{ width: '20px' }} /> },
-              { value: 'tr', label: <Image src={tr} preview={false} style={{ width: '20px' }} /> },
-              { value: 'uk', label: <Image src={uk} preview={false} style={{ width: '20px' }} /> },
+              { value: 'az', label: <Image src={azLangIcon} preview={false} style={{ width: '20px' }} /> },
+              { value: 'tr', label: <Image src={trLangIcon} preview={false} style={{ width: '20px' }} /> },
+              { value: 'uk', label: <Image src={ukLangIcon} preview={false} style={{ width: '20px' }} /> },
             ]}
           />
         </Typography>
         <Typography className={`${styles.list_item} ${styles.profile}`}>
           <Dropdown menu={{ items }} placement="bottom" className={styles.profile_dropdown} arrow={{ pointAtCenter: true }}>
-            <Button className={styles.dropdown_profile_btn}>
-              <Image src={avatar} alt="" className={styles.avatar} preview={false} />
+            <Typography className={styles.dropdown_profile_btn}>
+              <Image src={avatarImg} alt="" className={styles.avatar} preview={false} />
               <Text className={styles.avatar_text}>
-                Guli Ahmedova
+                Guli
               </Text>
-            </Button>
+            </Typography>
           </Dropdown>
         </Typography>
         <Typography>

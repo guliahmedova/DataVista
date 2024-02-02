@@ -1,9 +1,8 @@
 import { Layout } from 'antd';
-import { FC } from 'react';
-import { LayoutType } from 'src/shared/types/LayoutType';
+import { LayoutType } from 'types/LayoutType';
 import styles from "./Auxilliary.module.scss";
 
-const Auxilliary: FC<LayoutType> = ({ children }) => {
+const Auxilliary: React.FC<LayoutType> = ({ children }) => {
     return (
         <Layout className={styles.auxilliary}>{children}</Layout>
     )

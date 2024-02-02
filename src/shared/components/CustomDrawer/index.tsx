@@ -1,9 +1,9 @@
 import { Button, Drawer, Tooltip } from 'antd';
-import { FC, useState } from 'react';
-import { CustomDrawerType } from 'src/shared/types/CustomDrawerType';
+import { useState } from 'react';
+import { CustomDrawerType } from 'types/CustomDrawerType';
 import styles from './CustomDrawer.module.scss';
 
-const CustomDrawer: FC<CustomDrawerType> = ({ actionKey, classname, icon, title, formFields }) => {
+const CustomDrawer: React.FC<CustomDrawerType> = ({ actionKey, classname, icon, title, formFields }) => {
     const [open, setOpen] = useState(false);
 
     const showDrawer = () => {

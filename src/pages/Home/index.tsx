@@ -48,9 +48,6 @@ const Home = () => {
         <Col span={6}>
           <WeatherForecast />
         </Col>
-        {/* <Col span={6}>
-          <Welcome />
-        </Col> */}
       </Row>
 
     </Layout>

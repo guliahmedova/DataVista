@@ -1,6 +1,5 @@
 import { Button, Col, Form, Input, Row, Select, SelectProps } from "antd";
-import { FC } from "react";
-import { ProjectFormType } from "src/shared/types/ProjectFormType";
+import { ProjectFormType } from "types/ProjectFormType";
 
 const options: SelectProps['options'] = [
     {
@@ -13,11 +12,9 @@ const options: SelectProps['options'] = [
     }
 ];
 
-const EmployeeFilter: FC<ProjectFormType> = ({ okBtnColor, okText }) => {
+const EmployeeFilter: React.FC<ProjectFormType> = ({ okBtnColor, okText }) => {
     return (
-        <Form
-            layout='vertical'
-        >
+        <Form layout='vertical'>
             <Row gutter={6}>
                 <Col span={24}>
                     <Form.Item label="First Name">

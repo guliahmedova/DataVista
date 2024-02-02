@@ -11,7 +11,8 @@ export default defineConfig({
       pages: "/src/pages",
       components: "/src/shared/components",
       styles: "/src/styles",
-      layout: '/src/shared/layout'
+      layout: '/src/shared/layout',
+      types: '/src/shared/types'
     },
   },
 })

@@ -1,6 +1,6 @@
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
-import styles from './search.module.scss';
+import styles from './Search.module.scss';
 
 const Search = () => {
     return (

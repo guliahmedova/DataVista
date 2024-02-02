@@ -1,11 +1,9 @@
 import { DeleteOutlined, EditOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined } from '@ant-design/icons';
-import type { DescriptionsProps, TableProps } from 'antd';
-import { Breadcrumb, Descriptions, Divider, Flex, Table, Typography } from "antd";
-import Layout from "antd/es/layout/layout";
+import { Breadcrumb, Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps, Typography } from "antd";
 import { CustomDrawer, CustomModal, DeleteView, TeamFilter, TeamForm } from 'shared/index';
 import { TeamType } from 'src/pages/types/TeamType';
 
-enum ActionKeys {
+const enum ActionKeys {
   CREATE = 'TEAM_CREATE',
   UPDATE = 'TEAM_UPDATE',
   VIEW = "TEAM_VIEW",

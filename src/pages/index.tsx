@@ -4,11 +4,9 @@ import { Route, Routes } from "react-router-dom";
 import { CustomHeader, RenderIf, SideMenu } from "src/shared";
 import Auxilliary from "src/shared/modules/Auxilliary";
 import Cover from "src/shared/modules/Cover";
-import ChangePassword from "./ChangePassword";
 import ForgotPassword from "./ForgotPassword";
 import Login from "./Login";
 import NotFound from "./NotFound";
-import OTPConfirmation from "./OTPConfirmation";
 import PrivateRouter from "./PrivateRouter";
 
 const Router = () => {
@@ -28,8 +26,6 @@ const Router = () => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/otp" element={<OTPConfirmation />} />
-          <Route path="/change-password" element={<ChangePassword />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       }
@@ -46,7 +42,8 @@ const Router = () => {
             motion: true,
             colorLinkActive: primary,
             linkDecoration: 'none',
-            colorLink: primary
+            colorLink: primary,
+
           },
           components: {
             Menu: {

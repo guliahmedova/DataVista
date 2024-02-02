@@ -1,6 +1,5 @@
 import { Button, Col, Form, Input, Row, Select, SelectProps } from "antd";
-import { FC } from "react";
-import { TeamFormType } from "src/shared/types/TeamFormType";
+import { TeamFormType } from "types/TeamFormType";
 import utils from "styles/utils.module.scss";
 
 const options: SelectProps['options'] = [
@@ -14,7 +13,7 @@ const options: SelectProps['options'] = [
     }
 ];
 
-const EmployeeForm: FC<TeamFormType> = ({ okText, okBtnColor, actionKey }) => {
+const EmployeeForm: React.FC<TeamFormType> = ({ okText, okBtnColor, actionKey }) => {
     const handleChange = (value: string[]) => {
         console.log(`selected ${value}`);
     };

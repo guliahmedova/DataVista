@@ -1,5 +1,5 @@
 import { Tabs } from 'antd';
-import { RecentReports, RecentTeams, RecentProjects } from 'shared/index';
+import { RecentProjects, RecentReports, RecentTeams } from 'shared/index';
 
 const HomeTabs = () => {
   return (

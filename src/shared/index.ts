@@ -6,7 +6,6 @@ export { default as RecentProjects } from 'src/shared/components/Home/RecentProj
 export { default as RecentReports } from 'src/shared/components/Home/RecentReports';
 export { default as RecentTeams } from 'src/shared/components/Home/RecentTeams';
 export { default as WeatherForecast } from 'src/shared/components/Home/WeatherForecast';
-export { default as Welcome } from "src/shared/components/Home/Welcome";
 export { default as DeleteView } from "src/shared/components/DeleteView";
 export { default as TeamForm } from "src/shared/components/Forms/TeamForm";
 export { default as EmployeeForm } from "src/shared/components/Forms/EmployeeForm";

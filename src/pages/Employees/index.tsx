@@ -1,13 +1,10 @@
 import { DeleteOutlined, EditOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined, LockOutlined } from '@ant-design/icons';
-import type { DescriptionsProps, TableProps } from 'antd';
-import { Breadcrumb, Descriptions, Divider, Flex, Table, Tag, Typography } from "antd";
-import Layout from "antd/es/layout/layout";
+import { Breadcrumb, Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps, Tag, Typography } from "antd";
 import { CustomDrawer, CustomModal, DeleteView, EmployeeFilter, EmployeeForm, ResetPasswordForm } from 'shared/index';
 import { UserType } from 'src/pages/types/UserType';
-
 import utils from 'styles/utils.module.scss';
 
-enum ActionKeys {
+const enum ActionKeys {
   CREATE = 'EMPLOYEE_CREATE',
   UPDATE = 'EMPLOYEE_UPDATE',
   VIEW = "EMPLOYEE_VIEW",
@@ -244,7 +241,7 @@ const Employees = () => {
         ]}
       />
       <Divider />
-      <Flex gap={8} justify="end">
+      <Flex gap={0} justify="end">
         <CustomModal actionKey={ActionKeys.CREATE} formFields={formFields} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
         <CustomDrawer actionKey={ActionKeys.FILTER} formFields={formFields} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
       </Flex>
@@ -252,8 +249,10 @@ const Employees = () => {
       <Table
         columns={columns}
         dataSource={data}
-        rowKey='key' bordered size="large"
-        scroll={{ y: 300 }}
+        rowKey='key' 
+        bordered 
+        size="large"
+        scroll={{ y: 300, x: 500 }}
         pagination={{ pageSize: 20 }}
         className={utils.table} />
     </Layout>

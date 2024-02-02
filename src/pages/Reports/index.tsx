@@ -1,12 +1,10 @@
 import { EditOutlined, ExportOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined } from '@ant-design/icons';
-import type { DescriptionsProps, TableProps } from 'antd';
-import { Breadcrumb, Button, Descriptions, Divider, Flex, Table, Tooltip } from "antd";
-import Layout from "antd/es/layout/layout";
+import { Breadcrumb, Button, Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps, Tooltip } from "antd";
+import { ReportType } from "pages/types/ReportType";
+import styles from "shared/components/Modal/Modal.module.scss";
 import { CustomDrawer, CustomModal, ReportFilter, ReportForm } from 'src/shared';
-import { ReportType } from '../types/ReportType';
-import styles from "../../shared/components/Modal/Modal.module.scss";
 
-enum ActionKeys {
+const enum ActionKeys {
   CREATE = 'REPORT_CREATE',
   UPDATE = 'REPORT_UPDATE',
   VIEW = "REPORT_VIEW",

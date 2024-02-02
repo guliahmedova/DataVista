@@ -1,6 +1,6 @@
 import { Button, Col, Form, Input, Row } from "antd";
-import styles from './ResetPasswordForm.module.scss';
 import utils from "styles/utils.module.scss";
+import styles from './ResetPasswordForm.module.scss';
 
 const ResetPasswordForm = () => {
     return (

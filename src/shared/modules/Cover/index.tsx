@@ -1,9 +1,8 @@
 import { Content } from 'antd/es/layout/layout';
-import { FC } from 'react';
-import { LayoutType } from 'src/shared/types/LayoutType';
+import { LayoutType } from 'types/LayoutType';
 import styles from "./Cover.module.scss";
 
-const Cover: FC<LayoutType> = ({ children }) => {
+const Cover: React.FC<LayoutType> = ({ children }) => {
     return (
         <Content className={styles.Cover}>{children}</Content>
     )

@@ -1,7 +1,5 @@
 import { EditOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined } from '@ant-design/icons';
-import type { DescriptionsProps, TableProps } from 'antd';
-import { Breadcrumb, Descriptions, Divider, Flex, Table } from "antd";
-import Layout from "antd/es/layout/layout";
+import { Breadcrumb, Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps } from "antd";
 import { CustomDrawer, CustomModal, ProjectFilter, ProjectForm } from 'shared/index';
 import { ProjectType } from 'src/pages/types/ProjectType';
 

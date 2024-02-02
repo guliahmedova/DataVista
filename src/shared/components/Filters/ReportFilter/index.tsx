@@ -1,6 +1,5 @@
 import { Button, Col, DatePicker, Form, Row, Select, SelectProps } from "antd";
-import { FC } from "react";
-import { ReportFormType } from "src/shared/types/ReportFormType";
+import { ReportFormType } from "types/ReportFormType";
 import styles from './ReportFilter.module.scss';
 const { RangePicker } = DatePicker;
 
@@ -15,15 +14,13 @@ const options: SelectProps['options'] = [
     }
 ];
 
-const ReportFilter: FC<ReportFormType> = ({ okBtnColor, okText }) => {
+const ReportFilter: React.FC<ReportFormType> = ({ okBtnColor, okText }) => {
     const handleChange = (value: string[]) => {
         console.log(`selected ${value}`);
     };
 
     return (
-        <Form
-            layout='vertical'
-        >
+        <Form layout='vertical'>
             <Row gutter={6}>
                 <Col span={24}>
                     <Form.Item label="Employees">

@@ -23,6 +23,14 @@
 }
 
 .header_list {
+    .navbar_selec {
+        width: auto;
+        border: none;
+        box-shadow: none;
+    }
+    display: flex;
+    gap: 1rem;
+    align-items: center;
     .profile {
         .avatar {
             width: 2.5rem;

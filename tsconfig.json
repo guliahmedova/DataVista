@@ -28,6 +28,9 @@
       "layout/*": [
         "./src/shared/layout/*"
       ],
+      "types/*": [
+        "./src/shared/types/*"
+      ],
     },
     /* Bundler mode */
     "moduleResolution": "bundler",
