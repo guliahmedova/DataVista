@@ -3,7 +3,7 @@ import { Menu, MenuProps } from "antd";
 import Sider from 'antd/es/layout/Sider';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import styles from './SiderMenu.module.scss';
+import styles from './SidebarMenu.module.scss';
 
 const enum Urls {
     TEAM = "/teams",
