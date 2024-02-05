@@ -6,6 +6,8 @@ import styles from './Modal.module.scss';
 const CustomModal: React.FC<CustomModalType> = ({ actionKey, classname, icon, title, actionStatus }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  console.log(actionKey);
+
   const showModal = () => {
     setIsModalOpen(true);
   };

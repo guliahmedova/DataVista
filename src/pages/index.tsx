@@ -28,7 +28,7 @@ const Router = () => {
     >
       <ConfigProvider theme={
         {
-          algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
+          algorithm: isDarkMode ? defaultAlgorithm : darkAlgorithm,
           token: {
             colorPrimary: primary,
             colorError: "#ff4d4f",
