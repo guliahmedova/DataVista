@@ -1,7 +1,7 @@
 import { EditOutlined, ExportOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined } from '@ant-design/icons';
 import { Breadcrumb, Button, Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps, Tooltip } from "antd";
 import { ReportType } from "pages/types/ReportType";
-import styles from "shared/components/Modal/Modal.module.scss";
+import styles from "shared/components/Modal/CustomModal.module.scss";
 import { CustomDrawer, CustomModal, ReportFilter, ReportForm } from 'src/shared';
 
 const enum ActionKeys {
