@@ -1,7 +1,16 @@
-.stepper_title{
+.stepper_title {
     color: white !important;
 }
-.stpper_header{
+.stpper_header {
     display: flex;
     width: 80%;
+    
+    div {
+        color: white !important;
+        font-weight: 600;
+    }
+}
+
+.forgot_password_Form{
+    width: 55%;
 }

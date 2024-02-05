@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { CustomDrawerType } from 'types/CustomDrawerType';
 import styles from './CustomDrawer.module.scss';
 
-const CustomDrawer: React.FC<CustomDrawerType> = ({ actionKey, classname, icon, title, formFields }) => {
+const CustomDrawer: React.FC<CustomDrawerType> = ({ actionKey, classname, icon, title, actionStatus }) => {
     const [open, setOpen] = useState(false);
 
     const showDrawer = () => {
@@ -20,7 +20,7 @@ const CustomDrawer: React.FC<CustomDrawerType> = ({ actionKey, classname, icon, 
                 <Button className={styles[classname]} onClick={showDrawer} icon={icon} size="large" />
             </Tooltip>
             <Drawer title={title} onClose={onClose} open={open}>
-                {formFields && actionKey ? formFields(actionKey) : ''}
+                {actionStatus}
             </Drawer>
         </>
     )

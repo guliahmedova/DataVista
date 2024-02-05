@@ -10,7 +10,6 @@
     border-color: $main_color;
 }
 
-
 /*------------------*/
 .form_btn {
     width: 100%;
@@ -23,10 +22,10 @@
         color: whitesmoke !important;
     }
 }
-.password_layout{
+.password_layout {
     @include displayHorizontally(flex, center, center);
     height: 100%;
-    background-color: $main_color;
+    background-color: darkblue;
 }
 .title {
     font-size: 1rem;
@@ -60,10 +59,35 @@
     font-weight: 500;
 }
 /*_-_-_-_-_-_-__-_-_-_-_-_-__-_-_-_-_-_-__-_-_-_-_-_-__-_-_-_-_-_-_*/
-.btns_placement{
+.btns_placement {
     text-align: right;
 }
 
-.table{
+.table {
     width: 100%;
+}
+
+@media screen and (max-width: 50em) {
+    .password_layout {
+        .password_form {
+            width: 80%;
+            height: 100%;
+        }
+    }
+}
+@media screen and (max-width: 30em) {
+    .password_layout {
+        .password_form {
+            height: 100%;
+            width: 90%;
+        }
+    }
+}
+@media screen and (max-width: 20em) {
+    .password_layout {
+        .password_form {
+            width: 95%;
+            height: 100%;
+        }
+    }
 }

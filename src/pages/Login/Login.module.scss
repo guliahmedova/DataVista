@@ -29,7 +29,9 @@
 }
 
 @media screen and (max-width: 1487px) {
-    .login-layout {
+    .password_layout {
+        width: 100%;
+        background-color: green !important;
         .col {
             height: 80%;
         }

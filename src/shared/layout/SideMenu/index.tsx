@@ -1,7 +1,7 @@
 import { CreditCardOutlined, ProjectOutlined, TeamOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import { Menu, MenuProps } from "antd";
 import Sider from 'antd/es/layout/Sider';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './SiderMenu.module.scss';
 
@@ -15,6 +15,19 @@ const enum Urls {
 const SideMenu = () => {
     const [collapsed, setCollapsed] = useState(false);
     const location = useLocation();
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+            setCollapsed(true);
+        };
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            setCollapsed(false);
+        };
+    }, []);
 
     const items: MenuProps['items'] = [
         {
@@ -44,7 +57,7 @@ const SideMenu = () => {
     ];
 
     return (
-        <Sider theme='light' collapsible collapsed={collapsed}
+        <Sider theme='light' collapsible={windowWidth > 844} collapsed={collapsed}
             onCollapse={(value) => setCollapsed(value)} className={styles.sidebar_menu}>
             <Menu
                 mode="vertical"

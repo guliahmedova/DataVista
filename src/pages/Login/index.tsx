@@ -13,7 +13,7 @@ const Login = () => {
         <Typography.Title className={utils.title}>
           Login
         </Typography.Title>
-        <Form.Item label="Email" name="email" className={utils.form_label}>
+        <Form.Item label="Email" name="email" className={`${utils.form_label} ${styles.login_form_item}`}>
           <Input name='email' type='text' className={utils.form_input} size='large' />
         </Form.Item>
         <Form.Item label="Password" name="password" className={`${utils.form_label} ${styles.login_form_item}`}>

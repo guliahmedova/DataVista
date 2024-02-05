@@ -34,31 +34,12 @@ const items: DescriptionsProps['items'] = [
 ];
 
 const Teams = () => {
-  const formFields = (actionKey: string) => {
-    switch (actionKey) {
-      case ActionKeys.CREATE:
-        return (
-          <TeamForm okText='Create' okBtnColor='#87d068' />
-        )
-      case ActionKeys.UPDATE:
-        return (
-          <TeamForm okText='Update' okBtnColor='orange' />
-        )
-      case ActionKeys.DELETE:
-        return (
-          <DeleteView />
-        )
-      case ActionKeys.VIEW:
-        return (
-          <Descriptions items={items} layout="vertical" bordered={true} column={2} />
-        )
-      case ActionKeys.FILTER:
-        return (
-          <TeamFilter okText='Filter' okBtnColor='purple' />
-        )
-      default:
-        break;
-    }
+  const actionStatus = {
+    TEAM_CREATE: <TeamForm okText='Create' okBtnColor='#87d068' />,
+    TEAM_UPDATE: <TeamForm okText='Update' okBtnColor='orange' />,
+    TEAM_VIEW: <Descriptions items={items} layout="vertical" bordered={true} column={2} />,
+    TEAM_FILTER: <TeamFilter okText='Filter' okBtnColor='purple' />,
+    TEAM_DELETE: <DeleteView />
   };
 
   const columns: TableProps<TeamType>['columns'] = [
@@ -66,16 +47,18 @@ const Teams = () => {
       title: 'Team Name',
       dataIndex: 'teamName',
       key: 'teamName',
+      ellipsis: true
     },
     {
       title: 'Actions',
       dataIndex: 'actions',
       key: 'actions',
+      ellipsis: true,
       render: () => (
         <Flex gap='small' wrap='wrap'>
-          <CustomModal actionKey={ActionKeys.UPDATE} formFields={formFields} icon={<EditOutlined />} title='Update Team' classname='update_btn' okText='Update' />
-          <CustomModal actionKey={ActionKeys.DELETE} formFields={formFields} icon={<DeleteOutlined />} title='Delete Team' classname='delete_btn' okText='Delete' />
-          <CustomDrawer actionKey={ActionKeys.VIEW} formFields={formFields} icon={<FundViewOutlined />} title='View Team' classname='view_btn' okText='View' />
+          <CustomModal actionKey={ActionKeys.UPDATE} actionStatus={actionStatus[ActionKeys.UPDATE]} icon={<EditOutlined />} title='Update Team' classname='update_btn' okText='Update' />
+          <CustomModal actionKey={ActionKeys.DELETE} actionStatus={actionStatus[ActionKeys.DELETE]} icon={<DeleteOutlined />} title='Delete Team' classname='delete_btn' okText='Delete' />
+          <CustomDrawer actionKey={ActionKeys.VIEW} actionStatus={actionStatus[ActionKeys.VIEW]} icon={<FundViewOutlined />} title='View Team' classname='view_btn' okText='View' />
         </Flex>
       )
     },
@@ -90,13 +73,13 @@ const Teams = () => {
           }
         ]}
       />
-      <Divider />
-      <Flex gap={8} justify="end">
-        <CustomModal actionKey={ActionKeys.CREATE} formFields={formFields} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
-        <CustomDrawer actionKey={ActionKeys.FILTER} formFields={formFields} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
+      <Flex gap={6} justify='end'>
+        <CustomModal actionKey={ActionKeys.CREATE} actionStatus={actionStatus[ActionKeys.CREATE]} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
+        <CustomDrawer actionKey={ActionKeys.FILTER} actionStatus={actionStatus[ActionKeys.FILTER]} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
       </Flex>
       <Divider />
-      <Table columns={columns} dataSource={data} rowKey='id' bordered size="large" />
+      <Table columns={columns} dataSource={data} rowKey='id' bordered size="large" scroll={{ y: 300, x: "auto" }}
+        pagination={{ pageSize: 20 }} />
     </Layout>
   )
 }

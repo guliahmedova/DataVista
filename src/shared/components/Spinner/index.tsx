@@ -1,13 +1,10 @@
 import { Spin } from "antd";
 import { Content } from "antd/es/layout/layout";
+import styles from "./Spinner.module.scss";
 
 const Spinner = () => {
     return (
-        <Content style={{
-            height: '100%', backgroundColor: 'whitesmoke',
-            width: '100%', display: 'flex', flexDirection: 'column',
-            alignItems: 'center', justifyContent: 'center'
-        }}>
+        <Content className={styles.spinner_container}>
             <Spin tip="Loading" size="large">
                 <div className="content" />
             </Spin>

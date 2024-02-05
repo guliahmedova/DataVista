@@ -1,30 +1,8 @@
 import { Button, Form, Input, Layout, Steps, Typography, message } from 'antd';
-import ChangePassword from 'components/ChangePassword';
-import OTPConfirmation from 'components/OTPConfirmation';
 import { useState } from 'react';
+import { ChangePassword, OTPConfirmation } from 'shared/index';
 import utils from "styles/utils.module.scss";
 import styles from './ForgotPaswword.module.scss';
-
-// interface StepperProps {
-//   0: ReactNode,
-//   1: ReactNode,
-//   2: ReactNode
-// };
-
-const steps = [
-  {
-    title: 'Email',
-    content: 'First-content',
-  },
-  {
-    title: 'OTP',
-    content: 'Second-content',
-  },
-  {
-    title: 'Change Password',
-    content: 'Last-content',
-  },
-];
 
 const ForgotPassword = () => {
   const [current, setCurrent] = useState(0);
@@ -33,11 +11,38 @@ const ForgotPassword = () => {
     setCurrent(current + 1);
   };
 
+  const steps = [
+    {
+      title: 'Email',
+      content: (
+        <Layout className={`${utils.password_layout}`}>
+          <Form layout='vertical' className={`${utils.password_form} `}>
+            <Typography.Title level={2} className={utils.title}>
+              Enter Your Email
+            </Typography.Title>
+            <Form.Item label="Email" name="email" className={utils.form_label}>
+              <Input name='email' type='text' className={utils.form_input} size='large' />
+            </Form.Item>
+            <Button htmlType='submit' type='default' className={utils.form_btn} size='large'>Send Code</Button>
+          </Form>
+        </Layout>
+      )
+    },
+    {
+      title: 'OTP',
+      content: <OTPConfirmation />
+    },
+    {
+      title: 'Change Password',
+      content: <ChangePassword />
+    },
+  ];
+
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
 
   const contentStyle: React.CSSProperties = {
-    width: '60%',
-    height: '70vh',
+    width: '100%',
+    height: '80vh',
     textAlign: 'center',
     color: "white",
     backgroundColor: "transparent",
@@ -47,33 +52,14 @@ const ForgotPassword = () => {
     marginTop: 40,
   };
 
-  const currentSteps: any = {
-    0: (
-      <Form layout='vertical' style={{
-        width: '100%'
-      }} className={utils.password_form}>
-        <Form.Item label="Email" name="email" className={utils.form_label}>
-          <Input name='email' type='text' className={utils.form_input} size='large' />
-        </Form.Item>
-        <Button htmlType='submit' type='default' className={utils.form_btn} size='large'>Send Code</Button>
-      </Form>
-    ),
-    1: (
-      <OTPConfirmation />
-    ),
-    2: (
-      <ChangePassword />
-    )
-  };
-
   return (
     <Layout className={`${utils.password_layout} ${utils.layout_gradient}`}>
       <Typography className={styles.stpper_header}>
         <Steps current={current} items={items}
           className={styles.stepper_title} />
       </Typography>
-      <Typography style={contentStyle}>
-        {currentSteps[current]}
+      <Typography style={contentStyle} >
+        {steps[current].content}
       </Typography>
       <Typography style={{ marginTop: 24 }}>
         {current < steps.length - 1 && (

@@ -32,27 +32,11 @@ const items: DescriptionsProps['items'] = [
 ];
 
 const Projects = () => {
-  const formFields = (actionKey: string) => {
-    switch (actionKey) {
-      case ActionKeys.CREATE:
-        return (
-          <ProjectForm okText='Create' okBtnColor='#87d068' />
-        )
-      case ActionKeys.UPDATE:
-        return (
-          <ProjectForm okText='Update' okBtnColor='orange' />
-        )
-      case ActionKeys.VIEW:
-        return (
-          <Descriptions bordered={true} column={2} items={items} layout="vertical" />
-        )
-      case ActionKeys.FILTER:
-        return (
-          <ProjectFilter okText='Filter' okBtnColor='purple' />
-        )
-      default:
-        break;
-    }
+  const actionStatus = {
+    PROJECTS_CREATE: <ProjectForm okText='Create' okBtnColor='#87d068' />,
+    PROJECTS_UPDATE: <ProjectForm okText='Update' okBtnColor='orange' />,
+    PROJECTS_VIEW: <Descriptions bordered={true} column={2} items={items} layout="vertical" />,
+    PROJECTS_FILTER: <ProjectFilter okText='Filter' okBtnColor='purple' />,
   };
 
   const columns: TableProps<ProjectType>['columns'] = [
@@ -60,18 +44,19 @@ const Projects = () => {
       title: 'Project Name',
       dataIndex: 'projectName',
       key: 'projectName',
+      ellipsis: true
     },
     {
       title: 'Actions',
       dataIndex: 'actions',
       key: 'actions',
+      ellipsis: true,
       render: () => (
         <Flex gap='small' wrap='wrap'>
-          <CustomModal actionKey={ActionKeys.CREATE} formFields={formFields} icon={<EditOutlined />} title='Update Project' classname='update_btn' okText='Update' />
-          <CustomDrawer actionKey={ActionKeys.VIEW} formFields={formFields} icon={<FundViewOutlined />} title='View Team' classname='view_btn' okText='View' />
+          <CustomModal actionKey={ActionKeys.CREATE} actionStatus={actionStatus[ActionKeys.CREATE]} icon={<EditOutlined />} title='Update Project' classname='update_btn' okText='Update' />
+          <CustomDrawer actionKey={ActionKeys.VIEW} actionStatus={actionStatus[ActionKeys.VIEW]} icon={<FundViewOutlined />} title='View Team' classname='view_btn' okText='View' />
         </Flex>
       ),
-      responsive: ['lg']
     },
   ];
 
@@ -84,13 +69,13 @@ const Projects = () => {
           }
         ]}
       />
-      <Divider />
-      <Flex gap={8} justify="end">
-        <CustomModal actionKey={ActionKeys.CREATE} formFields={formFields} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
-        <CustomDrawer actionKey={ActionKeys.FILTER} formFields={formFields} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
+      <Flex gap={6} justify='end'>
+        <CustomModal actionKey={ActionKeys.CREATE} actionStatus={actionStatus[ActionKeys.CREATE]} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
+        <CustomDrawer actionKey={ActionKeys.FILTER} actionStatus={actionStatus[ActionKeys.FILTER]} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
       </Flex>
       <Divider />
-      <Table columns={columns} dataSource={data} rowKey='id' bordered size="large" />
+      <Table columns={columns} dataSource={data} rowKey='id' bordered size="large" scroll={{ y: 300, x: "auto" }}
+        pagination={{ pageSize: 20 }} />
     </Layout>
   )
 };

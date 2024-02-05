@@ -23,14 +23,14 @@
 }
 
 .header_list {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 0 !important;
     .navbar_selec {
         width: auto;
         border: none;
         box-shadow: none;
     }
-    display: flex;
-    gap: 1rem;
-    align-items: center;
     .profile {
         .avatar {
             width: 2.5rem;
@@ -58,6 +58,7 @@
         box-shadow: none;
         outline: none;
         display: inline;
+        width: 100%;
     }
     .key {
         padding: 1rem;
@@ -83,9 +84,8 @@
     }
 }
 .profile_menu_item {
-    display: flex;
+    @include itemscenter(flex, center);
     gap: 1rem;
-    align-items: center;
 }
 .dropdown_btn {
     border: none;
@@ -106,7 +106,18 @@
 
 @media screen and (max-width: 77em) {
     .header {
+        padding: 0;
+        padding-left: 1rem;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
         .key {
+            display: none;
+        }
+        .logo_icon {
+            display: none;
+        }
+        .logo_text {
             display: none;
         }
         .logo_icon {
@@ -119,8 +130,11 @@
         }
         .header_list {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 0;
+            padding: 0;
+            gap: 1rem;
+            width: 100%;
             .colorpicker_text {
                 display: none;
             }
@@ -137,10 +151,32 @@
         }
     }
 }
-
+@media screen and (max-width: 64em) {
+    .header {
+        .header_list {
+            display: flex;
+            justify-content: space-between;
+            padding-block: 0;
+            .colorpicker {
+                padding: 0;
+                .colorpicker_text {
+                    padding: 0 !important;
+                    margin: 0 !important;
+                }
+            }
+        }
+    }
+}
 @media screen and (max-width: 45rem) {
     .header {
         .header_list {
+            padding: 0;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0;
+            .avatar {
+                display: none;
+            }
             .colorpicker {
                 display: none;
             }

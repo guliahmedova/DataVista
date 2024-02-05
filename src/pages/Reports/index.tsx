@@ -9,7 +9,6 @@ const enum ActionKeys {
   UPDATE = 'REPORT_UPDATE',
   VIEW = "REPORT_VIEW",
   FILTER = "REPORT_FILTER",
-  DELETE = "REPORT_DELETE",
   EXPORT = "REPORT_EXPORT",
 };
 
@@ -48,27 +47,11 @@ const items: DescriptionsProps['items'] = [
 ];
 
 const Reports = () => {
-  const formFields = (actionKey: string) => {
-    switch (actionKey) {
-      case ActionKeys.CREATE:
-        return (
-          <ReportForm okText='Create' okBtnColor='#87d068' />
-        )
-      case ActionKeys.UPDATE:
-        return (
-          <ReportForm okText='Update' okBtnColor='orange' />
-        )
-      case ActionKeys.VIEW:
-        return (
-          <Descriptions title="" items={items} layout="vertical" bordered={true} column={1} />
-        )
-      case ActionKeys.FILTER:
-        return (
-          <ReportFilter okText='Filter' okBtnColor='purple' />
-        )
-      default:
-        break;
-    }
+  const actionStatus = {
+    REPORT_CREATE: <ReportForm okText='Create' okBtnColor='#87d068' />,
+    REPORT_UPDATE: <ReportForm okText='Update' okBtnColor='orange' />,
+    REPORT_VIEW: <Descriptions title="" items={items} layout="vertical" bordered={true} column={1} />,
+    REPORT_FILTER: <ReportFilter okText='Filter' okBtnColor='purple' />,
   };
 
   const columns: TableProps<ReportType>['columns'] = [
@@ -76,30 +59,35 @@ const Reports = () => {
       title: 'Employee Name',
       dataIndex: 'employeeName',
       key: 'employeeName',
+      ellipsis: true,
     },
     {
       title: 'Created',
       dataIndex: 'reportCreatedAt',
       key: 'reportCreatedAt',
+      ellipsis: true,
     },
     {
       title: 'Note',
       dataIndex: 'reportName',
       key: 'reportName',
+      ellipsis: true,
     },
     {
       title: 'Project Name',
       dataIndex: 'projectName',
       key: 'projectName',
+      ellipsis: true,
     },
     {
       title: 'Actions',
       dataIndex: 'actions',
       key: 'actions',
+      ellipsis: true,
       render: () => (
-        <Flex gap='small' wrap='wrap'>
-          <CustomModal actionKey={ActionKeys.UPDATE} formFields={formFields} icon={<EditOutlined />} title='Update Report' classname='update_btn' okText='Update' />
-          <CustomDrawer actionKey={ActionKeys.VIEW} formFields={formFields} icon={<FundViewOutlined />} title='View Report' classname='view_btn' okText='View' />
+        <Flex gap='small' wrap='nowrap'>
+          <CustomModal actionKey={ActionKeys.UPDATE} actionStatus={actionStatus[ActionKeys.UPDATE]} icon={<EditOutlined />} title='Update Report' classname='update_btn' okText='Update' />
+          <CustomDrawer actionKey={ActionKeys.VIEW} actionStatus={actionStatus[ActionKeys.VIEW]} icon={<FundViewOutlined />} title='View Report' classname='view_btn' okText='View' />
         </Flex>
       )
     },
@@ -114,16 +102,16 @@ const Reports = () => {
           }
         ]}
       />
-      <Divider />
-      <Flex gap={8} justify="end">
-        <CustomModal actionKey={ActionKeys.CREATE} formFields={formFields} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
-        <CustomDrawer actionKey={ActionKeys.FILTER} formFields={formFields} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
+      <Flex gap={6} justify="end">
+        <CustomModal actionKey={ActionKeys.CREATE} actionStatus={actionStatus[ActionKeys.CREATE]} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
+        <CustomDrawer actionKey={ActionKeys.FILTER} actionStatus={actionStatus[ActionKeys.FILTER]} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
         <Tooltip title='Export' placement="top">
           <Button className={styles.export_btn} icon={<ExportOutlined />} size="large" />
         </Tooltip>
       </Flex>
       <Divider />
-      <Table columns={columns} dataSource={data} rowKey='id' bordered size="large" />
+      <Table columns={columns} dataSource={data} rowKey='id' bordered size="large" scroll={{ y: 300, x: "auto" }}
+        pagination={{ pageSize: 20 }} />
     </Layout>
   )
 };

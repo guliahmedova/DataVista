@@ -1,8 +1,14 @@
 import { DeleteOutlined, EditOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined, LockOutlined } from '@ant-design/icons';
 import { Breadcrumb, Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps, Tag, Typography } from "antd";
+import { useState } from 'react';
 import { CustomDrawer, CustomModal, DeleteView, EmployeeFilter, EmployeeForm, ResetPasswordForm } from 'shared/index';
 import { UserType } from 'src/pages/types/UserType';
 import utils from 'styles/utils.module.scss';
+
+interface ColorCondition {
+  Active: string,
+  DeActive: string
+};
 
 const enum ActionKeys {
   CREATE = 'EMPLOYEE_CREATE',
@@ -66,7 +72,7 @@ const data: UserType[] = [
     status: 'DeActive'
   },
   {
-    key: '1',
+    key: '3',
     firstname: 'John',
     lastname: 'Jake',
     email: 'jonh@gmail.com',
@@ -75,7 +81,7 @@ const data: UserType[] = [
     status: 'Active'
   },
   {
-    key: '2',
+    key: '4',
     firstname: 'John',
     lastname: 'Jake',
     email: 'jonh@gmail.com',
@@ -84,7 +90,7 @@ const data: UserType[] = [
     status: 'DeActive'
   },
   {
-    key: '1',
+    key: '5',
     firstname: 'John',
     lastname: 'Jake',
     email: 'jonh@gmail.com',
@@ -93,7 +99,7 @@ const data: UserType[] = [
     status: 'Active'
   },
   {
-    key: '2',
+    key: '6',
     firstname: 'John',
     lastname: 'Jake',
     email: 'jonh@gmail.com',
@@ -102,7 +108,7 @@ const data: UserType[] = [
     status: 'DeActive'
   },
   {
-    key: '1',
+    key: '7',
     firstname: 'John',
     lastname: 'Jake',
     email: 'jonh@gmail.com',
@@ -111,7 +117,7 @@ const data: UserType[] = [
     status: 'Active'
   },
   {
-    key: '2',
+    key: '8',
     firstname: 'John',
     lastname: 'Jake',
     email: 'jonh@gmail.com',
@@ -120,7 +126,7 @@ const data: UserType[] = [
     status: 'DeActive'
   },
   {
-    key: '1',
+    key: '9',
     firstname: 'John',
     lastname: 'Jake',
     email: 'jonh@gmail.com',
@@ -129,7 +135,7 @@ const data: UserType[] = [
     status: 'Active'
   },
   {
-    key: '2',
+    key: '10',
     firstname: 'John',
     lastname: 'Jake',
     email: 'jonh@gmail.com',
@@ -140,76 +146,62 @@ const data: UserType[] = [
 ];
 
 const Employees = () => {
-  const formFields = (actionKey: string) => {
-    switch (actionKey) {
-      case ActionKeys.CREATE:
-        return (
-          <EmployeeForm okText='Create' okBtnColor='#87d068' />
-        )
-      case ActionKeys.UPDATE:
-        return (
-          <EmployeeForm okText='Update' okBtnColor='orange' actionKey={ActionKeys.UPDATE} />
-        )
-      case ActionKeys.DELETE:
-        return (
-          <DeleteView />
-        )
-      case ActionKeys.VIEW:
-        return (
-          <Descriptions title="Project Info" items={items} layout="vertical" bordered={true} column={2} />
-        )
-      case ActionKeys.FILTER:
-        return (
-          <EmployeeFilter okText='Filter' okBtnColor='purple' />
-        )
-      case ActionKeys.RESET_PASSWORD:
-        return (
-          <ResetPasswordForm />
-        )
-      default:
-        break;
-    }
+  const actionStatus = {
+    EMPLOYEE_CREATE: <EmployeeForm okText='Create' okBtnColor='#87d068' />,
+    EMPLOYEE_UPDATE: <EmployeeForm okText='Update' okBtnColor='orange' actionKey={ActionKeys.UPDATE} />,
+    EMPLOYEE_VIEW: <Descriptions title="Project Info" items={items} layout="vertical" bordered={true} column={2} />,
+    EMPLOYEE_FILTER: <EmployeeFilter okText='Filter' okBtnColor='purple' />,
+    EMPLOYEE_DELETE: <DeleteView />,
+    RESET_PASSWORD: <ResetPasswordForm />
   };
+
+  const [isActive, setIsActive] = useState(false);
 
   const columns: TableProps<UserType>['columns'] = [
     {
       title: 'First Name',
       dataIndex: 'firstname',
       key: 'firstname',
+      ellipsis: true
     },
     {
       title: 'Last Name',
       dataIndex: 'lastname',
       key: 'lastname',
+      ellipsis: true
     },
     {
       title: 'Email',
       dataIndex: 'email',
       key: 'email',
-      render: (text) => <Typography.Text copyable>{text}</Typography.Text>
+      render: (text) => <Typography.Text copyable>{text}</Typography.Text>,
+      ellipsis: true
     },
     {
       title: 'Team',
       dataIndex: 'teamname',
       key: 'teamname',
+      ellipsis: true
     },
     {
       title: 'Role',
       dataIndex: 'rolename',
       key: 'rolename',
+      ellipsis: true
     },
     {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
+      ellipsis: true,
       render: (text: string) => {
-        const colorCondition: any = {
-          'Active': 'green',
-          'DeActive': 'red'
+        const colorCondition: ColorCondition = {
+          Active: 'green',
+          DeActive: 'red'
         }
         return (
-          <Tag color={colorCondition[text]} key={text}>
-            {text.toUpperCase()}
+          <Tag color={isActive ? colorCondition.Active : colorCondition.DeActive} key={text} onClick={() => setIsActive(!isActive)}>
+            {isActive ? "Activate" : "Deactivate"}
           </Tag>
         );
       }
@@ -218,14 +210,13 @@ const Employees = () => {
       title: 'Actions',
       dataIndex: 'actions',
       key: 'actions',
+      ellipsis: true,
       render: () => (
-        <Flex gap='small' wrap='wrap'>
-          <Flex gap='small' wrap='wrap'>
-            <CustomModal actionKey={ActionKeys.UPDATE} formFields={formFields} icon={<EditOutlined />} title='Update Employee' classname='update_btn' okText='Update' />
-            <CustomModal actionKey={ActionKeys.DELETE} formFields={formFields} icon={<DeleteOutlined />} title='Delete Employee' classname='delete_btn' okText='Delete' />
-            <CustomDrawer actionKey={ActionKeys.VIEW} formFields={formFields} icon={<FundViewOutlined />} title='View Employee' classname='view_btn' okText='View' />
-            <CustomModal actionKey={ActionKeys.RESET_PASSWORD} formFields={formFields} icon={<LockOutlined />} title='Reset Password' classname='reset_employye_password_btn' okText='Delete' />
-          </Flex>
+        <Flex gap={6} wrap="nowrap">
+          <CustomModal actionKey={ActionKeys.UPDATE} actionStatus={actionStatus[ActionKeys.UPDATE]} icon={<EditOutlined />} title='Update Employee' classname='update_btn' okText='Update' />
+          <CustomModal actionKey={ActionKeys.DELETE} actionStatus={actionStatus[ActionKeys.DELETE]} icon={<DeleteOutlined />} title='Delete Employee' classname='delete_btn' okText='Delete' />
+          <CustomDrawer actionKey={ActionKeys.VIEW} icon={<FundViewOutlined />} actionStatus={actionStatus[ActionKeys.VIEW]} title='View Employee' classname='view_btn' okText='View' />
+          <CustomModal actionKey={ActionKeys.RESET_PASSWORD} actionStatus={actionStatus[ActionKeys.RESET_PASSWORD]} icon={<LockOutlined />} title='Reset Password' classname='reset_employye_password_btn' okText='Delete' />
         </Flex>
       )
     },
@@ -240,20 +231,20 @@ const Employees = () => {
           }
         ]}
       />
-      <Divider />
-      <Flex gap={0} justify="end">
-        <CustomModal actionKey={ActionKeys.CREATE} formFields={formFields} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
-        <CustomDrawer actionKey={ActionKeys.FILTER} formFields={formFields} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
+      <Flex gap={6} justify="end">
+        <CustomModal actionKey={ActionKeys.CREATE} actionStatus={actionStatus[ActionKeys.CREATE]} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
+        <CustomDrawer actionKey={ActionKeys.FILTER} icon={<FilterOutlined />} actionStatus={actionStatus[ActionKeys.FILTER]} title='Filter' classname='filter_btn' okText='Filter' />
       </Flex>
       <Divider />
       <Table
         columns={columns}
         dataSource={data}
-        rowKey='key' 
-        bordered 
+        rowKey='key'
+        bordered
         size="large"
-        scroll={{ y: 300, x: 500 }}
-        pagination={{ pageSize: 20 }}
+        loading={false}
+        scroll={{ y: 250, x: "auto" }}
+        pagination={{ pageSize: 10 }}
         className={utils.table} />
     </Layout>
   )

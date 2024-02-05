@@ -7,5 +7,5 @@ export interface CustomDrawerType {
     icon: JSX.Element,
     actionKey: string,
     title?: string;
-    formFields?: (actionKey: string) => ReactNode;
+    actionStatus: ReactNode
 };
