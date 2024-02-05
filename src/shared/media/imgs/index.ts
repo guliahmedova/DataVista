@@ -4,3 +4,5 @@ export { default as logoIcon } from "shared/media/imgs/logoIcon.svg";
 export { default as rainyIcon } from "shared/media/imgs/rainyicon.svg";
 export { default as trLangIcon } from "shared/media/imgs/tr.svg";
 export { default as ukLangIcon } from "shared/media/imgs/uk.svg";
+export { default as night } from "shared/media/imgs/night.svg";
+export { default as sun } from "shared/media/imgs/sun.svg";

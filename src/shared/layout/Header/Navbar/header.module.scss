@@ -4,181 +4,99 @@
 .header {
     @include displayHorizontally(flex, space-between, center);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    .logo_icon {
-        display: flex;
-        align-items: center;
-        @include itemscenter(flex, center);
-        .logo_text {
-            font-weight: 700;
-            color: $main_color;
-            font-size: 1.563rem;
-        }
-    }
-
-    .logo_icon {
-        .logo_img {
-            width: 3rem;
-        }
-    }
-}
-
-.header_list {
-    display: flex;
-    justify-content: space-between;
-    padding-block: 0 !important;
-    .navbar_selec {
-        width: auto;
-        border: none;
-        box-shadow: none;
-    }
-    .profile {
-        .avatar {
-            width: 2.5rem;
-            border-radius: 100%;
-            height: 2.5rem;
-        }
-        .avatar_text {
-            font-weight: 600;
-            font-size: 0.875rem;
-        }
-        .dropdown_profile_btn {
-            background-color: transparent;
-            border: none;
-            box-shadow: none;
-            outline: none;
+    padding-block: 1%;
+    .header_list {
+        @include displayHorizontally(flex, space-between, center);
+        width: 100%;
+        .logo_box {
+            display: flex;
+            align-items: center;
             @include itemscenter(flex, center);
-            gap: 0.625rem;
-            &:hover {
-                color: black;
-            }
-        }
-    }
-    .list_item {
-        border: none;
-        box-shadow: none;
-        outline: none;
-        display: inline;
-        width: 100%;
-    }
-    .key {
-        padding: 1rem;
-        .key_icon {
-            border: 1px solid #ffcb33;
-            color: #ffcb33;
-            padding: 0.5rem;
-        }
-    }
-}
-.profile-menu-item {
-    @include itemscenter(flex, center);
-    gap: 1rem;
-}
-.dropdown-btn {
-    box-shadow: none;
-    border-radius: 0;
-    border: none;
-    padding: 0;
-    background-color: transparent;
-    .dropdown-btn-icon {
-        color: black;
-    }
-}
-.profile_menu_item {
-    @include itemscenter(flex, center);
-    gap: 1rem;
-}
-.dropdown_btn {
-    border: none;
-    box-shadow: none;
-    background-color: transparent;
-    padding: 0;
-    &:hover {
-        .dropdown-btn-icon {
-            color: black;
-        }
-    }
-    &:active {
-        border: none;
-        outline: none;
-        box-shadow: none;
-    }
-}
-
-@media screen and (max-width: 77em) {
-    .header {
-        padding: 0;
-        padding-left: 1rem;
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        .key {
-            display: none;
-        }
-        .logo_icon {
-            display: none;
-        }
-        .logo_text {
-            display: none;
-        }
-        .logo_icon {
             .logo_text {
-                font-size: clamp(1.7rem, 2rem, 1rem);
+                font-weight: 700;
+                color: $main_color;
+                font-size: 1.563rem;
             }
             .logo_img {
+                width: 3rem;
+            }
+        }
+
+        .header_left {
+            gap: 2rem;
+            .dark_mode_box {
+                position: relative;
                 width: 2rem;
+                height: 2rem;
+                .switch_box {
+                    position: absolute;
+                    width: 100%;
+                    visibility: hidden;
+                    height: 100%;
+                }
+                .dark_mode_img {
+                    cursor: pointer;
+                    width: 100%;
+                    height: 100%;
+                }
             }
-        }
-        .header_list {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0;
-            gap: 1rem;
-            width: 100%;
-            .colorpicker_text {
-                display: none;
+            .logout_btn_box {
+                box-shadow: none;
+                border: 1px solid red;
+                color: red;
             }
-            .colorpicker {
-                padding: 0%;
-                border: none;
-            }
-        }
-        .list_item {
-            padding: 0;
-        }
-        .profile {
-            padding: 0;
         }
     }
 }
-@media screen and (max-width: 64em) {
+
+@media screen and (max-width: 48rem) {
     .header {
+        background-color: red;
         .header_list {
-            display: flex;
-            justify-content: space-between;
-            padding-block: 0;
-            .colorpicker {
-                padding: 0;
-                .colorpicker_text {
-                    padding: 0 !important;
-                    margin: 0 !important;
+            .logo_box {
+                .logo_img {
+                    display: none;
+                }
+                .logo_text {
+                    font-size: 1.1rem;
+                }
+            }
+            .header_left {
+                gap: 0.5rem;
+                .reset_pass_box {
+                    .reset_employye_password_btn {
+                        background-color: red;
+                    }
+                }
+                .reset_employye_password_btn {
+                    background-color: red !important;
+                    border: none !important;
+                }
+                .dark_mode_box {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                }
+                .logout_btn_box {
+                    box-shadow: none;
+                    border: 1px solid red;
+                    color: red;
                 }
             }
         }
     }
 }
-@media screen and (max-width: 45rem) {
+@media screen and (max-width: 27rem) {
     .header {
+        padding: 0 1rem !important;
         .header_list {
-            padding: 0;
-            justify-content: space-between;
-            align-items: center;
-            gap: 0;
-            .avatar {
-                display: none;
+            .logo_box {
+                .logo_text {
+                    display: none;
+                }
             }
-            .colorpicker {
-                display: none;
+            .header_left{
+                width: 100%;
+                justify-content: space-between;
             }
         }
     }

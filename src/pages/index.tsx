@@ -13,7 +13,7 @@ const Router = () => {
   const { defaultAlgorithm, darkAlgorithm } = theme;
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [primary, setPrimary] = useState('#1554ad');
-  const token = false;
+  const token = true;
 
   return (
     <RenderIf
@@ -54,6 +54,7 @@ const Router = () => {
               <CustomHeader
                 setIsDarkMode={setIsDarkMode}
                 setPrimary={setPrimary}
+                isDarkMode={isDarkMode}
                 primary={primary}
                  />
               <Divider />
