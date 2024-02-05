@@ -10,10 +10,6 @@ export { default as ProjectForm } from "src/shared/components/Forms/ProjectForm"
 export { default as ReportForm } from "src/shared/components/Forms/ReportForm";
 export { default as ResetPasswordForm } from "src/shared/components/Forms/ResetPasswordForm";
 export { default as TeamForm } from "src/shared/components/Forms/TeamForm";
-export { default as HomeTabs } from 'src/shared/components/Home/HomeTabs';
-export { default as RecentProjects } from 'src/shared/components/Home/RecentProjects';
-export { default as RecentReports } from 'src/shared/components/Home/RecentReports';
-export { default as RecentTeams } from 'src/shared/components/Home/RecentTeams';
 export { default as CustomModal } from "src/shared/components/Modal";
 export { default as OTPConfirmation } from "src/shared/components/OTPConfirmation";
 export { default as RenderIf } from "src/shared/components/RenderIf";
