@@ -2,7 +2,7 @@ import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Layout, Typography } from 'antd';
 import { useState } from 'react';
 import utils from "styles/utils.module.scss";
-import styles from './login.module.scss';
+import styles from './Login.module.scss';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
