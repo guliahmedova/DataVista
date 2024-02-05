@@ -4,7 +4,7 @@ import { Header } from "antd/es/layout/layout";
 import { CustomModal, ResetPasswordForm } from "shared/index";
 import { logoIcon, night, sun } from "shared/media/imgs";
 import { HeaderType } from 'src/shared/types/HeaderType';
-import styles from './Header.module.scss';
+import styles from './CustomHeader.module.scss';
 const { Text, Link } = Typography;
 
 const enum ActionKeys {
