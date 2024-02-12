@@ -20,14 +20,16 @@ const SideMenu = () => {
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
-            setCollapsed(true);
+            if (window.innerWidth <= 844) {
+                setCollapsed(false);
+            }
         };
         window.addEventListener("resize", handleResize);
+        setCollapsed(true);
         return () => {
             window.removeEventListener("resize", handleResize);
-            setCollapsed(false);
         };
-    }, []);
+    }, [windowWidth]);
 
     const items: MenuProps['items'] = [
         {
@@ -57,7 +59,8 @@ const SideMenu = () => {
     ];
 
     return (
-        <Sider theme='light' collapsible={windowWidth > 844} collapsed={collapsed}
+        <Sider theme='light' collapsible={windowWidth >= 844 ? true : false}
+            collapsed={collapsed}
             onCollapse={(value) => setCollapsed(value)} className={styles.sidebar_menu}>
             <Menu
                 mode="vertical"

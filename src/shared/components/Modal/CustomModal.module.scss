@@ -1,26 +1,45 @@
 .create_btn {
-    background-color: #f6ffed;
     color: #87d068;
     border: 1px solid #87d068;
+    &:hover {
+        border: 1px solid #87d068 !important;
+        box-shadow: #87d068d3 0px 2px 8px 0px;
+        color: #87d068 !important;
+    }
 }
 .delete_btn {
-    background-color: #fff2f0;
     color: #ff6365;
     border: 1px solid #ff6365;
+    &:hover {
+        border: 1px solid #ff6365 !important;
+        box-shadow: #ff6365 0px 2px 8px 0px;
+        color: #ff6365 !important;
+    }
 }
 .update_btn {
-    background-color: #fffbe6;
     color: #fbbc3e;
     border: 1px solid #fbbc3e;
+    &:hover {
+        border: 1px solid #fbbc3e !important;
+        box-shadow: #fbbc3e 0px 2px 8px 0px;
+        color: #fbbc3e !important;
+    }
 }
 .reset_employye_password_btn {
-    background-color: #fffbe6;
     color: #d48807;
     border: 1px solid #d48807;
+    &:hover {
+        border: 1px solid #d48807 !important;
+        box-shadow: #d48807 0px 2px 8px 0px;
+        color: #d48807 !important;
+    }
 }
 .export_btn {
-    background-color: rgba(29, 255, 251, 0.081);
     color: #2db7f5;
     border: 1px solid #2db7f5;
+    &:hover {
+        border: 1px solid #2db7f5 !important;
+        box-shadow: #2db7f5 0px 2px 8px 0px;
+        color: #2db7f5 !important;
+    }
 }
-

@@ -1,10 +1,8 @@
 import { Button, Col, Form, Row, Select, SelectProps } from "antd";
-import { useState } from "react";
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+// import ReactQuill from 'react-quill';
+// import 'react-quill/dist/quill.snow.css';
 import utils from "styles/utils.module.scss";
 import { ReportFormType } from "types/ReportFormType";
-import styles from './ReportForm.module.scss';
 
 const options: SelectProps['options'] = [
   {
@@ -18,7 +16,7 @@ const options: SelectProps['options'] = [
 ];
 
 const ReportForm: React.FC<ReportFormType> = ({ okBtnColor, okText }) => {
-  const [value, setValue] = useState('');
+  // const [value, setValue] = useState('');
 
   const handleChange = (value: string[]) => {
     console.log(`selected ${value}`);
@@ -28,7 +26,7 @@ const ReportForm: React.FC<ReportFormType> = ({ okBtnColor, okText }) => {
     <Form layout='vertical'>
       <Row gutter={6}>
         <Col span={24}>
-          <ReactQuill theme="snow" value={value} onChange={setValue} className={styles.ql_container} />
+          {/* <ReactQuill theme="snow" value={value} onChange={setValue} className={styles.ql_container} /> */}
         </Col>
         <Col span={24}>
           <Form.Item label='Project Name'>

@@ -44,9 +44,9 @@ const CustomHeader: React.FC<HeaderType> = ({ setIsDarkMode, isDarkMode }) => {
             onClick={handleClick}>
             <Switch defaultChecked size="default" className={styles.switch_box} />
             {isDarkMode ? (
-              <Image src={sun} preview={false} className={styles.dark_mode_img} />
-            ) : (
               <Image src={night} preview={false} className={styles.dark_mode_img} />
+            ) : (
+              <Image src={sun} preview={false} className={styles.dark_mode_img} />
             )}
           </Typography>
           <Button className={`${styles.logout_btn_box} ${styles.dropdown_btn}`}>

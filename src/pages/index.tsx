@@ -13,7 +13,7 @@ const Router = () => {
   const { defaultAlgorithm, darkAlgorithm } = theme;
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [primary, setPrimary] = useState('#1554ad');
-  const token = true;
+  const token = false;
 
   return (
     <RenderIf
@@ -39,7 +39,6 @@ const Router = () => {
             colorLinkActive: primary,
             linkDecoration: 'none',
             colorLink: primary,
-
           },
           components: {
             Menu: {

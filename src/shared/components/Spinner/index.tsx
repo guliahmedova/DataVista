@@ -5,7 +5,7 @@ import styles from "./Spinner.module.scss";
 const Spinner = () => {
     return (
         <Content className={styles.spinner_container}>
-            <Spin tip="Loading" size="large">
+            <Spin size="large" fullscreen={true}>
                 <div className="content" />
             </Spin>
         </Content>

@@ -5,8 +5,6 @@ import styles from './CustomDrawer.module.scss';
 
 const CustomDrawer: React.FC<CustomDrawerType> = ({ actionKey, classname, icon, title, actionStatus }) => {
     const [open, setOpen] = useState(false);
-    console.log(actionKey);
-    
 
     const showDrawer = () => {
         setOpen(true);
