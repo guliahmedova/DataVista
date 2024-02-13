@@ -14,8 +14,6 @@ const Login = () => {
 
   const [login] = useLoginMutation();
 
-  console.log(formData);
-
   const handleSubmit = () => {
     login({
       email: formData.email,
@@ -48,9 +46,9 @@ const Login = () => {
             size='large'
             value={formData.password}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })} />
-          <Typography className={styles.eye_icon_box} onClick={() => setShowPassword(!showPassword)}>
+          {/* <Typography className={styles.eye_icon_box} onClick={() => setShowPassword(!showPassword)}>
             {showPassword ? <EyeInvisibleOutlined className={`${styles.eye_icon}`} /> : <EyeOutlined className={`${styles.eye_icon}`} />}
-          </Typography>
+          </Typography> */}
         </Form.Item>
 
         <Typography.Link className={styles.link_text} href='/forgot-password'>Forgot Password?</Typography.Link>

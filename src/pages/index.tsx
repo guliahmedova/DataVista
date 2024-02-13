@@ -8,6 +8,7 @@ import ForgotPassword from "./ForgotPassword";
 import Login from "./Login";
 import NotFound from "./NotFound";
 import PrivateRouter from "./PrivateRouter";
+import Home from "./Home";
 
 const Router = () => {
   const { defaultAlgorithm, darkAlgorithm } = theme;
@@ -22,6 +23,7 @@ const Router = () => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/" element={<Home />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       }
@@ -55,7 +57,7 @@ const Router = () => {
                 setPrimary={setPrimary}
                 isDarkMode={isDarkMode}
                 primary={primary}
-                 />
+              />
               <Divider />
               <PrivateRouter />
             </Cover>

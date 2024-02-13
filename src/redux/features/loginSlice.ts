@@ -1,4 +1,3 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -20,13 +19,11 @@ const loginSlice = createSlice({
         login: (
             state,
             {
-                payload: { user, token },
-            }: PayloadAction<{ user: User; token: string }>,
+                payload
+            }
         ) => {
-            state.user = user;
-            state.token = token;
-            console.log("token: ", token);
-            console.log("user: ", user);
+            state.token = payload.data.access_token;
+            console.log("token: ", state.token);
         },
     },
 });
@@ -35,7 +32,7 @@ export const reducer = persistReducer(
     {
         key: "CRM:LOGIN",
         storage,
-        whitelist: ["login"],
+        whitelist: ["login", "token", "user"],
     },
     loginSlice.reducer
 );

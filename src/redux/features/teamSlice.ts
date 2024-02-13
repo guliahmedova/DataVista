@@ -9,7 +9,7 @@ export const teamSlice = createSlice({
     },
     reducers: {
         sayHi: () => {
-            console.log("THI TEAMS");
+            console.log("THE TEAMS");
         }
     },
 });
