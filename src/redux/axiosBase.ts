@@ -1,66 +1,54 @@
-import type { BaseQueryFn } from '@reduxjs/toolkit/query';
-import type { AxiosError, AxiosRequestConfig } from 'axios';
-import axios, { AxiosInstance } from 'axios';
-
-const axiosBase: AxiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
-    headers: {
-        'Content-Type': 'application/json',
-    },
-});
+import { BaseQueryFn } from '@reduxjs/toolkit/query';
+import axios, { AxiosError, AxiosRequestConfig } from 'axios';
+const baseURL = `${import.meta.env.VITE_API_URL}`;
 
 export const axiosBaseQuery =
-    (
-        { baseUrl }: { baseUrl: string } = { baseUrl: '' }
-    ): BaseQueryFn<
+    ({ baseURL = '', headers }: { baseURL: string, headers: any }): BaseQueryFn<
         {
             url: string
             method: AxiosRequestConfig['method']
             data?: AxiosRequestConfig['data']
             params?: AxiosRequestConfig['params']
             headers?: AxiosRequestConfig['headers']
+            responseType?: string;
         },
         unknown,
-        unknown
-    > =>
-        async ({ url, method, data, params, headers }) => {
+        unknown> =>
+        async ({ url, params, method, data, responseType }, { signal, getState }) => {
             try {
-                const result = await axiosBase({
-                    url: baseUrl + url,
-                    method,
-                    data,
-                    params,
-                    headers,
+                const result = await axios({
+                    url: baseURL + url,
+                    method: method ? method : 'GET',
+                    ...(params && { params: params }),
+                    ...(headers && { headers: headers({}, { getState, signal }) }),
+                    ...(data && { data: data }),
+                    responseType: responseType ? responseType : 'json',
                 })
-                return { data: result.data }
-            } catch (axiosError) {
-                const err = axiosError as AxiosError
                 return {
-                    error: {
-                        status: err.response?.status,
-                        data: err.response?.data || err.message,
-                    },
+                    data: result.data,
+                }
+            } catch (axiosError) {
+                const err = axiosError as AxiosError;
+                return {
+                    error: { status: err.response?.status, data: err.response?.data },
                 }
             }
         };
 
-
-axiosBase.interceptors.request.use(
-    (config) => {
-        console.log("interceptors -> request: ", config);
-        return config;
+export const APIBaseQueryInterceptor = axiosBaseQuery({
+    baseURL: baseURL,
+    headers: (headers, { getState }) => {
+        const { auth } = getState();
+        if (auth?.access_token) {
+            headers['Authorization'] = `Bearer ${auth?.access_token}`
+        }
+        return headers;
     },
-    (error) => {
-        return Promise.reject(error);
+});
+export const APIBaseQuery = async (args, api, extraOptions) => {
+    let result = await APIBaseQueryInterceptor(args, api, extraOptions)
+    if (result.error) {
+        console.log('Error an occured');
     }
-);
-
-axiosBase.interceptors.response.use(
-    (response) => {
-        console.log("interceptors -> response: ", response);
-        return response;
-    },
-    (error) => {
-        return Promise.reject(error);
-    }
-);
+    return result;
+};

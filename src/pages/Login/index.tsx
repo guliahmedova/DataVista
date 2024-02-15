@@ -1,9 +1,8 @@
-import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Layout, Typography } from 'antd';
 import { useState } from 'react';
+import { useLoginUserMutation } from 'src/redux/api/authApi';
 import utils from "styles/utils.module.scss";
 import styles from './Login.module.scss';
-import { useLoginMutation } from 'src/redux/api/loginApi';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,10 +11,10 @@ const Login = () => {
     password: ""
   });
 
-  const [login] = useLoginMutation();
+  const [loginUser] = useLoginUserMutation();
 
   const handleSubmit = () => {
-    login({
+    loginUser({
       email: formData.email,
       password: formData.password
     })

@@ -1,10 +1,10 @@
-import loginReducer from "./features/loginSlice";
-import { loginApi } from "./api/loginApi";
+import authReducer from "./features/authSlice";
+import { authApi } from "./api/authApi";
 import { combineReducers } from "redux";
 
 export const reducers = combineReducers({
-    login: loginReducer,
-    [loginApi.reducerPath]: loginApi.reducer
+    auth: authReducer,
+    [authApi.reducerPath]: authApi.reducer
 });
 
-export const middleWares = [loginApi.middleware];
+export const middleWares = [authApi.middleware];
