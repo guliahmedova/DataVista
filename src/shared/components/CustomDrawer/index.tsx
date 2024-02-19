@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { CustomDrawerType } from 'types/CustomDrawerType';
 import styles from './CustomDrawer.module.scss';
 
-const CustomDrawer: React.FC<CustomDrawerType> = ({ actionKey, classname, icon, title, actionStatus }) => {
+const CustomDrawer: React.FC<CustomDrawerType> = ({ classname, icon, title, actionStatus }) => {
     const [open, setOpen] = useState(false);
 
     const showDrawer = () => {

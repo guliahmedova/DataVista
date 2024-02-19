@@ -1,4 +1,4 @@
-import { ConfigProvider, Divider, theme } from "antd";
+import { ConfigProvider, theme } from "antd";
 import { Suspense, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useAppSelector } from "src/redux/store";
