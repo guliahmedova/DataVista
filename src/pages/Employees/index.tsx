@@ -1,5 +1,5 @@
 import { DeleteOutlined, EditOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined, LockOutlined } from '@ant-design/icons';
-import { Descriptions, DescriptionsProps, Flex, Layout, Table, TableProps, Tag, Typography } from "antd";
+import { Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps, Tag, Typography } from "antd";
 import { useState } from 'react';
 import { CustomDrawer, CustomModal, DeleteView, EmployeeFilter, EmployeeForm, ResetPasswordForm } from 'shared/index';
 import { UserType } from 'src/pages/types/UserType';
@@ -156,7 +156,6 @@ const Employees = () => {
   };
 
   const [isActive, setIsActive] = useState(false);
-
   const columns: TableProps<UserType>['columns'] = [
     {
       title: 'First Name',
@@ -224,10 +223,12 @@ const Employees = () => {
 
   return (
     <Layout>
+      <Divider />
       <Flex gap={6} justify="end">
         <CustomModal actionKey={ActionKeys.CREATE} actionStatus={actionStatus[ActionKeys.CREATE]} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
         <CustomDrawer actionKey={ActionKeys.FILTER} icon={<FilterOutlined />} actionStatus={actionStatus[ActionKeys.FILTER]} title='Filter' classname='filter_btn' okText='Filter' />
       </Flex>
+      <Divider />
       <Table
         columns={columns}
         dataSource={data}

@@ -1,6 +1,6 @@
 import { Button, Form, Input, Layout, Typography } from 'antd';
 import { useState } from 'react';
-import { useLoginUserMutation } from 'src/redux/api/authApi';
+import { useLoginUserMutation } from 'src/redux/api/auth/authApi';
 import utils from "styles/utils.module.scss";
 import styles from './Login.module.scss';
 

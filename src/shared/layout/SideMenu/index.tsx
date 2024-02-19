@@ -9,7 +9,7 @@ const enum Urls {
     TEAM = "/teams",
     PROJECT = "/projects",
     REPORT = "/reports",
-    EMPLOYEE = "/employees"
+    EMPLOYEE = "/"
 };
 
 const SideMenu = () => {
@@ -33,6 +33,12 @@ const SideMenu = () => {
 
     const items: MenuProps['items'] = [
         {
+            label: <Link className={styles.menu_link} to="/">Employees</Link>,
+            key: 'Employees',
+            icon: <UsergroupAddOutlined className={styles.sidebar_icon} />,
+            className: location.pathname === Urls.EMPLOYEE ? styles.active_link : ""
+        },
+        {
             label: <Link className={styles.menu_link} to="/teams">Teams</Link>,
             key: 'Teams',
             icon: <TeamOutlined className={styles.sidebar_icon} />,
@@ -49,12 +55,6 @@ const SideMenu = () => {
             key: 'Reports',
             icon: <CreditCardOutlined className={styles.sidebar_icon} />,
             className: location.pathname === Urls.REPORT ? styles.active_link : ""
-        },
-        {
-            label: <Link className={styles.menu_link} to="/employees">Employees</Link>,
-            key: 'Employees',
-            icon: <UsergroupAddOutlined className={styles.sidebar_icon} />,
-            className: location.pathname === Urls.EMPLOYEE ? styles.active_link : ""
         }
     ];
 

@@ -1,5 +1,5 @@
 import { EditOutlined, ExportOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined } from '@ant-design/icons';
-import { Breadcrumb, Button, Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps, Tooltip } from "antd";
+import { Button, Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps, Tooltip } from "antd";
 import { ReportType } from "pages/types/ReportType";
 import styles from "shared/components/Modal/CustomModal.module.scss";
 import { CustomDrawer, CustomModal, ReportFilter, ReportForm } from 'src/shared';
@@ -95,13 +95,7 @@ const Reports = () => {
 
   return (
     <Layout>
-      <Breadcrumb
-        items={[
-          {
-            title: 'Reports',
-          }
-        ]}
-      />
+      <Divider />
       <Flex gap={6} justify="end">
         <CustomModal actionKey={ActionKeys.CREATE} actionStatus={actionStatus[ActionKeys.CREATE]} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
         <CustomDrawer actionKey={ActionKeys.FILTER} actionStatus={actionStatus[ActionKeys.FILTER]} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />

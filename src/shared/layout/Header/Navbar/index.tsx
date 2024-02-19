@@ -5,6 +5,8 @@ import { CustomModal, ResetPasswordForm } from "shared/index";
 import { logoIcon, night, sun } from "shared/media/imgs";
 import { HeaderType } from 'src/shared/types/HeaderType';
 import styles from './CustomHeader.module.scss';
+import { useAppDispatch } from "src/redux/store";
+import { logout } from "src/redux/features/user";
 const { Text, Link } = Typography;
 
 const enum ActionKeys {
@@ -21,6 +23,8 @@ const CustomHeader: React.FC<HeaderType> = ({ setIsDarkMode, isDarkMode }) => {
   const actionStatus = {
     ADMIN_RESET_PASSWORD: <ResetPasswordForm />
   };
+
+  const dispatch = useAppDispatch()
 
   return (
     <Header className={styles.header} style={{ background: colorBgContainer }}>
@@ -49,7 +53,7 @@ const CustomHeader: React.FC<HeaderType> = ({ setIsDarkMode, isDarkMode }) => {
               <Image src={sun} preview={false} className={styles.dark_mode_img} />
             )}
           </Typography>
-          <Button className={`${styles.logout_btn_box} ${styles.dropdown_btn}`}>
+          <Button onClick={()=>dispatch(logout())} className={`${styles.logout_btn_box} ${styles.dropdown_btn}`}>
             <Tooltip placement="top" title="Logout">
               <LogoutOutlined />
             </Tooltip>

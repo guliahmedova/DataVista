@@ -1,5 +1,5 @@
 import { DeleteOutlined, EditOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined } from '@ant-design/icons';
-import { Breadcrumb, Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps, Typography } from "antd";
+import { Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps, Typography } from "antd";
 import { CustomDrawer, CustomModal, DeleteView, TeamFilter, TeamForm } from 'shared/index';
 import { TeamType } from 'src/pages/types/TeamType';
 
@@ -64,17 +64,9 @@ const Teams = () => {
     },
   ];
 
-
-
   return (
     <Layout>
-      <Breadcrumb
-        items={[
-          {
-            title: 'Teams',
-          }
-        ]}
-      />
+      <Divider />
       <Flex gap={6} justify='end'>
         <CustomModal actionKey={ActionKeys.CREATE} actionStatus={actionStatus[ActionKeys.CREATE]} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
         <CustomDrawer actionKey={ActionKeys.FILTER} actionStatus={actionStatus[ActionKeys.FILTER]} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />

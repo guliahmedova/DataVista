@@ -15,3 +15,4 @@ export { default as OTPConfirmation } from "src/shared/components/OTPConfirmatio
 export { default as RenderIf } from "src/shared/components/RenderIf";
 export { default as CustomHeader } from 'src/shared/layout/Header/Navbar';
 export { default as SideMenu } from 'src/shared/layout/SideMenu';
+export { default as Spinner } from 'src/shared/components/Spinner';

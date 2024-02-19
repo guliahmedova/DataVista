@@ -37,15 +37,17 @@ export const axiosBaseQuery =
 
 export const APIBaseQueryInterceptor = axiosBaseQuery({
     baseURL: baseURL,
-    headers: (headers, { getState }) => {
+    headers: (headers: any, { getState }: any) => {
         const { auth } = getState();
-        if (auth?.access_token) {
-            headers['Authorization'] = `Bearer ${auth?.access_token}`
+        console.log(auth.user, "token base");
+        if (auth?.user?.access_token) {
+            headers['Authorization'] = `Bearer ${auth?.user?.access_token}`
         }
         return headers;
     },
 });
-export const APIBaseQuery = async (args, api, extraOptions) => {
+
+export const APIBaseQuery = async (args: any, api: any, extraOptions: any) => {
     let result = await APIBaseQueryInterceptor(args, api, extraOptions)
     if (result.error) {
         console.log('Error an occured');

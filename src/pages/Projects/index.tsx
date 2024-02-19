@@ -1,5 +1,5 @@
 import { EditOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined } from '@ant-design/icons';
-import { Breadcrumb, Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps } from "antd";
+import { Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps } from "antd";
 import { CustomDrawer, CustomModal, ProjectFilter, ProjectForm } from 'shared/index';
 import { ProjectType } from 'src/pages/types/ProjectType';
 
@@ -62,13 +62,7 @@ const Projects = () => {
 
   return (
     <Layout>
-      <Breadcrumb
-        items={[
-          {
-            title: 'Projects',
-          }
-        ]}
-      />
+      <Divider />
       <Flex gap={6} justify='end'>
         <CustomModal actionKey={ActionKeys.CREATE} actionStatus={actionStatus[ActionKeys.CREATE]} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
         <CustomDrawer actionKey={ActionKeys.FILTER} actionStatus={actionStatus[ActionKeys.FILTER]} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
