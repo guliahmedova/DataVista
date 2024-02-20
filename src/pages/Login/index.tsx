@@ -1,17 +1,17 @@
+import { useLoginUserMutation } from '@/redux/api/auth';
+import utils from "@/styles/utils.module.scss";
+import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Layout, Typography } from 'antd';
 import { useState } from 'react';
-import { useLoginUserMutation } from 'src/redux/api/auth/authApi';
-import utils from "styles/utils.module.scss";
 import styles from './Login.module.scss';
-import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+
   const [formData, setFormData] = useState({
     email: "",
     password: ""
   });
-
   const [loginUser] = useLoginUserMutation();
 
   const handleSubmit = () => {
@@ -23,7 +23,7 @@ const Login = () => {
 
   return (
     <Layout className={`${utils.password_layout} ${utils.layout_gradient}`}>
-      <Form layout='vertical' className={utils.password_form} action='#'>
+      <Form layout='vertical' className={utils.password_form}>
         <Typography.Title className={utils.title}>
           Login
         </Typography.Title>

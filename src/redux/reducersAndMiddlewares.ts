@@ -1,4 +1,4 @@
-import { authApi } from "./api/auth/authApi";
+import { authApi } from "./api/auth";
 import authReducer from "./features/user";
 
 export const reducers = {

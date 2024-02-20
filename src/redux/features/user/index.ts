@@ -19,8 +19,8 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        setUser: (state, action: PayloadAction<string>) => {
-            state.access_token = action.payload;
+        setUser: (state, action: PayloadAction<UserDataDto>) => {
+            state.user = action.payload;
         },
         setToken: (state, action: PayloadAction<ILogin>) => {
             const { access_token, expired_date } = action.payload;

@@ -1,9 +1,9 @@
+import { UserType } from '@/pages/types/UserType';
+import { CustomDrawer, CustomModal, DeleteView, EmployeeFilter, EmployeeForm, ResetPasswordForm } from '@/shared';
+import utils from '@/styles/utils.module.scss';
 import { DeleteOutlined, EditOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined, LockOutlined } from '@ant-design/icons';
 import { Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps, Tag, Typography } from "antd";
 import { useState } from 'react';
-import { CustomDrawer, CustomModal, DeleteView, EmployeeFilter, EmployeeForm, ResetPasswordForm } from 'shared/index';
-import { UserType } from 'src/pages/types/UserType';
-import utils from 'styles/utils.module.scss';
 
 interface ColorCondition {
   Active: string,
@@ -146,6 +146,8 @@ const data: UserType[] = [
 ];
 
 const Employees = () => {
+  const [isActive, setIsActive] = useState(false);
+
   const actionStatus = {
     EMPLOYEE_CREATE: <EmployeeForm okText='Create' okBtnColor='#87d068' />,
     EMPLOYEE_UPDATE: <EmployeeForm okText='Update' okBtnColor='orange' actionKey={ActionKeys.UPDATE} />,
@@ -155,7 +157,6 @@ const Employees = () => {
     RESET_PASSWORD: <ResetPasswordForm />
   };
 
-  const [isActive, setIsActive] = useState(false);
   const columns: TableProps<UserType>['columns'] = [
     {
       title: 'First Name',
@@ -225,8 +226,10 @@ const Employees = () => {
     <Layout>
       <Divider />
       <Flex gap={6} justify="end">
-        <CustomModal actionKey={ActionKeys.CREATE} actionStatus={actionStatus[ActionKeys.CREATE]} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
-        <CustomDrawer actionKey={ActionKeys.FILTER} icon={<FilterOutlined />} actionStatus={actionStatus[ActionKeys.FILTER]} title='Filter' classname='filter_btn' okText='Filter' />
+        <CustomModal actionKey={ActionKeys.CREATE} actionStatus={actionStatus[ActionKeys.CREATE]} icon={<FileAddOutlined />}
+          title='Create' classname='create_btn' okText='Create' />
+        <CustomDrawer actionKey={ActionKeys.FILTER} icon={<FilterOutlined />} actionStatus={actionStatus[ActionKeys.FILTER]}
+          title='Filter' classname='filter_btn' okText='Filter' />
       </Flex>
       <Divider />
       <Table

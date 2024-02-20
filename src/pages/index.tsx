@@ -1,10 +1,10 @@
+import { useAppSelector } from "@/redux/store";
+import { CustomHeader, RenderIf, SideMenu, Spinner } from "@/shared";
+import Auxilliary from "@/shared/modules/Auxilliary";
+import Cover from "@/shared/modules/Cover";
 import { ConfigProvider, theme } from "antd";
 import { Suspense, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { useAppSelector } from "src/redux/store";
-import { CustomHeader, RenderIf, SideMenu, Spinner } from "src/shared";
-import Auxilliary from "src/shared/modules/Auxilliary";
-import Cover from "src/shared/modules/Cover";
 import ForgotPassword from "./ForgotPassword";
 import Login from "./Login";
 import PrivateRouter from "./PrivateRouter";
@@ -13,7 +13,7 @@ const Router = () => {
   const { defaultAlgorithm, darkAlgorithm } = theme;
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [primary, setPrimary] = useState('#1554ad');
-  const { access_token } = useAppSelector(state => state.auth)
+  const { access_token } = useAppSelector(state => state.auth);
 
   return (
     <>

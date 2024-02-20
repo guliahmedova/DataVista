@@ -1,7 +1,7 @@
+import { IProjectFormType } from "@/shared/models";
 import { Button, Col, Form, Input, Row } from "antd";
-import { ProjectFormType } from "types/ProjectFormType";
 
-const ProjectFilter: React.FC<ProjectFormType> = ({ okBtnColor, okText }) => {
+const ProjectFilter: React.FC<IProjectFormType> = ({ okBtnColor, okText }) => {
   return (
     <Form layout='vertical'>
       <Row gutter={6}>

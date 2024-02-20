@@ -1,7 +1,7 @@
+import { ProjectType } from '@/pages/types/ProjectType';
+import { CustomDrawer, CustomModal, ProjectFilter, ProjectForm } from '@/shared/index';
 import { EditOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined } from '@ant-design/icons';
 import { Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps } from "antd";
-import { CustomDrawer, CustomModal, ProjectFilter, ProjectForm } from 'shared/index';
-import { ProjectType } from 'src/pages/types/ProjectType';
 
 const enum ActionKeys {
   CREATE = 'PROJECTS_CREATE',

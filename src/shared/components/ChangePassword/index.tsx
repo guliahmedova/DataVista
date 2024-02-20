@@ -1,5 +1,5 @@
+import utils from "@/styles/utils.module.scss";
 import { Button, Form, Input, Layout, Typography } from 'antd';
-import utils from "styles/utils.module.scss";
 
 const ChangePassword = () => {
   return (

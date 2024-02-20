@@ -1,8 +1,8 @@
 import { Button, Col, Form, Row, Select, SelectProps } from "antd";
 // import ReactQuill from 'react-quill';
 // import 'react-quill/dist/quill.snow.css';
-import utils from "styles/utils.module.scss";
-import { ReportFormType } from "types/ReportFormType";
+import { IReportFormType } from "@/shared/models";
+import utils from "@/styles/utils.module.scss";
 
 const options: SelectProps['options'] = [
   {
@@ -15,7 +15,7 @@ const options: SelectProps['options'] = [
   }
 ];
 
-const ReportForm: React.FC<ReportFormType> = ({ okBtnColor, okText }) => {
+const ReportForm: React.FC<IReportFormType> = ({ okBtnColor, okText }) => {
   // const [value, setValue] = useState('');
 
   const handleChange = (value: string[]) => {

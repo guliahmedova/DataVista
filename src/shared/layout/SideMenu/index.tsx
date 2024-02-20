@@ -1,16 +1,10 @@
+import { Urls } from '@/shared/constants/url';
 import { CreditCardOutlined, ProjectOutlined, TeamOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import { Menu, MenuProps } from "antd";
 import Sider from 'antd/es/layout/Sider';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './SidebarMenu.module.scss';
-
-const enum Urls {
-    TEAM = "/teams",
-    PROJECT = "/projects",
-    REPORT = "/reports",
-    EMPLOYEE = "/"
-};
 
 const SideMenu = () => {
     const [collapsed, setCollapsed] = useState(false);
@@ -20,48 +14,42 @@ const SideMenu = () => {
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
-            if (window.innerWidth <= 844) {
-                setCollapsed(false);
-            }
+            if (window.innerWidth <= 844) setCollapsed(false);
         };
         window.addEventListener("resize", handleResize);
         setCollapsed(true);
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
+        return () => window.removeEventListener("resize", handleResize);
     }, [windowWidth]);
 
     const items: MenuProps['items'] = [
         {
-            label: <Link className={styles.menu_link} to="/">Employees</Link>,
+            label: <Link className={styles.menu_link} to={Urls.EMPLOYEES_URL}>Employees</Link>,
             key: 'Employees',
             icon: <UsergroupAddOutlined className={styles.sidebar_icon} />,
-            className: location.pathname === Urls.EMPLOYEE ? styles.active_link : ""
+            className: location.pathname === Urls.EMPLOYEES_URL ? styles.active_link : "",
         },
         {
-            label: <Link className={styles.menu_link} to="/teams">Teams</Link>,
+            label: <Link className={styles.menu_link} to={Urls.TEAMS_URL}>Teams</Link>,
             key: 'Teams',
             icon: <TeamOutlined className={styles.sidebar_icon} />,
-            className: location.pathname === Urls.TEAM ? styles.active_link : ""
+            className: location.pathname === Urls.TEAMS_URL ? styles.active_link : ""
         },
         {
-            label: <Link className={styles.menu_link} to="/projects">Projects</Link>,
+            label: <Link className={styles.menu_link} to={Urls.PROJECTS_URL}>Projects</Link>,
             key: 'Projects',
             icon: <ProjectOutlined className={styles.sidebar_icon} />,
-            className: location.pathname === Urls.PROJECT ? styles.active_link : ""
+            className: location.pathname === Urls.PROJECTS_URL ? styles.active_link : ""
         },
         {
-            label: <Link className={styles.menu_link} to="/reports">Reports</Link>,
+            label: <Link className={styles.menu_link} to={Urls.REPORTS_URL}>Reports</Link>,
             key: 'Reports',
             icon: <CreditCardOutlined className={styles.sidebar_icon} />,
-            className: location.pathname === Urls.REPORT ? styles.active_link : ""
+            className: location.pathname === Urls.REPORTS_URL ? styles.active_link : ""
         }
     ];
 
     return (
-        <Sider theme='light' collapsible={windowWidth >= 844 ? true : false}
-            collapsed={collapsed}
-            onCollapse={(value) => setCollapsed(value)} className={styles.sidebar_menu}>
+        <Sider theme='light' collapsible={windowWidth >= 844 ? true : false} collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} className={styles.sidebar_menu}>
             <Menu
                 mode="vertical"
                 items={items}

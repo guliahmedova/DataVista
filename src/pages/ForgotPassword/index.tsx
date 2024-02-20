@@ -1,7 +1,7 @@
+import { ChangePassword, OTPConfirmation } from '@/shared';
+import utils from "@/styles/utils.module.scss";
 import { Button, Form, Input, Layout, Steps, Typography, message } from 'antd';
 import { useState } from 'react';
-import { ChangePassword, OTPConfirmation } from 'shared/index';
-import utils from "styles/utils.module.scss";
 import styles from './ForgotPaswword.module.scss';
 
 const ForgotPassword = () => {

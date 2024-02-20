@@ -1,6 +1,6 @@
+import { ITeamFormType } from "@/shared/models";
+import utils from "@/styles/utils.module.scss";
 import { Button, Col, Form, Input, Row, Select, SelectProps } from "antd";
-import utils from "styles/utils.module.scss";
-import { TeamFormType } from "types/TeamFormType";
 
 const options: SelectProps['options'] = [
     {
@@ -13,7 +13,7 @@ const options: SelectProps['options'] = [
     }
 ];
 
-const ProjectForm: React.FC<TeamFormType> = ({ okText, okBtnColor }) => {
+const ProjectForm: React.FC<ITeamFormType> = ({ okText, okBtnColor }) => {
     const handleChange = (value: string[]) => {
         console.log(`selected ${value}`);
     };

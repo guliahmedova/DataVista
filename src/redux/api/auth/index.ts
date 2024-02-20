@@ -1,7 +1,7 @@
+import { APIBaseQuery } from '@/redux/axiosBase';
+import { setToken, setUser } from '@/redux/features/user';
+import { UserDataDto } from '@/redux/features/user/types';
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { APIBaseQuery } from '../../axiosBase';
-import { setToken, setUser } from '../../features/user';
-import { UserDataDto } from '../../features/user/types';
 
 export const authApi = createApi({
     reducerPath: 'authApi',
@@ -28,7 +28,6 @@ export const authApi = createApi({
             async onQueryStarted(_args, { dispatch, queryFulfilled }) {
                 try {
                     const { data } = await queryFulfilled;
-                    console.log(setUser(data));
                     dispatch(setUser(data));
                 } catch (error) {
                     console.log(error);

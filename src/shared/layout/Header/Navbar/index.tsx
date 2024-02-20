@@ -1,19 +1,19 @@
+import { logout } from "@/redux/features/user";
+import { useAppDispatch } from "@/redux/store";
+import { CustomModal, ResetPasswordForm } from "@/shared/index";
+import { logoIcon, night, sun } from "@/shared/media/imgs";
+import { IHeaderType } from '@/shared/models';
 import { LockOutlined, LogoutOutlined } from "@ant-design/icons";
 import { Button, Flex, Image, Space, Switch, Tooltip, Typography, theme } from 'antd';
 import { Header } from "antd/es/layout/layout";
-import { CustomModal, ResetPasswordForm } from "shared/index";
-import { logoIcon, night, sun } from "shared/media/imgs";
-import { HeaderType } from 'src/shared/types/HeaderType';
 import styles from './CustomHeader.module.scss';
-import { useAppDispatch } from "src/redux/store";
-import { logout } from "src/redux/features/user";
 const { Text, Link } = Typography;
 
 const enum ActionKeys {
   ADMIN_RESET_PASSWORD = 'ADMIN_RESET_PASSWORD'
 };
 
-const CustomHeader: React.FC<HeaderType> = ({ setIsDarkMode, isDarkMode }) => {
+const CustomHeader: React.FC<IHeaderType> = ({ setIsDarkMode, isDarkMode }) => {
   const handleClick = () => { if (setIsDarkMode) setIsDarkMode((previousValue) => !previousValue) };
 
   const {

@@ -1,11 +1,9 @@
+import { ILayoutType } from '@/shared/models';
 import { Layout } from 'antd';
-import { LayoutType } from 'types/LayoutType';
 import styles from "./Auxilliary.module.scss";
 
-const Auxilliary: React.FC<LayoutType> = ({ children }) => {
-    return (
-        <Layout className={styles.auxilliary}>{children}</Layout>
-    )
+const Auxilliary: React.FC<ILayoutType> = ({ children }) => {
+    return <Layout className={styles.auxilliary}>{children}</Layout>
 };
 
 export default Auxilliary;

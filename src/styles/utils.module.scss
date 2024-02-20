@@ -67,6 +67,12 @@
     width: 100%;
 }
 
+.err_msg {
+    font-weight: 700;
+    color: #c0090c;
+    display: block;
+}
+
 @media screen and (max-width: 50em) {
     .password_layout {
         .password_form {
@@ -90,4 +96,4 @@
             height: 95%;
         }
     }
-};
+}

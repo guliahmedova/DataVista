@@ -1,6 +1,6 @@
+import utils from "@/styles/utils.module.scss";
 import { Button, Form, Layout, Typography } from "antd";
 import { InputOTP } from 'antd-input-otp';
-import utils from "styles/utils.module.scss";
 import styles from './OtpConfirmation.module.scss';
 
 const OTPConfirmation = () => {

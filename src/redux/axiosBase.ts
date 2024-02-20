@@ -39,9 +39,8 @@ export const APIBaseQueryInterceptor = axiosBaseQuery({
     baseURL: baseURL,
     headers: (headers: any, { getState }: any) => {
         const { auth } = getState();
-        console.log(auth.user, "token base");
-        if (auth?.user?.access_token) {
-            headers['Authorization'] = `Bearer ${auth?.user?.access_token}`
+        if (auth?.access_token) {
+            headers['Authorization'] = `Bearer ${auth?.access_token}`
         }
         return headers;
     },
