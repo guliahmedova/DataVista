@@ -44,12 +44,10 @@
     margin: 0 auto;
 }
 .form_input {
-    background-color: $main_bg_color;
     width: 100%;
     padding: 1rem;
     &:focus,
     & :hover {
-        border: $main_color 1px solid;
         outline: none;
         box-shadow: none;
     }
@@ -71,6 +69,8 @@
     font-weight: 700;
     color: #c0090c;
     display: block;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 50em) {

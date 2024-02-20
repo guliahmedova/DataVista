@@ -1,4 +1,5 @@
-import { UserType } from '@/pages/types/UserType';
+import { ACTION_KEY, UserType } from '@/pages/models';
+import { useGetAllEmployeesQuery } from '@/redux/api/employees';
 import { CustomDrawer, CustomModal, DeleteView, EmployeeFilter, EmployeeForm, ResetPasswordForm } from '@/shared';
 import utils from '@/styles/utils.module.scss';
 import { DeleteOutlined, EditOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined, LockOutlined } from '@ant-design/icons';
@@ -8,15 +9,6 @@ import { useState } from 'react';
 interface ColorCondition {
   Active: string,
   DeActive: string
-};
-
-const enum ActionKeys {
-  CREATE = 'EMPLOYEE_CREATE',
-  UPDATE = 'EMPLOYEE_UPDATE',
-  VIEW = "EMPLOYEE_VIEW",
-  FILTER = "EMPLOYEE_FILTER",
-  DELETE = "EMPLOYEE_DELETE",
-  RESET_PASSWORD = "RESET_PASSWORD"
 };
 
 const items: DescriptionsProps['items'] = [
@@ -52,7 +44,7 @@ const items: DescriptionsProps['items'] = [
   },
 ];
 
-const data: UserType[] = [
+const datas: UserType[] = [
   {
     key: '1',
     firstname: 'John',
@@ -149,11 +141,11 @@ const Employees = () => {
   const [isActive, setIsActive] = useState(false);
 
   const actionStatus = {
-    EMPLOYEE_CREATE: <EmployeeForm okText='Create' okBtnColor='#87d068' />,
-    EMPLOYEE_UPDATE: <EmployeeForm okText='Update' okBtnColor='orange' actionKey={ActionKeys.UPDATE} />,
-    EMPLOYEE_VIEW: <Descriptions title="Project Info" items={items} layout="vertical" bordered={true} column={2} />,
-    EMPLOYEE_FILTER: <EmployeeFilter okText='Filter' okBtnColor='purple' />,
-    EMPLOYEE_DELETE: <DeleteView />,
+    CREATE: <EmployeeForm actionKey={ACTION_KEY.CREATE} okText='Create' okBtnColor='#87d068' />,
+    UPDATE: <EmployeeForm actionKey={ACTION_KEY.UPDATE} okText='Update' okBtnColor='orange' />,
+    VIEW: <Descriptions title="Project Info" items={items} layout="vertical" bordered={true} column={2} />,
+    FILTER: <EmployeeFilter okText='Filter' okBtnColor='purple' />,
+    DELETE: <DeleteView />,
     RESET_PASSWORD: <ResetPasswordForm />
   };
 
@@ -213,28 +205,31 @@ const Employees = () => {
       ellipsis: true,
       render: () => (
         <Flex gap={6} wrap="nowrap">
-          <CustomModal actionKey={ActionKeys.UPDATE} actionStatus={actionStatus[ActionKeys.UPDATE]} icon={<EditOutlined />} title='Update Employee' classname='update_btn' okText='Update' />
-          <CustomModal actionKey={ActionKeys.DELETE} actionStatus={actionStatus[ActionKeys.DELETE]} icon={<DeleteOutlined />} title='Delete Employee' classname='delete_btn' okText='Delete' />
-          <CustomDrawer actionKey={ActionKeys.VIEW} icon={<FundViewOutlined />} actionStatus={actionStatus[ActionKeys.VIEW]} title='View Employee' classname='view_btn' okText='View' />
-          <CustomModal actionKey={ActionKeys.RESET_PASSWORD} actionStatus={actionStatus[ActionKeys.RESET_PASSWORD]} icon={<LockOutlined />} title='Reset Password' classname='reset_employye_password_btn' okText='Delete' />
+          <CustomModal actionKey={ACTION_KEY.UPDATE} actionStatus={actionStatus[ACTION_KEY.UPDATE]} icon={<EditOutlined />} title='Update Employee' classname='update_btn' okText='Update' />
+          <CustomModal actionKey={ACTION_KEY.DELETE} actionStatus={actionStatus[ACTION_KEY.DELETE]} icon={<DeleteOutlined />} title='Delete Employee' classname='delete_btn' okText='Delete' />
+          <CustomDrawer actionKey={ACTION_KEY.VIEW} icon={<FundViewOutlined />} actionStatus={actionStatus[ACTION_KEY.VIEW]} title='View Employee' classname='view_btn' okText='View' />
+          <CustomModal actionKey={ACTION_KEY.RESET_PASSWORD} actionStatus={actionStatus[ACTION_KEY.RESET_PASSWORD]} icon={<LockOutlined />} title='Reset Password' classname='reset_employye_password_btn' okText='Delete' />
         </Flex>
       )
     },
   ];
 
+  const { data } = useGetAllEmployeesQuery("");
+  console.log(data);
+
   return (
     <Layout>
       <Divider />
       <Flex gap={6} justify="end">
-        <CustomModal actionKey={ActionKeys.CREATE} actionStatus={actionStatus[ActionKeys.CREATE]} icon={<FileAddOutlined />}
+        <CustomModal actionKey={ACTION_KEY.CREATE} actionStatus={actionStatus[ACTION_KEY.CREATE]} icon={<FileAddOutlined />}
           title='Create' classname='create_btn' okText='Create' />
-        <CustomDrawer actionKey={ActionKeys.FILTER} icon={<FilterOutlined />} actionStatus={actionStatus[ActionKeys.FILTER]}
+        <CustomDrawer actionKey={ACTION_KEY.FILTER} icon={<FilterOutlined />} actionStatus={actionStatus[ACTION_KEY.FILTER]}
           title='Filter' classname='filter_btn' okText='Filter' />
       </Flex>
       <Divider />
       <Table
         columns={columns}
-        dataSource={data}
+        dataSource={datas}
         rowKey='key'
         bordered
         size="large"

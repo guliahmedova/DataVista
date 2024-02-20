@@ -8,12 +8,12 @@ const ResetPasswordForm = () => {
             <Row gutter={6}>
                 <Col span={24}>
                     <Form.Item label="New Password">
-                        <Input size="large" />
+                        <Input.Password type="password" size="large" />
                     </Form.Item>
                 </Col>
                 <Col span={24}>
                     <Form.Item label="Repeat Password">
-                        <Input size="large" />
+                        <Input.Password type="password" size="large" />
                     </Form.Item>
                 </Col>
                 <Col span={24} className={utils.btns_placement}>

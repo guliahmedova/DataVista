@@ -1,30 +1,92 @@
-import { EmployeeFormType, ITeamFormType } from "@/shared/models";
+import { ACTION_KEY } from "@/pages/models";
+import { useCreateEmployeeMutation, useUpdateEmployeeMutation } from "@/redux/api/employees";
+import { useAppSelector } from "@/redux/store";
+import { EmployeeFormType, IFormProps } from "@/shared/models";
 import utils from "@/styles/utils.module.scss";
 import { EmployeesFormScheme } from "@/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Col, Form, Input, Row, Select, SelectProps } from "antd";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 
-const options: SelectProps['options'] = [
+const roleoptions: SelectProps['options'] = [
     {
-        label: 'Trs',
-        value: 'Trs'
+        label: 'SUPERADMIN',
+        value: "1"
     },
     {
-        label: 'Joe',
-        value: 'Joe'
+        label: 'ADMIN',
+        value: "2"
+    },
+    {
+        label: 'HEAD',
+        value: "3"
+    },
+    {
+        label: 'EMPLOYEE',
+        value: "4"
     }
 ];
 
-const EmployeeForm: React.FC<ITeamFormType> = ({ okText, okBtnColor, actionKey }) => {
-    const handleChange = (value: string[]) => {
-        console.log(`selected ${value}`);
-    };
+const teamptions: SelectProps['options'] = [
+    {
+        label: 'Frontend',
+        value: "1"
+    },
+    {
+        label: 'Backend',
+        value: "2"
+    },
+    {
+        label: 'Mobile',
+        value: "3"
+    },
+    {
+        label: 'UI',
+        value: "4"
+    }
+];
 
-    const { register, handleSubmit, formState: { errors } } = useForm<EmployeeFormType>({ resolver: zodResolver(EmployeesFormScheme) });
+const activeoptions: SelectProps['options'] = [
+    {
+        label: 'Active',
+        value: "1"
+    },
+    {
+        label: 'Deactive',
+        value: "2"
+    },
+];
+
+const EmployeeForm: React.FC<IFormProps> = ({ okText, okBtnColor, actionKey }) => {
+    const { control, handleSubmit, formState: { errors } } = useForm<EmployeeFormType>({ resolver: zodResolver(EmployeesFormScheme) });
+    const [createEmployee] = useCreateEmployeeMutation();
+    const [updateEmployee] = useUpdateEmployeeMutation();
+    const { user_id } = useAppSelector(state => state.auth);
 
     const submitData = (data: EmployeeFormType) => {
-        console.log(data);
+        if (actionKey === ACTION_KEY.CREATE) {
+            createEmployee({
+                firstname: data.firstName,
+                lastname: data.lastName,
+                email: data.email,
+                password: data.password,
+                team_id: data.teamID,
+                role: {
+                    id: data.roleID,
+                    roleEnum: "ADMIN"
+                }
+            });
+        }
+        updateEmployee({
+            id: user_id,
+            data: {
+                name: data.firstName,
+                surname: data.lastName,
+                email: data.email,
+                roleId: data.roleID,
+                teamId: data.teamID
+            }
+        })
     };
 
     return (
@@ -32,67 +94,125 @@ const EmployeeForm: React.FC<ITeamFormType> = ({ okText, okBtnColor, actionKey }
             <Row gutter={6}>
                 <Col span={12}>
                     <Form.Item label="First Name" name="firstName">
-                        <Input size="large" {...register("firstName")} name="firstName"  />
+                        <Controller
+                            control={control}
+                            render={({ field: { onChange, onBlur, value } }) => (
+                                <Input
+                                    size="large"
+                                    onBlur={onBlur}
+                                    onChange={onChange}
+                                    value={value} />
+                            )}
+                            name="firstName"
+                        />
                     </Form.Item>
                     {errors.firstName && <span className={utils.err_msg}>{errors.firstName.message}</span>}
                 </Col>
                 <Col span={12}>
                     <Form.Item label="Last Name" name="lastName">
-                        <Input size="large"  {...register("lastName")} name="lastName" />
+                        <Controller
+                            control={control}
+                            render={({ field: { onChange, onBlur, value } }) => (
+                                <Input size="large"
+                                    onBlur={onBlur}
+                                    onChange={onChange}
+                                    value={value}
+                                />
+                            )}
+                            name="lastName"
+                        />
                     </Form.Item>
                     {errors.lastName && <span className={utils.err_msg}>{errors.lastName.message}</span>}
                 </Col>
                 <Col span={12}>
                     <Form.Item label="Email" name="email">
-                        <Input size="large"  {...register("email")} name="email" />
+                        <Controller
+                            control={control}
+                            render={({ field: { onChange, onBlur, value } }) => (
+                                <Input size="large"
+                                    onBlur={onBlur}
+                                    onChange={onChange}
+                                    value={value}
+                                    name="email" />
+                            )}
+                            name="email"
+                        />
                     </Form.Item>
                     {errors.email && <span className={utils.err_msg}>{errors.email.message}</span>}
                 </Col>
                 <Col span={12}>
                     <Form.Item label="Password" name="password">
-                        <Input size="large"  {...register("password")} name="password" />
+                        <Controller
+                            control={control}
+                            render={({ field: { onChange, onBlur, value } }) => (
+                                <Input.Password size="large"
+                                    onBlur={onBlur}
+                                    onChange={onChange}
+                                    value={value}
+                                />
+                            )}
+                            name="password"
+                        />
                     </Form.Item>
                     {errors.password && <span className={utils.err_msg}>{errors.password.message}</span>}
                 </Col>
                 <Col span={12}>
                     <Form.Item label="Teams" name="teamID">
-                        <Select
-                            {...register("teamID")}
-                            size="large"
-                            mode="multiple"
-                            allowClear
-                            placeholder="Please select"
-                            onChange={handleChange}
-                            options={options}
+                        <Controller
+                            control={control}
+                            render={({ field: { onChange, onBlur, value } }) => (
+                                <Select
+                                    size="large"
+                                    allowClear
+                                    placeholder="Please select"
+                                    onBlur={onBlur}
+                                    onChange={onChange}
+                                    value={value}
+                                    options={teamptions}
+                                />
+                            )}
+                            name="teamID"
                         />
                     </Form.Item>
                     {errors.teamID && <span className={utils.err_msg}>{errors.teamID.message}</span>}
                 </Col>
                 <Col span={12}>
                     <Form.Item label="Roles" name="roleID">
-                        <Select
-                            {...register("roleID")}
-                            size="large"
-                            mode="multiple"
-                            allowClear
-                            placeholder="Please select"
-                            onChange={handleChange}
-                            options={options}
+                        <Controller
+                            control={control}
+                            render={({ field: { onChange, onBlur, value } }) => (
+                                <Select
+                                    size="large"
+                                    allowClear
+                                    placeholder="Please select"
+                                    onBlur={onBlur}
+                                    onChange={onChange}
+                                    value={value}
+                                    options={roleoptions}
+                                />
+                            )}
+                            name="roleID"
                         />
                     </Form.Item>
                     {errors.roleID && <span className={utils.err_msg}>{errors.roleID.message}</span>}
                 </Col>
-                {actionKey === 'EMPLOYEE_UPDATE' && (
+                {actionKey == ACTION_KEY.UPDATE && (
                     <Col span={12}>
                         <Form.Item label="Status" name="status">
-                            <Select
-                                {...register("status")}
-                                size="large"
-                                mode="multiple"
-                                allowClear
-                                placeholder="Please select"
-                                onChange={handleChange}
-                                options={options}
+                            <Controller
+                                control={control}
+                                render={({ field: { onChange, onBlur, value } }) => (
+                                    <Select
+                                        size="large"
+                                        allowClear
+                                        placeholder="Please select"
+                                        onBlur={onBlur}
+                                        onChange={onChange}
+                                        value={value}
+                                        options={activeoptions}
+                                    />
+                                )}
+                                name="status"
                             />
                         </Form.Item>
                         {errors.status && <span className={utils.err_msg}>{errors.status.message}</span>}

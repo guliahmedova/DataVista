@@ -7,12 +7,14 @@ interface IAuthState {
     user: UserDataDto | null;
     access_token: string | null;
     expired_date: string | null;
+    user_id: number | null
 };
 
 const initialState: IAuthState = {
     user: null,
     access_token: null,
     expired_date: null,
+    user_id: null
 };
 
 export const authSlice = createSlice({
@@ -23,11 +25,12 @@ export const authSlice = createSlice({
             state.user = action.payload;
         },
         setToken: (state, action: PayloadAction<ILogin>) => {
-            const { access_token, expired_date } = action.payload;
+            const { access_token, expired_date, user_id } = action.payload;
             return {
                 ...state,
                 access_token,
                 expired_date,
+                user_id
             };
         },
         logout: () => initialState
@@ -38,7 +41,7 @@ export const reducer = persistReducer(
     {
         key: "VISTA:AUTH",
         storage,
-        whitelist: ["user", "access_token"]
+        whitelist: ["user", "access_token", "user_id"]
     },
     authSlice.reducer
 );

@@ -1,4 +1,4 @@
-import { ReportType } from "@/pages/types/ReportType";
+import { ReportType } from "@/pages/models/ReportType";
 import { CustomDrawer, CustomModal, ReportFilter, ReportForm } from '@/shared';
 import styles from "@/shared/components/Modal/CustomModal.module.scss";
 import { EditOutlined, ExportOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined } from '@ant-design/icons';

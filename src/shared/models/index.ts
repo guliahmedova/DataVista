@@ -52,7 +52,7 @@ export interface IReportFormType {
     okBtnColor: string
 };
 
-export interface ITeamFormType {
+export interface IFormProps {
     okText: string,
     okBtnColor: string,
     actionKey?: string
@@ -70,7 +70,7 @@ export type EmployeeFormType = {
     lastName: string,
     email: string,
     password: string,
-    teamID: number,
-    roleID: number,
-    status?: number
+    teamID: string,
+    roleID: string,
+    status?: string | null
 };

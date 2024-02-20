@@ -1,4 +1,4 @@
-import { TeamType } from '@/pages/types/TeamType';
+import { TeamType } from '@/pages/models/TeamType';
 import { CustomDrawer, CustomModal, DeleteView, TeamFilter, TeamForm } from '@/shared/index';
 import { DeleteOutlined, EditOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined } from '@ant-design/icons';
 import { Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps, Typography } from "antd";

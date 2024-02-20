@@ -1,6 +1,7 @@
 export interface ILogin  {
     access_token: string;
     expired_date: string;
+    user_id: number;
 };
 
 export type UserDataDto = {

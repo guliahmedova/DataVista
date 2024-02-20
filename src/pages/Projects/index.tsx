@@ -1,15 +1,7 @@
-import { ProjectType } from '@/pages/types/ProjectType';
+import { ACTION_KEY, ProjectType } from '@/pages/models/index';
 import { CustomDrawer, CustomModal, ProjectFilter, ProjectForm } from '@/shared/index';
 import { EditOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined } from '@ant-design/icons';
 import { Descriptions, DescriptionsProps, Divider, Flex, Layout, Table, TableProps } from "antd";
-
-const enum ActionKeys {
-  CREATE = 'PROJECTS_CREATE',
-  UPDATE = 'PROJECTS_UPDATE',
-  VIEW = "PROJECTS_VIEW",
-  FILTER = "PROJECTS_FILTER",
-  DELETE = "PROJECTS_DELETE",
-};
 
 const data: ProjectType[] = [
   {
@@ -33,10 +25,10 @@ const items: DescriptionsProps['items'] = [
 
 const Projects = () => {
   const actionStatus = {
-    PROJECTS_CREATE: <ProjectForm okText='Create' okBtnColor='#87d068' />,
-    PROJECTS_UPDATE: <ProjectForm okText='Update' okBtnColor='orange' />,
-    PROJECTS_VIEW: <Descriptions bordered={true} column={2} items={items} layout="vertical" />,
-    PROJECTS_FILTER: <ProjectFilter okText='Filter' okBtnColor='purple' />,
+    CREATE: <ProjectForm okText='Create' okBtnColor='#87d068' />,
+    UPDATE: <ProjectForm okText='Update' okBtnColor='orange' />,
+    VIEW: <Descriptions bordered={true} column={2} items={items} layout="vertical" />,
+    FILTER: <ProjectFilter okText='Filter' okBtnColor='purple' />,
   };
 
   const columns: TableProps<ProjectType>['columns'] = [
@@ -53,8 +45,8 @@ const Projects = () => {
       ellipsis: true,
       render: () => (
         <Flex gap='small' wrap='wrap'>
-          <CustomModal actionKey={ActionKeys.CREATE} actionStatus={actionStatus[ActionKeys.CREATE]} icon={<EditOutlined />} title='Update Project' classname='update_btn' okText='Update' />
-          <CustomDrawer actionKey={ActionKeys.VIEW} actionStatus={actionStatus[ActionKeys.VIEW]} icon={<FundViewOutlined />} title='View Team' classname='view_btn' okText='View' />
+          <CustomModal actionKey={ACTION_KEY.CREATE} actionStatus={actionStatus[ACTION_KEY.CREATE]} icon={<EditOutlined />} title='Update Project' classname='update_btn' okText='Update' />
+          <CustomDrawer actionKey={ACTION_KEY.VIEW} actionStatus={actionStatus[ACTION_KEY.VIEW]} icon={<FundViewOutlined />} title='View Team' classname='view_btn' okText='View' />
         </Flex>
       ),
     },
@@ -64,8 +56,8 @@ const Projects = () => {
     <Layout>
       <Divider />
       <Flex gap={6} justify='end'>
-        <CustomModal actionKey={ActionKeys.CREATE} actionStatus={actionStatus[ActionKeys.CREATE]} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
-        <CustomDrawer actionKey={ActionKeys.FILTER} actionStatus={actionStatus[ActionKeys.FILTER]} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
+        <CustomModal actionKey={ACTION_KEY.CREATE} actionStatus={actionStatus[ACTION_KEY.CREATE]} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
+        <CustomDrawer actionKey={ACTION_KEY.FILTER} actionStatus={actionStatus[ACTION_KEY.FILTER]} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
       </Flex>
       <Divider />
       <Table columns={columns} dataSource={data} rowKey='id' bordered size="large" scroll={{ y: 300, x: "auto" }}
