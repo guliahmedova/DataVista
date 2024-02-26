@@ -1,8 +1,16 @@
-import { ITeamFormType } from "@/shared/models";
+import { setModalOpen } from "@/redux/features/modal";
+import { useAppDispatch } from "@/redux/store";
+import { IButton } from "@/shared/models";
 import utils from "@/styles/utils.module.scss";
 import { Button, Col, Form, Input, Row } from "antd";
 
-const TeamForm: React.FC<ITeamFormType> = ({ okText, okBtnColor }) => {
+const TeamForm: React.FC<IButton> = ({ okText, okBtnColor }) => {
+    const dispatch = useAppDispatch();
+
+    const handleSubmit = () => {
+        dispatch(setModalOpen({ modalId: "TeamForm", isOpen: false }));
+    };
+
     return (
         <Form
             layout='vertical'
@@ -14,7 +22,7 @@ const TeamForm: React.FC<ITeamFormType> = ({ okText, okBtnColor }) => {
                     </Form.Item>
                 </Col>
                 <Col span={24} className={utils.btns_placement}>
-                    <Button style={{ backgroundColor: `${okBtnColor}`, color: 'white' }}>{okText}</Button>
+                    <Button style={{ backgroundColor: `${okBtnColor}`, color: 'white' }} onClick={handleSubmit}>{okText}</Button>
                 </Col>
             </Row>
         </Form>

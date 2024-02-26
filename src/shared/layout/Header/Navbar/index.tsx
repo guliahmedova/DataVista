@@ -29,7 +29,7 @@ const CustomHeader: React.FC<IHeaderType> = ({ setIsDarkMode, isDarkMode }) => {
   return (
     <Header className={styles.header} style={{ background: colorBgContainer }}>
       <Flex className={styles.header_list}>
-        <Link href='/teams' className={styles.logo_box}>
+        <Link href='/' className={styles.logo_box}>
           <Image
             className={styles.logo_img}
             preview={false}
@@ -40,7 +40,7 @@ const CustomHeader: React.FC<IHeaderType> = ({ setIsDarkMode, isDarkMode }) => {
         <Space className={styles.header_left}>
           <Typography className={`${styles.reset_pass_box} ${styles.key}`} >
             <Tooltip placement="bottom" title='Reset User Password'>
-              <CustomModal actionKey="ADMIN_RESET_PASSWORD" classname="reset_employye_password_btn" icon={<LockOutlined />} title="Reset Password" actionStatus={actionStatus[ActionKeys.ADMIN_RESET_PASSWORD]} okText="Reset" />
+              <CustomModal actionKey="ADMIN_RESET_PASSWORD" modalID="ResetPassword" classname="reset_employye_password_btn" icon={<LockOutlined />} title="Reset Password" actionStatus={actionStatus[ActionKeys.ADMIN_RESET_PASSWORD]} okText="Reset" />
             </Tooltip>
           </Typography>
           <Typography

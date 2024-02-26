@@ -1,19 +1,19 @@
+import { setModalOpen } from "@/redux/features/modal";
+import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
 import { ICustomModalType } from "@/shared/models";
 import { Button, Modal, Tooltip } from "antd";
-import { useState } from "react";
 import styles from './CustomModal.module.scss';
 
-const CustomModal: React.FC<ICustomModalType> = ({ classname, icon, title, actionStatus }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const CustomModal: React.FC<ICustomModalType> = ({ classname, icon, title, actionStatus, modalID }) => {
+  const dispatch = useAppDispatch();
+  const isOpen = useAppSelector((state: RootState) => state.modal[modalID]);
 
   const showModal = () => {
-    setIsModalOpen(true);
+    dispatch(setModalOpen({ modalId: modalID, isOpen: true }));
   };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
+
+  const closeModal = () => {
+    dispatch(setModalOpen({ modalId: modalID, isOpen: false }));
   };
 
   return (
@@ -21,7 +21,10 @@ const CustomModal: React.FC<ICustomModalType> = ({ classname, icon, title, actio
       <Tooltip title={title} placement="top">
         <Button className={styles[classname]} icon={icon} size="large" onClick={showModal} />
       </Tooltip>
-      <Modal open={isModalOpen} onOk={handleOk} okButtonProps={{ style: { display: 'none' } }} cancelButtonProps={{ style: { display: 'none' } }} cancelText='Close' onCancel={handleCancel}>
+      <Modal open={isOpen}
+        okButtonProps={{ style: { display: 'none' } }}
+        cancelButtonProps={{ style: { display: 'none' } }}
+        onCancel={closeModal}>
         {actionStatus}
       </Modal>
     </>

@@ -1,4 +1,4 @@
-import { ITeamFormType } from "@/shared/models";
+import { IButton } from "@/shared/models";
 import { Button, Col, Form, Row, Select, SelectProps } from "antd";
 
 const options: SelectProps['options'] = [
@@ -12,7 +12,7 @@ const options: SelectProps['options'] = [
     }
 ];
 
-const TeamFilter: React.FC<ITeamFormType> = ({ okBtnColor, okText }) => {
+const TeamFilter: React.FC<IButton> = ({ okBtnColor, okText }) => {
     const handleChange = (value: string[]) => {
         console.log(`selected ${value}`);
     };

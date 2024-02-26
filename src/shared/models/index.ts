@@ -1,5 +1,12 @@
 import { ReactNode } from "react";
 
+export const enum ROLES {
+    SUPERADMIN = 1,
+    ADMIN = 2,
+    HEAD = 3,
+    EMPLOYEE = 4
+};
+
 export interface ICustomDrawerType {
     okText: string,
     children?: ReactNode,
@@ -17,12 +24,8 @@ export interface ICustomModalType {
     icon: JSX.Element,
     actionKey: string,
     title?: string;
-    actionStatus: ReactNode
-};
-
-export interface IEmployeeFormType {
-    okText: string,
-    okBtnColor: string
+    actionStatus: ReactNode,
+    modalID: string,
 };
 
 export interface IHeaderType {
@@ -36,41 +39,37 @@ export interface ILayoutType {
     children: ReactNode
 };
 
-export interface IProjectFormType {
-    okText: string,
-    okBtnColor: string
-};
-
 export interface IRenderIfType {
     children: ReactNode,
     conditions: ReactNode,
     renderelse?: ReactNode
 };
 
-export interface IReportFormType {
-    okText: string,
-    okBtnColor: string
-};
-
 export interface IFormProps {
     okText: string,
     okBtnColor: string,
-    actionKey?: string
+    actionKey?: string,
+    selectRowId?: number | null
 };
 
-export const enum ROLES {
-    SUPERADMIN = 1,
-    ADMIN = 2,
-    HEAD = 3,
-    EMPLOYEE = 4
-};
-
+// EMPLOYEE TYPES
 export type EmployeeFormType = {
-    firstName: string,
-    lastName: string,
+    name: string,
+    surname: string,
     email: string,
     password: string,
-    teamID: string,
-    roleID: string,
+    team: {
+        id: number, 
+        name: string
+    },
+    role: {
+        id: number,
+        roleEnum: string
+    },
     status?: string | null
+};
+
+export interface IButton {
+    okText: string,
+    okBtnColor: string
 };

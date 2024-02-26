@@ -1,4 +1,4 @@
-import { ReportType } from "@/pages/models/ReportType";
+import { ReportType } from "@/pages/models";
 import { CustomDrawer, CustomModal, ReportFilter, ReportForm } from '@/shared';
 import styles from "@/shared/components/Modal/CustomModal.module.scss";
 import { EditOutlined, ExportOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined } from '@ant-design/icons';
@@ -86,7 +86,7 @@ const Reports = () => {
       ellipsis: true,
       render: () => (
         <Flex gap='small' wrap='nowrap'>
-          <CustomModal actionKey={ActionKeys.UPDATE} actionStatus={actionStatus[ActionKeys.UPDATE]} icon={<EditOutlined />} title='Update Report' classname='update_btn' okText='Update' />
+          <CustomModal modalID="ReportUpdate" actionKey={ActionKeys.UPDATE} actionStatus={actionStatus[ActionKeys.UPDATE]} icon={<EditOutlined />} title='Update Report' classname='update_btn' okText='Update' />
           <CustomDrawer actionKey={ActionKeys.VIEW} actionStatus={actionStatus[ActionKeys.VIEW]} icon={<FundViewOutlined />} title='View Report' classname='view_btn' okText='View' />
         </Flex>
       )
@@ -97,7 +97,7 @@ const Reports = () => {
     <Layout>
       <Divider />
       <Flex gap={6} justify="end">
-        <CustomModal actionKey={ActionKeys.CREATE} actionStatus={actionStatus[ActionKeys.CREATE]} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
+        <CustomModal modalID="ReportCreate" actionKey={ActionKeys.CREATE} actionStatus={actionStatus[ActionKeys.CREATE]} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
         <CustomDrawer actionKey={ActionKeys.FILTER} actionStatus={actionStatus[ActionKeys.FILTER]} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
         <Tooltip title='Export' placement="top">
           <Button className={styles.export_btn} icon={<ExportOutlined />} size="large" />

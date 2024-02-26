@@ -12,7 +12,7 @@ export type ProjectType = {
     projectName: string,
 };
 
-export type TeamType = {
+export interface ITeamTable  {
     id: number,
     teamName: string,
 };
@@ -26,11 +26,10 @@ export type ReportType = {
 };
 
 export interface UserType {
-    key: string;
-    firstname: string;
-    lastname: string;
+    user_id: number;
+    fullname: string;
     email: string;
-    teamname: string;
-    rolename: string;
+    teamName: string;
+    role: string;
     status: string;
 };

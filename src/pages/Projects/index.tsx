@@ -45,7 +45,7 @@ const Projects = () => {
       ellipsis: true,
       render: () => (
         <Flex gap='small' wrap='wrap'>
-          <CustomModal actionKey={ACTION_KEY.CREATE} actionStatus={actionStatus[ACTION_KEY.CREATE]} icon={<EditOutlined />} title='Update Project' classname='update_btn' okText='Update' />
+          <CustomModal modalID='ProjectUpdate' actionKey={ACTION_KEY.UPDATE} actionStatus={actionStatus[ACTION_KEY.UPDATE]} icon={<EditOutlined />} title='Update Project' classname='update_btn' okText='Update' />
           <CustomDrawer actionKey={ACTION_KEY.VIEW} actionStatus={actionStatus[ACTION_KEY.VIEW]} icon={<FundViewOutlined />} title='View Team' classname='view_btn' okText='View' />
         </Flex>
       ),
@@ -56,7 +56,7 @@ const Projects = () => {
     <Layout>
       <Divider />
       <Flex gap={6} justify='end'>
-        <CustomModal actionKey={ACTION_KEY.CREATE} actionStatus={actionStatus[ACTION_KEY.CREATE]} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
+        <CustomModal modalID='ProjectCreate' actionKey={ACTION_KEY.CREATE} actionStatus={actionStatus[ACTION_KEY.CREATE]} icon={<FileAddOutlined />} title='Create' classname='create_btn' okText='Create' />
         <CustomDrawer actionKey={ACTION_KEY.FILTER} actionStatus={actionStatus[ACTION_KEY.FILTER]} icon={<FilterOutlined />} title='Filter' classname='filter_btn' okText='Filter' />
       </Flex>
       <Divider />

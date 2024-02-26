@@ -1,6 +1,7 @@
 import { APIBaseQuery } from '@/redux/axiosBase';
 import { setToken, setUser } from '@/redux/features/user';
 import { UserDataDto } from '@/redux/features/user/types';
+import { IRoleResponse } from '@/redux/models';
 import { createApi } from '@reduxjs/toolkit/query/react';
 
 export const authApi = createApi({
@@ -8,11 +9,13 @@ export const authApi = createApi({
     baseQuery: APIBaseQuery,
     endpoints: (builder) => ({
         loginUser: builder.mutation({
-            query: (data) => ({
-                url: "auth/authenticate",
-                method: 'POST',
-                data,
-            }),
+            query: (data) => {
+                return {
+                    url: "auth/authenticate",
+                    method: 'POST',
+                    data,
+                }
+            },
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
                     const { data } = await queryFulfilled;
@@ -34,10 +37,18 @@ export const authApi = createApi({
                 }
             },
         }),
+        getAllRoles: builder.query<IRoleResponse[], void>({
+            query() {
+                return {
+                    url: 'roles'
+                }
+            },
+        })
     }),
 });
 
 export const {
     useLoginUserMutation,
-    useGetMeQuery
+    useGetMeQuery,
+    useGetAllRolesQuery
 } = authApi;

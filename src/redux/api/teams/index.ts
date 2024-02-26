@@ -1,64 +1,64 @@
 import { APIBaseQuery } from '@/redux/axiosBase';
-import { IEmployeeResponse } from '@/redux/models';
+import { ITeamResponse } from '@/redux/models';
 import { createApi } from '@reduxjs/toolkit/query/react';
 
-export const employeesApi = createApi({
-    reducerPath: 'employeesApi',
+export const teamsApi = createApi({
+    reducerPath: 'teamsApi',
     baseQuery: APIBaseQuery,
-    tagTypes: ["Employees"],
+    tagTypes: ["Teams"],
     endpoints: (builder) => ({
-        getEmployee: builder.query({
+        getTeam: builder.query({
             query(id) {
                 return {
-                    url: `user/${id}`
+                    url: `teams/${id}`
                 }
             },
-            providesTags: ["Employees"]
+            providesTags: ["Teams"]
         }),
-        getAllEmployees: builder.query<IEmployeeResponse[], void>({
+        getAllTeams: builder.query<ITeamResponse[], void>({
             query() {
                 return {
-                    url: 'user/all'
+                    url: 'teams'
                 }
             },
-            providesTags: ["Employees"]
+            providesTags: ["Teams"],
         }),
-        createEmployee: builder.mutation({
+        createTeam: builder.mutation({
             query: (data) => {
                 return {
-                    url: "auth/register",
+                    url: "teams",
                     method: 'POST',
                     data
                 }
             },
-            invalidatesTags: [{ type: "Employees" }],
+            invalidatesTags: [{ type: "Teams" }],
         }),
         updateEmployee: builder.mutation({
             query: ({ id, data }) => {
                 return {
-                    url: `user/${id}`,
+                    url: `teams/${id}`,
                     method: 'PUT',
                     data
                 }
             },
-            invalidatesTags: [{ type: "Employees" }],
+            invalidatesTags: [{ type: "Teams" }],
         }),
         deleteEmployee: builder.mutation({
             query: (id) => {
                 return {
                     method: 'DELETE',
-                    url: `user/delete/${id}`,
+                    url: `teams/${id}`,
                 }
             },
-            invalidatesTags: [{ type: "Employees" }],
+            invalidatesTags: [{ type: "Teams" }],
         }),
     }),
 });
 
 export const {
-    useCreateEmployeeMutation,
+    useGetTeamQuery,
+    useGetAllTeamsQuery,
+    useCreateTeamMutation,
     useUpdateEmployeeMutation,
-    useDeleteEmployeeMutation,
-    useGetEmployeeQuery,
-    useGetAllEmployeesQuery
-} = employeesApi;
+    useDeleteEmployeeMutation
+} = teamsApi;
