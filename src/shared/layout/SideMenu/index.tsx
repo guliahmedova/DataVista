@@ -1,5 +1,5 @@
 import { checkPermission } from '@/pages/PrivateRouter';
-import { RootState, useAppSelector } from '@/redux/store';
+// import { RootState, useAppSelector } from '@/redux/store';
 import { Urls } from '@/shared/constants/url';
 import { ROLES } from '@/shared/models';
 import { CreditCardOutlined, ProjectOutlined, TeamOutlined, UsergroupAddOutlined } from '@ant-design/icons';
@@ -13,7 +13,7 @@ const SideMenu = () => {
     const [collapsed, setCollapsed] = useState(false);
     const location = useLocation();
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    const roleID = useAppSelector((state: RootState) => state.auth.user?.role.id);
+    // const roleID = useAppSelector((state: RootState) => state.auth.user?.role.id);
 
     const SIDEMENITEMS = [
         {
@@ -56,7 +56,7 @@ const SideMenu = () => {
         return () => window.removeEventListener("resize", handleResize);
     }, [windowWidth]);
 
-    const items: MenuProps['items'] = SIDEMENITEMS.filter((route) => checkPermission(route.authorites, roleID))
+    const items: MenuProps['items'] = SIDEMENITEMS.filter((route) => checkPermission(route.authorites, 1))
 
     return (
         <Sider theme='light' collapsible={windowWidth >= 844 ? true : false}

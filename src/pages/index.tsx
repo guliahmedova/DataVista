@@ -1,23 +1,23 @@
-import { useAppSelector } from "@/redux/store";
+// import { useAppSelector } from "@/redux/store";
 import { CustomHeader, RenderIf, SideMenu, Spinner } from "@/shared";
 import Auxilliary from "@/shared/modules/Auxilliary";
 import Cover from "@/shared/modules/Cover";
 import { ConfigProvider, theme } from "antd";
 import { Suspense, useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import ForgotPassword from "./ForgotPassword";
-import Login from "./Login";
+// import { Route, Routes } from "react-router-dom";
+// import ForgotPassword from "./ForgotPassword";
+// import Login from "./Login";
 import PrivateRouter from "./PrivateRouter";
 
 const Router = () => {
   const { defaultAlgorithm, darkAlgorithm } = theme;
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [primary, setPrimary] = useState('#1554ad');
-  const { access_token } = useAppSelector(state => state.auth);
+  // const { access_token } = useAppSelector(state => state.auth);
 
   return (
     <>
-      <RenderIf conditions={access_token} >
+      <RenderIf conditions={true} >
         <ConfigProvider theme={
           {
             algorithm: isDarkMode ? defaultAlgorithm : darkAlgorithm,
@@ -57,13 +57,13 @@ const Router = () => {
         </ConfigProvider>
       </RenderIf>
 
-      <RenderIf conditions={!access_token}>
+      {/* <RenderIf conditions={!access_token}>
         <Routes>
           <Route path="login" element={<Login />} />
           <Route path="forgot-password" element={<ForgotPassword />} />
           <Route path="*" element={<Login />} />
         </Routes>
-      </RenderIf>
+      </RenderIf> */}
     </>
   )
 };

@@ -29,12 +29,14 @@ const EmployeeForm: React.FC<IFormProps> = ({ okText, okBtnColor, actionKey, sel
     }, [teams]);
 
     const rolesOptions: SelectProps['options'] = useMemo(() => {
-        return roles?.filter((item) => user_id === 1 ?
-            (item.role_id !== 1 && item.role_id !== 3) :
-            (item.role_id !== 1 && item.role_id !== 3 && item.role_id !== 2)).map((role: IRoleResponse) => ({
-                label: role.role_name,
-                value: role.role_id
-            }));
+        if (user_id) {
+            return roles?.filter((item) => user_id === 1 ?
+                (item.role_id !== 1 && item.role_id !== 3) :
+                (item.role_id !== 1 && item.role_id !== 3 && item.role_id !== 2)).map((role: IRoleResponse) => ({
+                    label: role.role_name,
+                    value: role.role_id
+                }));
+        }
     }, [roles, user_id]);
 
     const submitData = (data: EmployeeFormType) => {
@@ -43,12 +45,12 @@ const EmployeeForm: React.FC<IFormProps> = ({ okText, okBtnColor, actionKey, sel
                 firstname: data.name,
                 lastname: data.surname,
                 email: data.email,
-                password: data.password,
-                team_id: data.team,
+                password: "password123",
                 role: {
                     id: data.role.id,
                     roleEnum: data.role.roleEnum
-                }
+                },
+                team_id: data.team.id
             });
         }
         else if (actionKey === ACTION_KEY.UPDATE) {
@@ -66,20 +68,8 @@ const EmployeeForm: React.FC<IFormProps> = ({ okText, okBtnColor, actionKey, sel
     };
 
     useEffect(() => {
-        if (employee) {
-            const { name, surname, email, role } = employee;
-            const teamName = employee?.team;
-            reset({
-                name, surname, email, role: {
-                    id: role.id,
-                    roleEnum: role.roleEnum
-                }, team: {
-                    id: teamName.id,
-                    name: teamName.name
-                }
-            });
-        }
-    }, [employee]);
+        if (employee) { reset(employee) };
+    }, [employee, reset]);
 
     return (
         <Form layout='vertical' onFinish={handleSubmit(submitData)}>
@@ -134,24 +124,7 @@ const EmployeeForm: React.FC<IFormProps> = ({ okText, okBtnColor, actionKey, sel
                     {errors.email && <span className={utils.err_msg}>{errors.email.message}</span>}
                 </Col>
                 <Col span={12}>
-                    <Form.Item label="Password" name="password">
-                        <Controller
-                            control={control}
-                            render={({ field: { onChange, onBlur, value } }) => (
-                                <Input.Password size="large"
-                                    onBlur={onBlur}
-                                    onChange={onChange}
-                                    value={value}
-                                    autoComplete="on"
-                                />
-                            )}
-                            name="password"
-                        />
-                    </Form.Item>
-                    {errors.password && <span className={utils.err_msg}>{errors.password.message}</span>}
-                </Col>
-                <Col span={12}>
-                    <Form.Item label="Teams" name="team">
+                    <Form.Item label="Teams" name="team.id">
                         <Controller
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
@@ -161,17 +134,17 @@ const EmployeeForm: React.FC<IFormProps> = ({ okText, okBtnColor, actionKey, sel
                                     placeholder="Please select"
                                     onBlur={onBlur}
                                     onChange={onChange}
-                                    value={employee ? employee.team.name : value}
+                                    value={value}
                                     options={teamsOptions}
                                 />
                             )}
-                            name="team"
+                            name="team.id"
                         />
                     </Form.Item>
                     {errors.team && <span className={utils.err_msg}>{errors.team.message}</span>}
                 </Col>
                 <Col span={12}>
-                    <Form.Item label="Roles" name="role">
+                    <Form.Item label="Roles" name="role.id">
                         <Controller
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
@@ -181,11 +154,11 @@ const EmployeeForm: React.FC<IFormProps> = ({ okText, okBtnColor, actionKey, sel
                                     placeholder="Please select"
                                     onBlur={onBlur}
                                     onChange={onChange}
-                                    value={employee ? employee.role.roleEnum : value}
+                                    value={value}
                                     options={rolesOptions}
                                 />
                             )}
-                            name="role"
+                            name="role.id"
                         />
                     </Form.Item>
                     {errors.role && <span className={utils.err_msg}>{errors.role.message}</span>}

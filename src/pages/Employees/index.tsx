@@ -1,15 +1,16 @@
 import { ACTION_KEY } from '@/pages/models';
-import { useGetAllEmployeesQuery } from '@/redux/api/employees';
+import { useGetAllEmployeesQuery, useUpdateEmployeeStatusMutation } from '@/redux/api/employees';
 import { IEmployeeResponse } from '@/redux/models';
-import { CustomDrawer, CustomModal, DeleteView, EmployeeFilter, EmployeeForm, ResetPasswordForm } from '@/shared';
+import { CustomDrawer, CustomModal, EmployeeFilter, EmployeeForm, ResetPasswordForm } from '@/shared';
 import utils from '@/styles/utils.module.scss';
 import { DeleteOutlined, EditOutlined, FileAddOutlined, FilterOutlined, FundViewOutlined, LockOutlined } from '@ant-design/icons';
 import { Descriptions, DescriptionsProps, Divider, Flex, Layout, Space, Table, TableProps, Tag, Typography } from "antd";
 import { useMemo, useState } from 'react';
+import EmployeeDelete from './components/Delete';
 
 interface ColorCondition {
-  Active: string,
-  DeActive: string
+  ACTIVE: string,
+  INACTIVE: string
 };
 
 const items: DescriptionsProps['items'] = [
@@ -46,21 +47,34 @@ const items: DescriptionsProps['items'] = [
 ];
 
 const Employees = () => {
-  const [isActive, setIsActive] = useState(false);
+  const [_, setRowStatus] = useState<{ [key: number]: string }>({});
   const { data: employees } = useGetAllEmployeesQuery();
   const [selectRowId, setSelectRowId] = useState<null | number>(null);
-
-  const handleRowSelect = (rowId: number) => {
-    setSelectRowId(rowId);
-  };
+  const [updateEmployeeStatus] = useUpdateEmployeeStatusMutation();
 
   const actionStatus = {
     CREATE: <EmployeeForm actionKey={ACTION_KEY.CREATE} okText='Create' okBtnColor='#87d068' />,
     UPDATE: <EmployeeForm selectRowId={selectRowId} actionKey={ACTION_KEY.UPDATE} okText='Update' okBtnColor='orange' />,
     VIEW: <Descriptions title="Project Info" items={items} layout="vertical" bordered={true} column={2} />,
     FILTER: <EmployeeFilter okText='Filter' okBtnColor='purple' />,
-    DELETE: <DeleteView />,
+    DELETE: <EmployeeDelete id={selectRowId} />,
     RESET_PASSWORD: <ResetPasswordForm />
+  };
+
+  const handleRowSelect = (rowId: number) => {
+    setSelectRowId(rowId);
+  };
+
+  const handleStatusUpdate = (userID: number, status: string) => {
+    const newStatus = status === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE';
+    setRowStatus(prevStatus => ({
+      ...prevStatus,
+      [userID]: newStatus
+    }));
+    updateEmployeeStatus({
+      id: userID,
+      status: newStatus
+    });
   };
 
   const columns: TableProps['columns'] = [
@@ -87,14 +101,17 @@ const Employees = () => {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
-      render: (text: string) => {
+      render: (text: string, record) => {
         const colorCondition: ColorCondition = {
-          Active: 'green',
-          DeActive: 'red'
+          ACTIVE: 'green',
+          INACTIVE: 'red'
         }
         return (
-          <Tag color={isActive ? colorCondition.Active : colorCondition.DeActive} key={text} onClick={() => setIsActive(!isActive)}>
-            {isActive ? "Activate" : "Deactivate"}
+          <Tag
+            color={text === 'ACTIVE' ? colorCondition.ACTIVE : colorCondition.INACTIVE}
+            key={text}
+            onClick={() => handleStatusUpdate(record.key, text)}>
+            {text}
           </Tag>
         );
       },

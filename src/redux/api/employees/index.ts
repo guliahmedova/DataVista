@@ -1,6 +1,7 @@
 import { APIBaseQuery } from '@/redux/axiosBase';
 import { IEmployeeResponse } from '@/redux/models';
 import { createApi } from '@reduxjs/toolkit/query/react';
+import { notification } from 'antd';
 
 export const employeesApi = createApi({
     reducerPath: 'employeesApi',
@@ -46,13 +47,30 @@ export const employeesApi = createApi({
         deleteEmployee: builder.mutation({
             query: (id) => {
                 return {
-                    method: 'DELETE',
-                    url: `user/delete/${id}`,
+                    url: `user/${id}`,
+                    method: 'DELETE'
                 }
             },
             invalidatesTags: [{ type: "Employees" }],
+            async onQueryStarted(_, { queryFulfilled }) {
+                try {
+                    const { data } = await queryFulfilled
+                    notification.success(data.msg);
+                } catch (error) {
+                    console.log(error);
+                }
+            }
         }),
-    }),
+        updateEmployeeStatus: builder.mutation({
+            query: ({ id, status }) => {
+                return {
+                    url: `user/status/${id}?status=${status}`,
+                    method: 'PUT'
+                }
+            },
+            invalidatesTags: [{ type: "Employees" }],
+        })
+    })
 });
 
 export const {
@@ -60,5 +78,6 @@ export const {
     useUpdateEmployeeMutation,
     useDeleteEmployeeMutation,
     useGetEmployeeQuery,
-    useGetAllEmployeesQuery
+    useGetAllEmployeesQuery,
+    useUpdateEmployeeStatusMutation
 } = employeesApi;

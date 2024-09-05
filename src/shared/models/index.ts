@@ -60,11 +60,11 @@ export type EmployeeFormType = {
     password: string,
     team: {
         id: number, 
-        name: string
+        name?: string | null
     },
     role: {
         id: number,
-        roleEnum: string
+        roleEnum?: string | null
     },
     status?: string | null
 };

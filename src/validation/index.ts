@@ -8,10 +8,10 @@ export const EmployeesFormScheme: ZodType<EmployeeFormType> = z.object({
     password: string(),
     team: object({
         id: number(),
-        name: string()
+        name: string().optional()
     }),
     role: object({
         id: number(),
-        roleEnum: string()
+        roleEnum: string().optional()
     })
 });

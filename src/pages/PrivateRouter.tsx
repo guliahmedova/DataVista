@@ -1,4 +1,4 @@
-import { RootState, useAppSelector } from '@/redux/store';
+// import { RootState, useAppSelector } from '@/redux/store';
 import { Urls } from '@/shared/constants/url';
 import { ROLES } from '@/shared/models';
 import { lazy } from 'react';
@@ -37,8 +37,8 @@ const routes = [
 ];
 
 const PrivateRouter = () => {
-    const roleID = useAppSelector((state:RootState) => state.auth.user?.role.id);
-    return <> {useRoutes(routes.filter((route) => checkPermission(route.authorites, roleID)))} </>
+    // const roleID = useAppSelector((state:RootState) => state.auth.user?.role.id);
+    return <> {useRoutes(routes.filter((route) => checkPermission(route.authorites, 1)))} </>
 };
 
 export default PrivateRouter;

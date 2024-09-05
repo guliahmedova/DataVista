@@ -33,7 +33,7 @@ export const teamsApi = createApi({
             },
             invalidatesTags: [{ type: "Teams" }],
         }),
-        updateEmployee: builder.mutation({
+        updateTeam: builder.mutation({
             query: ({ id, data }) => {
                 return {
                     url: `teams/${id}`,
@@ -43,7 +43,7 @@ export const teamsApi = createApi({
             },
             invalidatesTags: [{ type: "Teams" }],
         }),
-        deleteEmployee: builder.mutation({
+        deleteTeam: builder.mutation({
             query: (id) => {
                 return {
                     method: 'DELETE',
@@ -59,6 +59,6 @@ export const {
     useGetTeamQuery,
     useGetAllTeamsQuery,
     useCreateTeamMutation,
-    useUpdateEmployeeMutation,
-    useDeleteEmployeeMutation
+    useUpdateTeamMutation,
+    useDeleteTeamMutation
 } = teamsApi;
